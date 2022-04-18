@@ -21,13 +21,25 @@ public abstract class Org {
     public enum Type {
 
         //HealthCenter Organization Types:
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"), Patient("Patient Organization"), Accountant("Accountant Organization"),
+        Admin("Admin Organization"),
+        Doctor("Doctor Organization"),
+        Lab("Lab Organization"),
+        Patient("Patient Organization"),
+        Accountant("Accountant Organization"),
+        
         //Insurance Organization Types:
-        InsuranceAgent("Insurance Agent Organization"), InsurancePolicyPlanner("Insurance Policy Planning Organization"), InsuranceFinanceOrganization("Insurance Finance Organization"),
+        InsuranceAgent("Insurance Agent Organization"),
+        InsurancePolicyPlanner("Insurance Policy Planning Organization"),
+        InsuranceFinanceOrganization("Insurance Finance Organization"),
+        
         //Government Organization Types
-        Treasurer("Treasurer Organization"), Secretary("Secretary Organization"), HealthcareOfficer("Healthcare Officer Organization"),
+        Treasurer("Treasurer Organization"),
+        Secretary("Secretary Organization"),
+        HealthcareOfficer("Healthcare Officer Organization"),
+        
         //Pharma Organization Types
-        Transport("Transport Organization"), Manager("Manager Organization");
+        Transport("Transport Organization"),
+        Manager("Manager Organization");
         
 
         private String value;
