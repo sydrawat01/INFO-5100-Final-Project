@@ -3,82 +3,91 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ChemoCare.Enterprise;
-import java.util.List;
+
 import ChemoCare.Org.Org;
 import ChemoCare.Org.OrgDirectory;
+
+import java.util.List;
+
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
 public abstract class Enterprise extends Org {
-    private int zipcode;
-    private String address;
-    private String email;
-    private EnterpriseType enterpriseType;
-    private OrgDirectory orgDirectory;
 
-      public Enterprise(String orgName, EnterpriseType type,int zip,String address) {
-        super(orgName);
-        this.enterpriseType = type;
-        this.zipcode = zip;
-        this.address = address;
-        this.email = "sydrawat@gmail.com";
-        orgDirectory = new OrgDirectory();
-    }
-    public enum EnterpriseType {
+  private int zipcode;
+  private String address;
+  private String email;
+  private EnterpriseType enterpriseType;
+  private OrgDirectory orgDirectory;
 
-        HealthCenter("HealthCenter"),
-        InsuranceCompany("InsuranceCompany"),
-        Government("Government"),
-        Pharma("Pharma");
+  public Enterprise(String orgName, EnterpriseType type, int zip, String address) {
+    super(orgName);
+    this.enterpriseType = type;
+    this.zipcode = zip;
+    this.address = address;
+    this.email = "sydrawat@gmail.com";
+    orgDirectory = new OrgDirectory();
+  }
 
-        private String value;
+  public enum EnterpriseType {
 
-        private EnterpriseType(String value) {
-            this.value = value;
-        }
+    CancerCenter("CancerCenter"),
+    InsuranceCompany("InsuranceCompany"),
+    Government("Government"),
+    Pharma("Pharma");
 
-        public String getValue() {
-            return value;
-        }
+    private String value;
 
-        @Override
-        public String toString() {
-            return value;
-        }
+    private EnterpriseType(String value) {
+      this.value = value;
     }
 
-    public EnterpriseType getEnterpriseType() {
-        return enterpriseType;
+    public String getValue() {
+      return value;
     }
 
-    public void setEnterpriseType(EnterpriseType enterpriseType) {
-        this.enterpriseType = enterpriseType;
+    @Override
+    public String toString() {
+      return value;
     }
+  }
 
-    public int getZipcode() {
-        return zipcode;
-    }
+  public EnterpriseType getEnterpriseType() {
+    return enterpriseType;
+  }
 
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
-    }
+  public void setEnterpriseType(EnterpriseType enterpriseType) {
+    this.enterpriseType = enterpriseType;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public int getZipcode() {
+    return zipcode;
+  }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+  public void setZipcode(int zipcode) {
+    this.zipcode = zipcode;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getAddress() {
+    return address;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-     public abstract List<Org.Type> getAllOrganizationTypes();
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public OrgDirectory getOrgDirectory() {
+    return orgDirectory;
+  }
+
+  public abstract List<Org.Type> getAllOrganizationTypes();
 }

@@ -10,48 +10,49 @@ import ChemoCare.Role.Role;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
-public abstract class PharmaEnterprise extends Enterprise{
-    private OrderDirectory orderDirectory;
-    HashMap<String, Double> menu;
+public class PharmaEnterprise extends Enterprise {
 
-    
-      public PharmaEnterprise(String orgName, int zip,String address) {
-        super(orgName, EnterpriseType.Pharma, zip,address);
-        orderDirectory = new OrderDirectory();
-        menu = new HashMap();
-    }
-          @Override
-    public ArrayList<Role> getSupportedRole() {
-        return null;
-    }
+  private OrderDirectory orderDirectory;
+  HashMap<String, Double> menu;
 
-    @Override
-    public List<Org.Type> getAllOrganizationTypes() {
-        List<Org.Type> orgTypes = new ArrayList<>();
-        orgTypes.add(Org.Type.Transport);
-        orgTypes.add(Org.Type.Manager);
-        //orgTypes.add(Organization.Type.Treasurer);
+  public PharmaEnterprise(String orgName, int zip, String address) {
+    super(orgName, EnterpriseType.Pharma, zip, address);
+    orderDirectory = new OrderDirectory();
+    menu = new HashMap();
+  }
 
-        return orgTypes;
-    }
-      
-          public OrderDirectory getOrderDirectory() {
-        return orderDirectory;
-    }
+  @Override
+  public ArrayList<Role> getSupportedRole() {
+    return null;
+  }
 
-    public void setOrderDirectory(OrderDirectory orderDirectory) {
-        this.orderDirectory = orderDirectory;
-    }
+  @Override
+  public List<Org.Type> getAllOrganizationTypes() {
+    List<Org.Type> orgTypes = new ArrayList<>();
+    orgTypes.add(Org.Type.Transport);
+    orgTypes.add(Org.Type.Manager);
 
-    public HashMap<String, Double> getMenu() {
-        return menu;
-    }
+    return orgTypes;
+  }
 
-    public void setMenu(HashMap<String, Double> menu) {
-        this.menu = menu;
-    }
+  public OrderDirectory getOrderDirectory() {
+    return orderDirectory;
+  }
+
+  public void setOrderDirectory(OrderDirectory orderDirectory) {
+    this.orderDirectory = orderDirectory;
+  }
+
+  public HashMap<String, Double> getMenu() {
+    return menu;
+  }
+
+  public void setMenu(HashMap<String, Double> menu) {
+    this.menu = menu;
+  }
 }

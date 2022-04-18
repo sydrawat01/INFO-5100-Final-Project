@@ -13,49 +13,52 @@ import java.util.List;
 
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
 public class InsuranceCompanyEnterprise extends Enterprise {
-       
-    private InsuranceCustomerDirectory insuranceCustomerDirectory;
 
-    private InsurancePlanDirectory insurancePlanDirectory;
-    
-      public InsuranceCompanyEnterprise(String orgName, int zip, String address) {
-        super(orgName, EnterpriseType.InsuranceCompany, zip,address);
-        insuranceCustomerDirectory = new InsuranceCustomerDirectory();
-        insurancePlanDirectory = new InsurancePlanDirectory();
+  private InsuranceCustomerDirectory insuranceCustomerDirectory;
 
-    }
-    @Override
-    public ArrayList<Role> getSupportedRole() {
-        return null;
-    }
+  private InsurancePlanDirectory insurancePlanDirectory;
 
-    @Override
-    public List<Org.Type> getAllOrganizationTypes() {
-        List<Org.Type> orgTypes = new ArrayList<>();
-        orgTypes.add(Org.Type.InsuranceAgent);
-        orgTypes.add(Org.Type.InsurancePolicyPlanner);
-        orgTypes.add(Org.Type.InsuranceFinanceOrganization);
+  public InsuranceCompanyEnterprise(String orgName, int zip, String address) {
+    super(orgName, EnterpriseType.InsuranceCompany, zip, address);
+    insuranceCustomerDirectory = new InsuranceCustomerDirectory();
+    insurancePlanDirectory = new InsurancePlanDirectory();
 
-        return orgTypes;
-    }
+  }
 
-    public InsuranceCustomerDirectory getInsuranceCustomerDirectory() {
-        return insuranceCustomerDirectory;
-    }
+  @Override
+  public ArrayList<Role> getSupportedRole() {
+    return null;
+  }
 
-    public void setInsuranceCustomerDirectory(InsuranceCustomerDirectory insuranceCustomerDirectory) {
-        this.insuranceCustomerDirectory = insuranceCustomerDirectory;
-    }
+  @Override
+  public List<Org.Type> getAllOrganizationTypes() {
+    List<Org.Type> orgTypes = new ArrayList<>();
+    orgTypes.add(Org.Type.InsuranceAgent);
+    orgTypes.add(Org.Type.InsurancePolicyPlanner);
+    orgTypes.add(Org.Type.InsuranceFinanceOrganization);
 
-    public InsurancePlanDirectory getInsurancePlanDirectory() {
-        return insurancePlanDirectory;
-    }
+    return orgTypes;
+  }
 
-    public void setInsurancePolicyDirectory(InsurancePlanDirectory insurancePolicyDirectory) {
-        this.insurancePlanDirectory = insurancePolicyDirectory;
-    }
+  public InsuranceCustomerDirectory getInsuranceCustomerDirectory() {
+    return insuranceCustomerDirectory;
+  }
+
+  public void setInsuranceCustomerDirectory(
+      InsuranceCustomerDirectory insuranceCustomerDirectory) {
+    this.insuranceCustomerDirectory = insuranceCustomerDirectory;
+  }
+
+  public InsurancePlanDirectory getInsurancePlanDirectory() {
+    return insurancePlanDirectory;
+  }
+
+  public void setInsurancePolicyDirectory(
+      InsurancePlanDirectory insurancePolicyDirectory) {
+    this.insurancePlanDirectory = insurancePolicyDirectory;
+  }
 
 }

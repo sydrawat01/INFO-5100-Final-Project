@@ -11,27 +11,27 @@ import java.util.List;
 
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
 public class GovtEnterprise extends Enterprise {
 
-    public GovtEnterprise(String orgName, int zip, String address) {
-        super(orgName, EnterpriseType.Government, zip,address);
-    }
+  public GovtEnterprise(String orgName, int zip, String address) {
+    super(orgName, EnterpriseType.Government, zip, address);
+  }
 
-    @Override
-    public ArrayList<Role> getSupportedRole() {
-        return null;
-    }
+  @Override
+  public ArrayList<Role> getSupportedRole() {
+    return null;
+  }
 
-    @Override
-    public List<Org.Type> getAllOrganizationTypes() {
-        List<Org.Type> orgTypes = new ArrayList<>();
-        orgTypes.add(Org.Type.HealthcareOfficer);
-        orgTypes.add(Org.Type.Secretary);
-        orgTypes.add(Org.Type.Treasurer);
+  @Override
+  public List<Org.Type> getAllOrganizationTypes() {
+    List<Org.Type> orgTypes = new ArrayList<>();
+    orgTypes.add(Org.Type.HealthcareOfficer);
+    orgTypes.add(Org.Type.Secretary);
+    orgTypes.add(Org.Type.Treasurer);
 
-        return orgTypes;
-    }
+    return orgTypes;
+  }
 
 }

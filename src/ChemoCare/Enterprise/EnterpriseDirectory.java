@@ -4,26 +4,52 @@
  */
 package ChemoCare.Enterprise;
 
-import ChemoCare.Org.OrgDirectory;
 import java.util.ArrayList;
+
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
 public class EnterpriseDirectory {
-      private ArrayList<Enterprise> enterpriseList;
-   
 
-    public ArrayList<Enterprise> getEnterpriseList() {
-        return enterpriseList;
-    }
+  private ArrayList<Enterprise> enterpriseList;
 
-    public void setEnterpriseList(ArrayList<Enterprise> enterpriseList) {
-        this.enterpriseList = enterpriseList;
+  public ArrayList<Enterprise> getEnterpriseList() {
+    return enterpriseList;
+  }
+
+  public void setEnterpriseList(ArrayList<Enterprise> enterpriseList) {
+    this.enterpriseList = enterpriseList;
+  }
+
+  public EnterpriseDirectory() {
+    enterpriseList = new ArrayList<>();
+  }
+
+  //Create enterprise
+  public Enterprise createAndAddEnterprise(String name,
+      Enterprise.EnterpriseType type, int zip, String address) {
+    Enterprise enterprise = null;
+    if (null != type) switch (type) {
+      case CancerCenter:
+        enterprise = new CancerCenterEnterprise(name, zip, address);
+        enterpriseList.add(enterprise);
+        break;
+      case Government:
+        enterprise = new GovtEnterprise(name, zip, address);
+        enterpriseList.add(enterprise);
+        break;
+      case InsuranceCompany:
+        enterprise = new InsuranceCompanyEnterprise(name, zip, address);
+        enterpriseList.add(enterprise);
+        break;
+      case Pharma:
+        enterprise = new PharmaEnterprise(name, zip, address);
+        enterpriseList.add(enterprise);
+        break;
+      default:
+        break;
     }
-       public EnterpriseDirectory(){
-        enterpriseList=new ArrayList<Enterprise>();
-    }
-     
-    
+    return enterprise;
+  }
 }

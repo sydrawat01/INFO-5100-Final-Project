@@ -6,6 +6,8 @@ package ChemoCare.Org;
 import ChemoCare.Employee.EmployeeDirectory;
 import ChemoCare.JobQueue.JobQueue;
 import ChemoCare.Account.AccountDirectory;
+import ChemoCare.Role.Role;
+import java.util.ArrayList;
 /**
  *
  * @author jeelpatel
@@ -60,7 +62,6 @@ public abstract class Org {
         userAccountDirectory = new AccountDirectory();
         orgID = counter;
         ++counter;
-    
   }
     public String getOrgName() {
         return orgName;
@@ -109,6 +110,8 @@ public abstract class Org {
     public static void setCounter(int counter) {
         Org.counter = counter;
     }
+    
+    public abstract ArrayList<Role> getSupportedRole();
     
       @Override
     public String toString() {

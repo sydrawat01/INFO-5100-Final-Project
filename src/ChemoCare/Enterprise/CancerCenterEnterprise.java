@@ -13,14 +13,14 @@ import java.util.List;
 
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
-public class HealthCenterEnterprise  extends Enterprise {
+public class CancerCenterEnterprise  extends Enterprise {
     private PatientDirectory patientDirectory;
     private OrderDirectory orderDirectory;
     
-      public HealthCenterEnterprise(String orgName, int zip, String address) {
-        super(orgName, EnterpriseType.HealthCenter, zip,address);
+      public CancerCenterEnterprise(String orgName, int zip, String address) {
+        super(orgName, EnterpriseType.CancerCenter, zip,address);
         patientDirectory = new PatientDirectory();
         orderDirectory = new OrderDirectory();
     }

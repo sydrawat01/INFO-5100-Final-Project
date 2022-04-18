@@ -172,38 +172,14 @@ public class AccountantWorkArea extends javax.swing.JPanel {
 
     private void btnCreateAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAppointmentActionPerformed
 
-        String patientId = UUID.randomUUID().toString().substring(0, 7);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("CreateAppointmentJPanel", new CreateAppointmentJPanel(userProcessContainer, userAccount, enterprise, ecoSystem, patientId));
-        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateAppointmentActionPerformed
 
     private void btnProcessMedicalBillingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessMedicalBillingsActionPerformed
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("ProcessMedicalBillingsJPanel", new ProcessMedicalBillingsJPanel(userProcessContainer, userAccount, enterprise, accountantOrganization, ecoSystem));
-        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_btnProcessMedicalBillingsActionPerformed
 
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
-        /*List<Patient> underTreatmentPatients = new ArrayList<>();
-        List<Patient> treatedPatients = new ArrayList<>();
 
-        List<Patient> patients = ((HealthCenterEnterprise) enterprise).getPatientDirectory().getPatients();
-        for (Patient patient : patients) {
-            if (patient.isIsTreatmentComplete()) {
-                treatedPatients.add(patient);
-            } else {
-                underTreatmentPatients.add(patient);
-            }
-        }*/
-        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
-        defaultPieDataset.setValue("In Progress", underTreatmentPatients.size());
-        defaultPieDataset.setValue("Completed Successfully", treatedPatients.size());
-        JFreeChart chart = ChartFactory.createPieChart("Appointment Status Pie Chart", defaultPieDataset, true, true, true);
-        PiePlot piePlot =(PiePlot) chart.getPlot();
-        ChartFrame frame = new ChartFrame("Appointment Status Pie Chart", chart);
-        frame.setVisible(true);
-        frame.setSize(500,500);
     }//GEN-LAST:event_btnReportActionPerformed
 
 
