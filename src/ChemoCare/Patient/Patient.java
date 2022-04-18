@@ -1,5 +1,6 @@
 package ChemoCare.Patient;
 
+import ChemoCare.Account.Account;
 import ChemoCare.InsuranceCustomer.InsuranceCustomer;
 
 /**
@@ -18,6 +19,7 @@ public class Patient {
   private boolean isTreatmentDone;
   private String appointmentDate;
   private String patientEmail;
+  private Account userAccount;
   
   private InsuranceCustomer insuranceCustomer;
 
@@ -115,6 +117,19 @@ public class Patient {
 
   public void setInsuranceCustomer(InsuranceCustomer insuranceCustomer) {
     this.insuranceCustomer = insuranceCustomer;
+  }
+
+  public Account getUserAccount() {
+    return userAccount;
+  }
+
+  public void setUserAccount(Account userAccount) {
+    this.userAccount = userAccount;
+  }
+  
+  @Override
+  public String toString() {
+    return String.valueOf(patientID);
   }
 
 }
