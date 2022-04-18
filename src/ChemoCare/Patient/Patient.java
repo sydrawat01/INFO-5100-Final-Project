@@ -1,5 +1,7 @@
 package ChemoCare.Patient;
 
+import ChemoCare.InsuranceCustomer.InsuranceCustomer;
+
 /**
  *
  * @author sid
@@ -16,8 +18,9 @@ public class Patient {
   private boolean isTreatmentDone;
   private String appointmentDate;
   private String patientEmail;
-
   
+  private InsuranceCustomer insuranceCustomer;
+
   public String getPatientID() {
     return patientID;
   }
@@ -106,5 +109,12 @@ public class Patient {
     this.patientEmail = patientEmail;
   }
   
-  
+  public InsuranceCustomer getInsuranceCustomer() {
+    return insuranceCustomer;
+  }
+
+  public void setInsuranceCustomer(InsuranceCustomer insuranceCustomer) {
+    this.insuranceCustomer = insuranceCustomer;
+  }
+
 }
