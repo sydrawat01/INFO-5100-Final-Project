@@ -3,6 +3,7 @@ package ChemoCare.Account;
 import ChemoCare.Employee.Employee;
 import ChemoCare.JobQueue.JobQueue;
 import ChemoCare.Patient.Patient;
+import ChemoCare.Role.Role;
 
 /**
  *
@@ -14,7 +15,8 @@ public class Account {
   private Employee employee;
   private Patient customer;
   private JobQueue jobQueue;
-
+  private Role role;
+  
   public String getUsername() {
     return username;
   }
@@ -49,6 +51,14 @@ public class Account {
 
   public JobQueue getJobQueue() {
     return jobQueue;
+  }
+
+  public Role getRole() {
+    return role;
+  }
+
+  public void setRole(Role role) {
+    this.role = role;
   }
   
   @Override
