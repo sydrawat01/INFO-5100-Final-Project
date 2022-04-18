@@ -19,12 +19,12 @@ public class GovtEnterprise extends Enterprise {
         super(orgName, EnterpriseType.Government, zip,address);
     }
 
-    
+    @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
 
-   
+    @Override
     public List<Org.Type> getAllOrganizationTypes() {
         List<Org.Type> orgTypes = new ArrayList<>();
         orgTypes.add(Org.Type.HealthcareOfficer);
