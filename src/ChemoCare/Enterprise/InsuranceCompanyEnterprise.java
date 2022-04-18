@@ -37,8 +37,8 @@ public class InsuranceCompanyEnterprise extends Enterprise {
   public List<Org.Type> getAllOrganizationTypes() {
     List<Org.Type> orgTypes = new ArrayList<>();
     orgTypes.add(Org.Type.InsuranceAgent);
-    orgTypes.add(Org.Type.InsurancePolicyPlanner);
-    orgTypes.add(Org.Type.InsuranceFinanceOrganization);
+    orgTypes.add(Org.Type.InsurancePlanner);
+    orgTypes.add(Org.Type.InsuranceTreasurer);
 
     return orgTypes;
   }

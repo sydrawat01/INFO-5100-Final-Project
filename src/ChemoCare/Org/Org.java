@@ -3,118 +3,121 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ChemoCare.Org;
+
 import ChemoCare.Employee.EmployeeDirectory;
 import ChemoCare.JobQueue.JobQueue;
 import ChemoCare.Account.AccountDirectory;
 import ChemoCare.Role.Role;
 import java.util.ArrayList;
+
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
 public abstract class Org {
-     private String orgName;
-    private JobQueue jobQueue;
-    private EmployeeDirectory employeeDirectory;
-    private AccountDirectory userAccountDirectory;
-    private int orgID;
-    private static int counter = 0;
+
+  private String orgName;
+  private JobQueue jobQueue;
+  private EmployeeDirectory employeeDirectory;
+  private AccountDirectory userAccountDirectory;
+  private int orgID;
+  private static int count = 0;
+
+  public enum Type {
+
+    //CancerCenter Organization Types:
+    Admin("Admin Organization"),
+    Doctor("Doctor Organization"),
+    Lab("Lab Organization"),
+    Patient("Patient Organization"),
+    Accountant("Accountant Organization"),
     
-    public enum Type {
+    //Insurance Organization Types:
+    InsuranceAgent("Insurance Agent Organization"),
+    InsurancePlanner("Insurance Planner Organization"),
+    InsuranceTreasurer("Insurance Treasurer Organization"),
+    
+    //Government Organization Types
+    FinancialOfficial("Financial Official Organization"),
+    Secretary("Secretary Organization"),
+    HealthOfficial("Healthcare Official Organization"),
+    
+    //Pharma Organization Types
+    Transportation("Transportation Organization"),
+    Manager("Manager Organization");
 
-        //HealthCenter Organization Types:
-        Admin("Admin Organization"),
-        Doctor("Doctor Organization"),
-        Lab("Lab Organization"),
-        Patient("Patient Organization"),
-        Accountant("Accountant Organization"),
-        
-        //Insurance Organization Types:
-        InsuranceAgent("Insurance Agent Organization"),
-        InsurancePolicyPlanner("Insurance Policy Planning Organization"),
-        InsuranceFinanceOrganization("Insurance Finance Organization"),
-        
-        //Government Organization Types
-        Treasurer("Treasurer Organization"),
-        Secretary("Secretary Organization"),
-        HealthcareOfficer("Healthcare Officer Organization"),
-        
-        //Pharma Organization Types
-        Transport("Transport Organization"),
-        Manager("Manager Organization");
-        
+    private String value;
 
-        private String value;
-
-        private Type(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
+    private Type(String value) {
+      this.value = value;
     }
+
+    public String getValue() {
+      return value;
+    }
+  }
 
   public Org(String orgName) {
-        this.orgName = orgName;
-        jobQueue = new JobQueue();
-        employeeDirectory = new EmployeeDirectory();
-        userAccountDirectory = new AccountDirectory();
-        orgID = counter;
-        ++counter;
+    this.orgName = orgName;
+    jobQueue = new JobQueue();
+    employeeDirectory = new EmployeeDirectory();
+    userAccountDirectory = new AccountDirectory();
+    orgID = count;
+    count++;
   }
-    public String getOrgName() {
-        return orgName;
-    }
 
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
-    }
+  public String getOrgName() {
+    return orgName;
+  }
 
-    public JobQueue getJObQueue() {
-        return jobQueue;
-    }
+  public void setOrgName(String orgName) {
+    this.orgName = orgName;
+  }
 
-    public void setJObQueue(JobQueue jobQueue) {
-        this.jobQueue = jobQueue;
-    }
+  public JobQueue getJObQueue() {
+    return jobQueue;
+  }
 
-    public EmployeeDirectory getEmployeeDirectory() {
-        return employeeDirectory;
-    }
+  public void setJObQueue(JobQueue jobQueue) {
+    this.jobQueue = jobQueue;
+  }
 
-    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
-        this.employeeDirectory = employeeDirectory;
-    }
+  public EmployeeDirectory getEmployeeDirectory() {
+    return employeeDirectory;
+  }
 
-    public AccountDirectory getUserAccountDirectory() {
-        return userAccountDirectory;
-    }
+  public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+    this.employeeDirectory = employeeDirectory;
+  }
 
-    public void setUserAccountDirectory(AccountDirectory userAccountDirectory) {
-        this.userAccountDirectory = userAccountDirectory;
-    }
+  public AccountDirectory getUserAccountDirectory() {
+    return userAccountDirectory;
+  }
 
-    public int getOrgID() {
-        return orgID;
-    }
+  public void setUserAccountDirectory(AccountDirectory userAccountDirectory) {
+    this.userAccountDirectory = userAccountDirectory;
+  }
 
-    public void setOrgID(int orgID) {
-        this.orgID = orgID;
-    }
+  public int getOrgID() {
+    return orgID;
+  }
 
-    public static int getCounter() {
-        return counter;
-    }
+  public void setOrgID(int orgID) {
+    this.orgID = orgID;
+  }
 
-    public static void setCounter(int counter) {
-        Org.counter = counter;
-    }
-    
-    public abstract ArrayList<Role> getSupportedRole();
-    
-      @Override
-    public String toString() {
-        return orgName;
-    }
+  public static int getCount() {
+    return count;
+  }
+
+  public static void setCounter(int counter) {
+    Org.count = counter;
+  }
+
+  public abstract ArrayList<Role> getSupportedRole();
+
+  @Override
+  public String toString() {
+    return orgName;
+  }
 }

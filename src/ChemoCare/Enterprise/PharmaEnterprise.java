@@ -34,7 +34,7 @@ public class PharmaEnterprise extends Enterprise {
   @Override
   public List<Org.Type> getAllOrganizationTypes() {
     List<Org.Type> orgTypes = new ArrayList<>();
-    orgTypes.add(Org.Type.Transport);
+    orgTypes.add(Org.Type.Transportation);
     orgTypes.add(Org.Type.Manager);
 
     return orgTypes;

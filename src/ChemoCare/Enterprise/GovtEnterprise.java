@@ -27,9 +27,9 @@ public class GovtEnterprise extends Enterprise {
   @Override
   public List<Org.Type> getAllOrganizationTypes() {
     List<Org.Type> orgTypes = new ArrayList<>();
-    orgTypes.add(Org.Type.HealthcareOfficer);
+    orgTypes.add(Org.Type.HealthOfficial);
     orgTypes.add(Org.Type.Secretary);
-    orgTypes.add(Org.Type.Treasurer);
+    orgTypes.add(Org.Type.FinancialOfficial);
 
     return orgTypes;
   }
