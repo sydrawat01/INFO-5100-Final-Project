@@ -79,4 +79,6 @@ public abstract class Enterprise extends Org {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+     public abstract List<Org.Type> getAllOrganizationTypes();
 }
