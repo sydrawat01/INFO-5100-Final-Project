@@ -40,20 +40,10 @@ public class AccountantWorkArea extends javax.swing.JPanel {
         btnCreateAppointment.setBackground(new java.awt.Color(250, 218, 209));
         btnCreateAppointment.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCreateAppointment.setText("Create Appointment");
-        btnCreateAppointment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateAppointmentActionPerformed(evt);
-            }
-        });
 
         btnProcessMedicalBillings.setBackground(new java.awt.Color(250, 218, 209));
         btnProcessMedicalBillings.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnProcessMedicalBillings.setText("Process Medical Billings");
-        btnProcessMedicalBillings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcessMedicalBillingsActionPerformed(evt);
-            }
-        });
 
         tblAllPatients.setBackground(new java.awt.Color(250, 218, 209));
         tblAllPatients.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,11 +83,6 @@ public class AccountantWorkArea extends javax.swing.JPanel {
         btnReport.setBackground(new java.awt.Color(250, 218, 209));
         btnReport.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnReport.setText("Show Appointment Status Report");
-        btnReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,19 +154,6 @@ public class AccountantWorkArea extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCreateAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAppointmentActionPerformed
-
-    }//GEN-LAST:event_btnCreateAppointmentActionPerformed
-
-    private void btnProcessMedicalBillingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessMedicalBillingsActionPerformed
-
-    }//GEN-LAST:event_btnProcessMedicalBillingsActionPerformed
-
-    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
-
-    }//GEN-LAST:event_btnReportActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateAppointment;
