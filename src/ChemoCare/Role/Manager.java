@@ -4,7 +4,7 @@ import ChemoCare.Account.Account;
 import ChemoCare.Ecosystem;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.Org.Org;
-import UI.PharmaManager.ManagerWorkArea;
+import UI.PharmacyManager.ManagerWorkArea;
 import javax.swing.JPanel;
 
 /**

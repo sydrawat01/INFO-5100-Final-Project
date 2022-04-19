@@ -1,4 +1,4 @@
-package UI.PharmaManager;
+package UI.PharmacyManager;
 
 /**
  *
