@@ -8,6 +8,6 @@ package ChemoCare.Org;
  *
  * @author jeelpatel
  */
-public class HealthOfficerOrg {
+public class LabAttendantOrg {
     
 }
