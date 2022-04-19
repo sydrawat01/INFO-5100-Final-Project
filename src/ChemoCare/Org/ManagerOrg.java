@@ -4,10 +4,23 @@
  */
 package ChemoCare.Org;
 
+import ChemoCare.Role.Manager;
+import ChemoCare.Role.Role;
+import java.util.ArrayList;
 /**
  *
  * @author jeelpatel
  */
-public class ManagerOrg {
+public class ManagerOrg extends Org {
     
+     public ManagerOrg() {
+        super(Org.Type.Manager.getValue());
+
+    }
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new Manager());
+        return roles;
+    }
 }
