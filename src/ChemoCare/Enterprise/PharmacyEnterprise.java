@@ -15,13 +15,13 @@ import java.util.List;
  *
  * @author jeelpatel, sid
  */
-public class PharmaEnterprise extends Enterprise {
+public class PharmacyEnterprise extends Enterprise {
 
   private OrderDirectory orderDirectory;
   HashMap<String, Double> menu;
 
-  public PharmaEnterprise(String orgName, int zip, String address) {
-    super(orgName, EnterpriseType.Pharma, zip, address);
+  public PharmacyEnterprise(String orgName, int zip, String address) {
+    super(orgName, EnterpriseType.Pharmacy, zip, address);
     orderDirectory = new OrderDirectory();
     menu = new HashMap();
   }

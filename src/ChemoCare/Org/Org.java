@@ -42,7 +42,7 @@ public abstract class Org {
     Secretary("Secretary Organization"),
     HealthOfficial("Healthcare Official Organization"),
     
-    //Pharma Organization Types
+    //Pharmacy Organization Types
     Transportation("Transportation Organization"),
     Manager("Manager Organization");
 

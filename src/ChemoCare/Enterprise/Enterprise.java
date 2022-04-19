@@ -35,7 +35,7 @@ public abstract class Enterprise extends Org {
     CancerCenter("CancerCenter"),
     InsuranceCompany("InsuranceCompany"),
     Government("Government"),
-    Pharma("Pharma");
+    Pharmacy("Pharmacy");
 
     private String value;
 

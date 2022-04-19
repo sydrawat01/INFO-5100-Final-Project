@@ -33,7 +33,6 @@ public class CancerCenterEnterprise  extends Enterprise {
         List<Org.Type> orgTypes = new ArrayList<>();
         orgTypes.add(Org.Type.Doctor);
         orgTypes.add(Org.Type.Lab);
-        //orgTypes.add(Organization.Type.Patient);
         orgTypes.add(Org.Type.Accountant);
 
         return orgTypes;

@@ -43,8 +43,8 @@ public class EnterpriseDirectory {
         enterprise = new InsuranceCompanyEnterprise(name, zip, address);
         enterpriseList.add(enterprise);
         break;
-      case Pharma:
-        enterprise = new PharmaEnterprise(name, zip, address);
+      case Pharmacy:
+        enterprise = new PharmacyEnterprise(name, zip, address);
         enterpriseList.add(enterprise);
         break;
       default:
