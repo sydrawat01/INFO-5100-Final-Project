@@ -8,54 +8,54 @@ import javax.swing.JPanel;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.Org.Org;
 import ChemoCare.Account.Account;
+import ChemoCare.Ecosystem;
 
 /**
  *
- * @author jeelpatel
+ * @author jeelpatel, sid
  */
 public abstract class Role {
-    public enum RoleType{
-        Admin("Admin"),
-        Doctor("Doctor"),
-        LabAssistant("Lab Assistant"),
-        Patient("Patient"),
-        Accountant("Accountant"),
-        InsuranceAgent("Insurance Agent"),
-        InsurancePlanner("Insurance Planner"),
-        InsuranceFinanceManager("Insurance Finance Manager"),
-        GovernmentHealthOfficer("Government Health Officer"),
-        GovernmentTreasurer("Government Treasurer"),
-        GovernmentSecretary("Government Secretary"),
-        PharmaTransport("Pharmacy Transport"),
-        PharmaManager("Pharmacy Manager")
-        ;
-        
-        
-        private String value;
-        private RoleType(String value){
-            this.value = value;
-        }
 
-        public String getValue() {
-            return value;
-        }
+  public enum RoleType {
+    Admin("Admin"),
+    Doctor("Doctor"),
+    LabAssistant("Lab Assistant"),
+    Patient("Patient"),
+    Accountant("Accountant"),
+    InsuranceAgent("Insurance Agent"),
+    InsurancePlanner("Insurance Planner"),
+    InsuranceTreasurer("Insurance Treasurer"),
+    GovernmentHealthOfficial("Government Health Official"),
+    GovernmentFinancialOfficial("Government Financial Official"),
+    GovernmentSecretary("Government Secretary"),
+    PharmaTransport("Pharmacy Transport"),
+    PharmaManager("Pharmacy Manager");
 
-        @Override
-        public String toString() {
-            return value;
-        }
+    private String value;
+
+    private RoleType(String value) {
+      this.value = value;
     }
-    
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
-            Account account, 
-            Org org, 
-            Enterprise enterprise);
+
+    public String getValue() {
+      return value;
+    }
 
     @Override
     public String toString() {
-        return this.getClass().getName().toString().split("ChemoCare.Role.")[1];
+      return value;
     }
-    
-    
-    
+  }
+
+  public abstract JPanel createWorkArea(JPanel userProcessContainer,
+      Account account, Org org, Enterprise enterprise, Ecosystem ecosystem);
+
+  @Override
+  public String toString() {
+    return this.getClass().
+        getName().
+        toString().
+        split("ChemoCare.Role.")[1];
+  }
+
 }
