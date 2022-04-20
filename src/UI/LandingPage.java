@@ -60,11 +60,11 @@ public class LandingPage extends javax.swing.JFrame {
         usernameJLabel1.setForeground(new java.awt.Color(255, 255, 255));
         usernameJLabel1.setText("Password");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/logo3.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/logo3.jpg")); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/carbon_password.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/carbon_password.png")); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/codicon_account.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/codicon_account.png")); // NOI18N
 
         javax.swing.GroupLayout rightJPanelLayout = new javax.swing.GroupLayout(rightJPanel);
         rightJPanel.setLayout(rightJPanelLayout);
@@ -126,7 +126,7 @@ public class LandingPage extends javax.swing.JFrame {
 
         jSplitPane2.setRightComponent(rightJPanel);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/Landing page image enlarged.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/Landing page image enlarged.jpg")); // NOI18N
 
         javax.swing.GroupLayout leftJPanelLayout = new javax.swing.GroupLayout(leftJPanel);
         leftJPanel.setLayout(leftJPanelLayout);

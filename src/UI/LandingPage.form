@@ -172,21 +172,21 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/logo3.jpg"/>
+                  <Image iconType="2" name="/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/logo3.jpg"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/carbon_password.png"/>
+                  <Image iconType="2" name="/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/carbon_password.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/codicon_account.png"/>
+                  <Image iconType="2" name="/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/codicon_account.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -215,7 +215,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/harshita/Downloads/Kal Bugrara/INFO5100assignments/INFO-5100-Final-Project/Images/Landing page image enlarged.jpg"/>
+                  <Image iconType="2" name="/Users/harshita/INFO-5100-Final-Project/src/UI/Assets/Landing page image enlarged.jpg"/>
                 </Property>
               </Properties>
             </Component>
