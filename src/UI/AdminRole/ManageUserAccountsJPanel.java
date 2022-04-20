@@ -223,78 +223,15 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
         // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
+        
     }//GEN-LAST:event_backjButton1ActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null) {
-            populateEmployeeComboBox(organization);
-            populateRoleComboBox(organization);
-        }
+        
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
-        String userName = nameJTextField.getText();
-        String password = String.valueOf(passwordJTextField.getPassword());
-        String rePassword = String.valueOf(rePasswordJTextField.getPassword());
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
-
-        if (userName == null || userName.equals("")) {
-            nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Username cannot be empty");
-            return;
-        }
-
-        if (password == null || password.equals("")) {
-            nameJTextField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Password cannot be empty");
-            return;
-        }
-
-        if (!passwordPatternCorrect()) {
-            JOptionPane.showMessageDialog(null, "Password should be at least 6 Characters "
-                + "digits and a combination of number , uppercase letter, "
-                + "lowercase letter and Special characters are not allowed other than $, +, _");
-            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            return;
-        }
-
-        if (!password.equals(rePassword)) {
-            JOptionPane.showMessageDialog(null, "Passwords don't match");
-            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            rePasswordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            return;
-        } else {
-
-            List<UserAccount> userAccountList = organization.getUserAccountDirectory().getUserAccountList();
-            //List<UserAccount> userAccountList = ecosystem.getUserAccountDirectory().getUserAccountList();
-            for (UserAccount userAccount : userAccountList) {
-                if (userAccount.getUsername().equals(userName)) {
-                    JOptionPane.showMessageDialog(null, "username already taken!!");
-                    nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-                    return;
-                }
-            }
-
-            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-            //UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-            popData();
-            nameJTextField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            rePasswordJTextField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            passwordJTextField.setText("");
-            rePasswordJTextField.setText("");
-            nameJTextField.setText("");
-            //Added dialog box -- nikita
-            JOptionPane.showMessageDialog(null, "Successfully created User Account!!");
-            // Dialog box ends -- nikita
-        }
+        
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
     private void nameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameJTextFieldActionPerformed

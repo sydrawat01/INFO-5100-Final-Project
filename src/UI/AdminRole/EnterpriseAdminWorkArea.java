@@ -145,42 +145,27 @@ public class EnterpriseAdminWorkArea extends javax.swing.JPanel {
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         // TODO add your handling code here:
-        ManageUserAccountsJPanel muajp = new ManageUserAccountsJPanel(userProcessContainer, enterprise,ecoSystem);
-        userProcessContainer.add("ManageUserAccountJPanel", muajp);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
 
-        ManageEmployeesJPanel manageEmployeeJPanel = new ManageEmployeesJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
-        userProcessContainer.add("manageEmployeeJPanel", manageEmployeeJPanel);
-
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
 
-        ManageOrganizationsJPanel manageOrganizationJPanel = new ManageOrganizationsJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise);
-        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void btnRequestFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestFundsActionPerformed
 
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestFundsJPanel", new RequestFundsJPanel(userProcessContainer, enterprise, userAccount, ecoSystem));
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnRequestFundsActionPerformed
 
     private void btnRequestOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestOrderActionPerformed
         // TODO add your handling code here:
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestOrderJPanel", new RequestOrderJPanel(userProcessContainer,  userAccount, enterprise,ecoSystem));
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnRequestOrderActionPerformed
 
 

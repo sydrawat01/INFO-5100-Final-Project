@@ -282,115 +282,6 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
 
-        String message = txtLabMessage.getText().trim();
-
-        String labType ="" ;//= orderCombo.getSelectedItem().toString();
-
-        int selectedRow = menuTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details", "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else{
-            //Organization organization = (Organization) organizationJTable.getValueAt(selectedRow, 1);
-            for(ItemList itm: items)
-            {
-                labType = labType+" "+itm.getItem();
-
-            }
-        }
-
-        if (labType.equals("")) {
-            JOptionPane.showMessageDialog(null, "At least one Order is mandatory!");
-            return;
-        }
-
-        Order order = new Order();
-
-        order.setItem(labType);
-        order.setCustomerRole(userAccount);
-        order.setDeliveryRole(null);
-        order.setAmount(Double.parseDouble(priceTextField.getText()));
-        order.setItems(items);
-
-        HealthCenterEnterprise res = (HealthCenterEnterprise) enterprise;
-        res.getOrderDirectory().addOrder(order);
-        orderTreatmentWorkRequest.setOrderMessage(message);
-        orderTreatmentWorkRequest.setSender(userAccount);
-        orderTreatmentWorkRequest.setStatus("Sent to Pharma");
-        orderTreatmentWorkRequest.setReceiver(null);
-        orderTreatmentWorkRequest.setOrder(order);
-        orderTreatmentWorkRequest.setReasonForVisit(res.getAddress());
-        orderTreatmentWorkRequest.setBillAmount(Double.parseDouble(priceTextField.getText()));
-        orderTreatmentWorkRequest.setHospitalAdmin(userAccount);
-        Organization org = null;
-
-        List<Network> networks = ecosystem.getNetworks();
-        int zip = enterprise.getZipcode();
-        //Find managerorganization in same Network
-        PharmaEnterprise matchedphrma = null;
-
-        for (Network network : networks) {
-            if(network.getZip()==zip)
-            {
-                List<Enterprise> enterprises = network.getEnterpriseDirectory().getEnterpriseList();
-                for (Enterprise enter : enterprises) {
-                    if (enter instanceof PharmaEnterprise) {
-                        if(enter.getName().equals(pharmaname))
-                        {
-                            matchedphrma =  (PharmaEnterprise) enter;
-                        }
-                    }
-                }
-            }
-        }
-        //PharmaEnterprise pharma = (PharmaEnterprise) enter;
-        //pharma.getOrderDirectory().addOrder(order);
-        List<Organization> organizations = matchedphrma.getOrganizationDirectory().getOrganizations();
-        for (Organization organization : organizations) {
-            if (organization instanceof ManagerOrganization) {
-                org = organization;
-                break;
-            }
-        }
-
-        if (org != null) {
-            org.getWorkQueue().getWorkRequests().add(orderTreatmentWorkRequest);
-            userAccount.getWorkQueue().getWorkRequests().add(orderTreatmentWorkRequest);
-
-            txtLabMessage.setText("");
-            //orderJtext.setText("");
-            requestTestJButton.setEnabled(false);
-            //send email for order placed
-            String sub = "Your Order is placed";
-            String odrderDtl = "Order Details\n*************************************************\n";
-            try{
-
-                List<ItemList> itm = orderTreatmentWorkRequest.getOrder().getItems();
-                for(ItemList i:itm)
-                {
-                    odrderDtl=odrderDtl+"Item: "+i.getItem()+" , Quantity: "+i.getQuantity()+", Item Price: $"+i.getTotal()+"\n";
-                }
-                odrderDtl = odrderDtl+"*************************************************\n";
-                odrderDtl=odrderDtl+"\n\nTotal Price: $"+orderTreatmentWorkRequest.getOrder().getAmount();
-                SendEmail.send(res.getEmail(),"\nHi "+res.getName()+","+"\n\nYour Order# "+ orderTreatmentWorkRequest.getOrder().getNumber()+
-                    " is placed "
-                    +"\n\n\n\n"+odrderDtl+"\n\nThanks,\n"+pharmaname+" Team",sub);
-                //SendEmail.send("shesh.cool@gmail.com ","Shesh"+","+"\n\nYour Order# "+ orderTreatmentWorkRequest.getOrder().getNumber()+" is placed ",sub);
-            }catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
-                System.out.println(ex.getMessage());
-            }
-            //Send SMS
-            try{
-                SMS.SendSMS("+14793190560","Hi "+orderTreatmentWorkRequest.getHospitalAdmin().getEmployee().getName()+","+"\nYour order# : "+orderTreatmentWorkRequest.getOrder().getNumber()+" is placed"+
-                    "\n\nThanks,\n"+pharmaname+" Team");
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
-            //Send SMS end
-            JOptionPane.showMessageDialog(null, "Order Placed");
-        }
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void txtLabMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLabMessageActionPerformed
@@ -399,9 +290,7 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void orderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderComboActionPerformed
@@ -423,66 +312,16 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
     private void addItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemButtonActionPerformed
         // TODO add your handling code here:
 
-        String labType ="" ;//= orderCombo.getSelectedItem().toString();
-        Double total = Double.parseDouble(priceTextField.getText());
-        Double itemtotal=0.0;
-        ItemList newitem = new ItemList();
-        //ArrayList<String> names = new ArrayList<>();
-        int selectedRow = menuTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first from the table to add item", "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else if(!(names.isEmpty())&&!(menuTable.getValueAt(selectedRow, 2).toString().equals(names.get(0))))
-        {
-            JOptionPane.showMessageDialog(null, "Please order from one pharmacy only", "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else{
-            labType = (String) menuTable.getValueAt(selectedRow, 0);
-            itemtotal = (Double) menuTable.getValueAt(selectedRow, 1)*Double.parseDouble(orderCombo.getSelectedItem().toString());
-            newitem.setItem(labType);
-            newitem.setPrice((Double) menuTable.getValueAt(selectedRow, 1));
-            newitem.setTotal(itemtotal);
-            newitem.setQuantity(Double.parseDouble(orderCombo.getSelectedItem().toString()));
-            items.add(newitem);
-            priceTextField.setText(String.valueOf(total+itemtotal));
-            names.add(menuTable.getValueAt(selectedRow, 2).toString());
-            pharmaname=menuTable.getValueAt(selectedRow, 2).toString();
-            populateItemTable();
-
-        }
-
     }//GEN-LAST:event_addItemButtonActionPerformed
 
     private void removeItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeItemButtonActionPerformed
         // TODO add your handling code here:
-        Double total = Double.parseDouble(priceTextField.getText());
-        Double itemtotal=0.0;
-        int selectedRow = orderTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details", "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else{
-
-            itemtotal=(Double)orderTable.getValueAt(selectedRow, 3);
-            items.remove(orderTable.getValueAt(selectedRow, 0));
-            priceTextField.setText(String.valueOf(total-itemtotal));
-            if (items.isEmpty())
-            {
-                names.clear();
-            }
-            populateItemTable();
-        }
+        
     }//GEN-LAST:event_removeItemButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        ViewAllOrderJPanel viewallJPanel = new ViewAllOrderJPanel(userProcessContainer, enterprise, userAccount, ecosystem);
-        userProcessContainer.add("viewJPanel", viewallJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_viewButtonActionPerformed
 
 

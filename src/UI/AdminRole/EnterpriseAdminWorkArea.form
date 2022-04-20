@@ -29,23 +29,13 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Component id="manageOrganizationJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Component id="manageEmployeeJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Component id="userJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Component id="btnRequestOrder" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Component id="btnRequestFunds" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="manageOrganizationJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="manageEmployeeJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="userJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="btnRequestOrder" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="btnRequestFunds" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

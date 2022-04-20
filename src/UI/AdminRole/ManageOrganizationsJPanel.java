@@ -161,46 +161,18 @@ public class ManageOrganizationsJPanel extends javax.swing.JFrame {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
-        Type type = (Type) organizationJComboBox.getSelectedItem();
-        //populateTable();
-        ArrayList<String> orgName = new ArrayList<String>();
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            orgName.add(model.getValueAt(i, 1).toString());
-        }
-
-        if(orgName.contains(type.getValue())){
-            JOptionPane.showMessageDialog(null, "Organization already exists!! ");
-            return;
-        }
-        else{
-            directory.createOrganization(type);
-            JOptionPane.showMessageDialog(null, "Organization created");
-        }
-
-        populateTable();
+        
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteOrgActionPerformed
         // TODO add your handling code here:
-        int selectedRow = organizationJTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details", "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else{
-            Organization organization = (Organization) organizationJTable.getValueAt(selectedRow, 1);
-            enterprise.getOrganizationDirectory().getOrganizations().remove(organization);
-            populateTable();
-        }
+        
 
     }//GEN-LAST:event_btnDeleteOrgActionPerformed
 
