@@ -4,10 +4,27 @@
  */
 package ChemoCare.Org;
 
+import java.util.ArrayList;
+import ChemoCare.Role.Accountant;
+import ChemoCare.Role.Role;
+import ChemoCare.Role.Transportation;
+
+
 /**
  *
  * @author jeelpatel
  */
-public class TransportOrg {
-    
+public class TransportOrg extends Org{
+     public TransportOrg() {
+        super(Org.Type.Transportation.getValue());
+
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new Transportation());
+        return roles;
+    }
+
 }
