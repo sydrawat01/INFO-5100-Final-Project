@@ -48,8 +48,7 @@ public class Ecosystem extends Org {
   }
   
   public boolean checkUniqueUser(String username) {
-    if(!this.getUserAccountDirectory().checkUniqueUsername(username))
-      return false;
-    return true;
+    return !this.getUserAccountDirectory().
+        checkUniqueUsername(username) ? false : true;
   }
 }
