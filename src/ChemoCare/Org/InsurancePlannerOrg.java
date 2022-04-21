@@ -4,10 +4,24 @@
  */
 package ChemoCare.Org;
 
+import ChemoCare.Role.GovtHealthOfficial;
+import ChemoCare.Role.InsurancePlanner;
+import ChemoCare.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author jeelpatel
  */
-public class InsurancePlannerOrg {
-    
+public class InsurancePlannerOrg extends Org {
+     public InsurancePlannerOrg() {
+        super(Org.Type.InsurancePlanner.getValue());
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new InsurancePlanner());
+        return roles;
+    }
 }
