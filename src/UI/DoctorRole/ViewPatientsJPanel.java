@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.DoctorRole;
 
@@ -8,12 +8,12 @@ package UI.DoctorRole;
  *
  * @author harshita
  */
-public class ViewPatientJPanel extends javax.swing.JFrame {
+public class ViewPatientsJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewPatientJPanel
+     * Creates new form ViewPatientsJPanel
      */
-    public ViewPatientJPanel() {
+    public ViewPatientsJPanel() {
         initComponents();
     }
 
@@ -26,7 +26,6 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         txtHomePhone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -49,12 +48,6 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
         txtMedicalCondition = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        personImageLabels = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(190, 194, 224));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtHomePhone.setEditable(false);
         txtHomePhone.addActionListener(new java.awt.event.ActionListener() {
@@ -62,25 +55,20 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
                 txtHomePhoneActionPerformed(evt);
             }
         });
-        jPanel1.add(txtHomePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 128, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PATIENT INFORMATION");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 146, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Home phone No :");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
         txtFirstName.setEditable(false);
-        jPanel1.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 123, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("First Name :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
 
         jScrollPane1.setEnabled(false);
 
@@ -89,26 +77,20 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
         txtAddress.setRows(5);
         jScrollPane1.setViewportView(txtAddress);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 385, 58));
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Address :");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PATIENT DETAILS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 880, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Last Name :");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
 
         txtLastName.setEditable(false);
-        jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 131, -1));
 
         txtAge.setEditable(false);
         txtAge.addActionListener(new java.awt.event.ActionListener() {
@@ -116,40 +98,31 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
                 txtAgeActionPerformed(evt);
             }
         });
-        jPanel1.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 134, -1));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Age :");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Patient Medical Condition");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 302, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Prescription :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 361, -1, -1));
 
         txtPrescription.setEditable(false);
         txtPrescription.setColumns(20);
         txtPrescription.setRows(5);
         jScrollPane2.setViewportView(txtPrescription);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 338, 389, 55));
-
         txtPatientId.setEditable(false);
-        jPanel1.add(txtPatientId, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 128, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Patient ID :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
 
         txtMedicalCondition.setEditable(false);
-        jPanel1.add(txtMedicalCondition, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 301, 160, -1));
 
         backJButton.setBackground(new java.awt.Color(250, 218, 209));
         backJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -159,7 +132,6 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(250, 218, 209));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -169,18 +141,70 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 426, -1, -1));
-        jPanel1.add(personImageLabels, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 130, 120));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 881, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(780, 780, 780)
+                            .addComponent(backJButton))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(340, 340, 340)
+                            .addComponent(jLabel6))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(200, 200, 200)
+                            .addComponent(jLabel7)
+                            .addGap(7, 7, 7)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(47, 47, 47)
+                            .addComponent(jLabel10)
+                            .addGap(9, 9, 9)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(200, 200, 200)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(70, 70, 70)
+                                    .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(92, 92, 92)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel24)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(170, 170, 170)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(100, 100, 100)
+                                    .addComponent(txtHomePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel18)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(200, 200, 200)
+                            .addComponent(jLabel8)
+                            .addGap(14, 14, 14)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(271, 271, 271)
+                            .addComponent(jLabel2)
+                            .addGap(30, 30, 30)
+                            .addComponent(txtMedicalCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel3)
+                            .addGap(10, 10, 10)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(267, 267, 267)
+                            .addComponent(jButton1)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -189,11 +213,47 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backJButton)
+                    .addGap(1, 1, 1)
+                    .addComponent(jLabel1)
+                    .addGap(11, 11, 11)
+                    .addComponent(jLabel6)
+                    .addGap(25, 25, 25)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(4, 4, 4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel24))
+                    .addGap(14, 14, 14)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtHomePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18))
+                    .addGap(14, 14, 14)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel8)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(13, 13, 13)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(jLabel2))
+                        .addComponent(txtMedicalCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(11, 11, 11)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addComponent(jLabel3))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33)
+                    .addComponent(jButton1)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtHomePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHomePhoneActionPerformed
@@ -210,43 +270,9 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewPatientJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewPatientJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewPatientJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewPatientJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewPatientJPanel().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -261,10 +287,8 @@ public class ViewPatientJPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel personImageLabels;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtFirstName;
