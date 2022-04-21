@@ -4,10 +4,25 @@
  */
 package ChemoCare.Org;
 
+import ChemoCare.Role.InsuranceTreasurer;
+import ChemoCare.Role.Role;
+import java.util.ArrayList;
+        
 /**
  *
  * @author jeelpatel
  */
-public class InsuranceTreasurerOrg {
+public class InsuranceTreasurerOrg extends Org {
+    
+    public InsuranceTreasurerOrg() {
+        super(Org.Type.InsuranceTreasurer.getValue());
+    }
+
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new InsuranceTreasurer());
+        return roles;
+    }
     
 }
