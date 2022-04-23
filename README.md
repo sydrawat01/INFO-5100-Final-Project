@@ -1,4 +1,4 @@
-# :gift_heart: Chemo-care
+<h1 style="text-align: center">:gift_heart: Chemo-care</h1>
 
 Your one stop shop application for all you chemoterapy needs.
 
