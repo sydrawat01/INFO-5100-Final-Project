@@ -18,15 +18,15 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author harshita
+ * @author harshita, sid
  */
 public class LandingPage extends javax.swing.JFrame {
 
     /**
      * Creates new form LandingPage
      */
-    private Ecosystem ecosystem;
-    private DB4OUtil db4oUtil = DB4OUtil.getInstance();
+    private final Ecosystem ecosystem;
+    private final DB4OUtil db4oUtil = DB4OUtil.getInstance();
     
     public LandingPage() {
         initComponents();
