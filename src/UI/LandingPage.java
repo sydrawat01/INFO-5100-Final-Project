@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -30,7 +31,6 @@ public class LandingPage extends javax.swing.JFrame {
     public LandingPage() {
         initComponents();
         ecosystem = db4oUtil.retrieveSystem();
-//        this.setSize(1300, 750);
     }
 
     /**
@@ -69,6 +69,11 @@ public class LandingPage extends javax.swing.JFrame {
 
     btnLogout.setBackground(new java.awt.Color(250, 218, 209));
     btnLogout.setText("Logout");
+    btnLogout.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLogoutActionPerformed(evt);
+      }
+    });
 
     usernameJLabel.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
     usernameJLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,7 +187,7 @@ public class LandingPage extends javax.swing.JFrame {
     } else {
       txtUserName.setBorder(BorderFactory.createLineBorder(Color.GRAY));
       txtPassword.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-      CardLayout layout=(CardLayout)leftJPanel.getLayout();
+      CardLayout layout = (CardLayout) leftJPanel.getLayout();
       leftJPanel.add("workArea",account.getRole().createWorkArea(leftJPanel, account, inOrg, inEnterprise, ecosystem));
       layout.next(leftJPanel);
     }
@@ -193,6 +198,34 @@ public class LandingPage extends javax.swing.JFrame {
     txtUserName.setEnabled(false);
     txtPassword.setEnabled(false);
   }//GEN-LAST:event_btnLoginActionPerformed
+
+  private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    // TODO add your handling code here:
+    btnLogin.setEnabled(true);
+    btnLogout.setEnabled(false);
+    txtUserName.setEnabled(true);
+    txtPassword.setEnabled(true);
+    
+    txtUserName.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    txtPassword.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    
+    txtUserName.setText("");
+    txtPassword.setText("");
+    
+    leftJPanel.removeAll();
+    JPanel blankJPanel = new JPanel();
+    leftJPanel.add(blankJPanel);
+    
+    CardLayout layout = (CardLayout) leftJPanel.getLayout();
+    layout.next(leftJPanel);
+    LandingImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/Landing page image enlarged.jpg")));
+    LandingImg.setMaximumSize(new java.awt.Dimension(1300, 750));
+    LandingImg.setMinimumSize(new java.awt.Dimension(1300, 750));
+    blankJPanel.add(LandingImg, "card2");
+    LandingImg.getAccessibleContext().setAccessibleName("LandingImg");
+    
+    db4oUtil.storeSystem(ecosystem);
+  }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
