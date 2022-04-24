@@ -25,7 +25,7 @@
               <EmptySpace pref="201" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -46,12 +46,12 @@
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="valueLabel" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="viewButton" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="btnView" min="-2" pref="122" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="orderCombo" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="cmbOrder" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="230" pref="230" max="-2" attributes="0"/>
@@ -65,19 +65,19 @@
                           <EmptySpace min="140" pref="140" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                          <Component id="priceTextField" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="txtPrice" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="txtLabMessage" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="txtLabTextMessage" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="150" pref="150" max="-2" attributes="0"/>
-                          <Component id="addItemButton" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnAddItem" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="removeItemButton" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="btnRemoveItem" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="requestTestJButton" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnRequestTest" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -89,10 +89,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="backJButton" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btnBack" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace pref="438" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace pref="493" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
@@ -108,20 +108,20 @@
                       </Group>
                   </Group>
                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Component id="viewButton" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btnView" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="orderCombo" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbOrder" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="120" max="-2" attributes="0"/>
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="84" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="priceTextField" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="txtLabMessage" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtPrice" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtLabTextMessage" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -132,9 +132,9 @@
                   </Group>
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="addItemButton" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="removeItemButton" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="requestTestJButton" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnAddItem" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnRemoveItem" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnRequestTest" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -143,7 +143,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="requestTestJButton">
+    <Component class="javax.swing.JButton" name="btnRequestTest">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -154,7 +154,7 @@
         <Property name="text" type="java.lang.String" value="Place Order"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="requestTestJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRequestTestActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -168,12 +168,12 @@
         <Property name="text" type="java.lang.String" value="Message:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtLabMessage">
+    <Component class="javax.swing.JTextField" name="txtLabTextMessage">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLabMessageActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLabTextMessageActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="backJButton">
+    <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -184,7 +184,7 @@
         <Property name="text" type="java.lang.String" value="&lt;&lt;Back"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="valueLabel">
@@ -231,7 +231,7 @@
         <Property name="text" type="java.lang.String" value="Final Order "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="orderCombo">
+    <Component class="javax.swing.JComboBox" name="cmbOrder">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="16">
@@ -255,7 +255,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderComboActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbOrderActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -268,7 +268,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="menuTable">
+        <Component class="javax.swing.JTable" name="tblMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b7" green="c2" red="e7" type="rgb"/>
@@ -295,7 +295,7 @@
         <Property name="text" type="java.lang.String" value="Total Price:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="priceTextField">
+    <Component class="javax.swing.JTextField" name="txtPrice">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -307,7 +307,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="orderTable">
+        <Component class="javax.swing.JTable" name="tblOrder">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b7" green="c2" red="e7" type="rgb"/>
@@ -335,7 +335,7 @@
         <Property name="text" type="java.lang.String" value="Order Menu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="addItemButton">
+    <Component class="javax.swing.JButton" name="btnAddItem">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -346,10 +346,10 @@
         <Property name="text" type="java.lang.String" value="Add Item"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addItemButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddItemActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="removeItemButton">
+    <Component class="javax.swing.JButton" name="btnRemoveItem">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -360,10 +360,10 @@
         <Property name="text" type="java.lang.String" value="Remove Item"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeItemButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveItemActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="viewButton">
+    <Component class="javax.swing.JButton" name="btnView">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -374,7 +374,7 @@
         <Property name="text" type="java.lang.String" value="Vew All Orders"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -26,34 +26,34 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        requestTestJButton = new javax.swing.JButton();
+        btnRequestTest = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtLabMessage = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
+        txtLabTextMessage = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        orderCombo = new javax.swing.JComboBox<>();
+        cmbOrder = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        menuTable = new javax.swing.JTable();
+        tblMenu = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        priceTextField = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        orderTable = new javax.swing.JTable();
+        tblOrder = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        addItemButton = new javax.swing.JButton();
-        removeItemButton = new javax.swing.JButton();
-        viewButton = new javax.swing.JButton();
+        btnAddItem = new javax.swing.JButton();
+        btnRemoveItem = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(190, 194, 224));
 
-        requestTestJButton.setBackground(new java.awt.Color(250, 218, 209));
-        requestTestJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        requestTestJButton.setText("Place Order");
-        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestTest.setBackground(new java.awt.Color(250, 218, 209));
+        btnRequestTest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRequestTest.setText("Place Order");
+        btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestTestJButtonActionPerformed(evt);
+                btnRequestTestActionPerformed(evt);
             }
         });
 
@@ -61,18 +61,18 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Message:");
 
-        txtLabMessage.addActionListener(new java.awt.event.ActionListener() {
+        txtLabTextMessage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLabMessageActionPerformed(evt);
+                txtLabTextMessageActionPerformed(evt);
             }
         });
 
-        backJButton.setBackground(new java.awt.Color(250, 218, 209));
-        backJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        backJButton.setText("<<Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(250, 218, 209));
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -92,15 +92,15 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Final Order ");
 
-        orderCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", " " }));
-        orderCombo.addActionListener(new java.awt.event.ActionListener() {
+        cmbOrder.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", " " }));
+        cmbOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderComboActionPerformed(evt);
+                cmbOrderActionPerformed(evt);
             }
         });
 
-        menuTable.setBackground(new java.awt.Color(231, 194, 183));
-        menuTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblMenu.setBackground(new java.awt.Color(231, 194, 183));
+        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -119,16 +119,16 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(menuTable);
+        jScrollPane1.setViewportView(tblMenu);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Total Price:");
 
-        priceTextField.setEditable(false);
+        txtPrice.setEditable(false);
 
-        orderTable.setBackground(new java.awt.Color(231, 194, 183));
-        orderTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrder.setBackground(new java.awt.Color(231, 194, 183));
+        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -147,36 +147,36 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(orderTable);
+        jScrollPane2.setViewportView(tblOrder);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Order Menu");
 
-        addItemButton.setBackground(new java.awt.Color(250, 218, 209));
-        addItemButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        addItemButton.setText("Add Item");
-        addItemButton.addActionListener(new java.awt.event.ActionListener() {
+        btnAddItem.setBackground(new java.awt.Color(250, 218, 209));
+        btnAddItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAddItem.setText("Add Item");
+        btnAddItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addItemButtonActionPerformed(evt);
+                btnAddItemActionPerformed(evt);
             }
         });
 
-        removeItemButton.setBackground(new java.awt.Color(250, 218, 209));
-        removeItemButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        removeItemButton.setText("Remove Item");
-        removeItemButton.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveItem.setBackground(new java.awt.Color(250, 218, 209));
+        btnRemoveItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRemoveItem.setText("Remove Item");
+        btnRemoveItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeItemButtonActionPerformed(evt);
+                btnRemoveItemActionPerformed(evt);
             }
         });
 
-        viewButton.setBackground(new java.awt.Color(250, 218, 209));
-        viewButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        viewButton.setText("Vew All Orders");
-        viewButton.addActionListener(new java.awt.event.ActionListener() {
+        btnView.setBackground(new java.awt.Color(250, 218, 209));
+        btnView.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnView.setText("Vew All Orders");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewButtonActionPerformed(evt);
+                btnViewActionPerformed(evt);
             }
         });
 
@@ -188,7 +188,7 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                 .addContainerGap(201, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(backJButton)
+                        .addComponent(btnBack)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,12 +204,12 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                             .addComponent(enterpriseLabel)
                             .addGap(10, 10, 10)
                             .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(190, 190, 190)
                             .addComponent(jLabel2)
                             .addGap(23, 23, 23)
-                            .addComponent(orderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(230, 230, 230)
                             .addComponent(jLabel3))
@@ -220,28 +220,28 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                             .addGap(140, 140, 140)
                             .addComponent(jLabel4)
                             .addGap(12, 12, 12)
-                            .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
-                            .addComponent(txtLabMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLabTextMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(150, 150, 150)
-                            .addComponent(addItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(20, 20, 20)
-                            .addComponent(removeItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(20, 20, 20)
-                            .addComponent(requestTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnRequestTest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(143, 143, 143)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(493, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -253,19 +253,19 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(20, 20, 20)
-                    .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(170, 170, 170)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addComponent(orderCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(33, 33, 33)
                     .addComponent(jLabel3)
                     .addGap(21, 21, 21)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(46, 46, 46)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLabMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLabTextMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,27 +273,27 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                                 .addComponent(jLabel1))))
                     .addGap(30, 30, 30)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(addItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(removeItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(requestTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRequestTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
+    private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
-    }//GEN-LAST:event_requestTestJButtonActionPerformed
+    }//GEN-LAST:event_btnRequestTestActionPerformed
 
-    private void txtLabMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLabMessageActionPerformed
+    private void txtLabTextMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLabTextMessageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLabMessageActionPerformed
+    }//GEN-LAST:event_txtLabTextMessageActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         
-    }//GEN-LAST:event_backJButtonActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    private void orderComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderComboActionPerformed
+    private void cmbOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrderActionPerformed
         // TODO add your handling code here:
         /*int selectedRow = menuTable.getSelectedRow();
         Double total = Double.parseDouble(priceTextField.getText());
@@ -307,27 +307,31 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
             priceTextField.setText(String.valueOf(total+itemtotal));
 
         }*/
-    }//GEN-LAST:event_orderComboActionPerformed
+    }//GEN-LAST:event_cmbOrderActionPerformed
 
-    private void addItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemButtonActionPerformed
+    private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_addItemButtonActionPerformed
+    }//GEN-LAST:event_btnAddItemActionPerformed
 
-    private void removeItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeItemButtonActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_removeItemButtonActionPerformed
-
-    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+    private void btnRemoveItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItemActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_viewButtonActionPerformed
+    }//GEN-LAST:event_btnRemoveItemActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addItemButton;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnAddItem;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRemoveItem;
+    private javax.swing.JButton btnRequestTest;
+    private javax.swing.JButton btnView;
+    private javax.swing.JComboBox<String> cmbOrder;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -336,14 +340,10 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable menuTable;
-    private javax.swing.JComboBox<String> orderCombo;
-    private javax.swing.JTable orderTable;
-    private javax.swing.JTextField priceTextField;
-    private javax.swing.JButton removeItemButton;
-    private javax.swing.JButton requestTestJButton;
-    private javax.swing.JTextField txtLabMessage;
+    private javax.swing.JTable tblMenu;
+    private javax.swing.JTable tblOrder;
+    private javax.swing.JTextField txtLabTextMessage;
+    private javax.swing.JTextField txtPrice;
     private javax.swing.JLabel valueLabel;
-    private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }
