@@ -26,30 +26,30 @@ public class ViewAllOrdersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addJButton = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
+        btnViewOrderDetails = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         lblHeaderManageOrg = new javax.swing.JLabel();
-        viewPieButton = new javax.swing.JButton();
+        btnViewPie = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        organizationJTable = new javax.swing.JTable();
+        tblOrganization = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(190, 194, 224));
 
-        addJButton.setBackground(new java.awt.Color(250, 218, 209));
-        addJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        addJButton.setText("View Order Details");
-        addJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnViewOrderDetails.setBackground(new java.awt.Color(250, 218, 209));
+        btnViewOrderDetails.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewOrderDetails.setText("View Order Details");
+        btnViewOrderDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addJButtonActionPerformed(evt);
+                btnViewOrderDetailsActionPerformed(evt);
             }
         });
 
-        backJButton.setBackground(new java.awt.Color(250, 218, 209));
-        backJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(250, 218, 209));
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -57,17 +57,17 @@ public class ViewAllOrdersJPanel extends javax.swing.JPanel {
         lblHeaderManageOrg.setForeground(new java.awt.Color(255, 255, 255));
         lblHeaderManageOrg.setText("All Orders");
 
-        viewPieButton.setBackground(new java.awt.Color(250, 218, 209));
-        viewPieButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        viewPieButton.setText("View Stats");
-        viewPieButton.addActionListener(new java.awt.event.ActionListener() {
+        btnViewPie.setBackground(new java.awt.Color(250, 218, 209));
+        btnViewPie.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewPie.setText("View Stats");
+        btnViewPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPieButtonActionPerformed(evt);
+                btnViewPieActionPerformed(evt);
             }
         });
 
-        organizationJTable.setBackground(new java.awt.Color(231, 194, 183));
-        organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrganization.setBackground(new java.awt.Color(231, 194, 183));
+        tblOrganization.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -93,7 +93,7 @@ public class ViewAllOrdersJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(organizationJTable);
+        jScrollPane1.setViewportView(tblOrganization);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,7 +103,7 @@ public class ViewAllOrdersJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(backJButton)
+                        .addComponent(btnBack)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblHeaderManageOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,9 +112,9 @@ public class ViewAllOrdersJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(viewPieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnViewPie, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addJButton))
+                        .addComponent(btnViewOrderDetails))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -124,41 +124,41 @@ public class ViewAllOrdersJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(lblHeaderManageOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewPieButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnViewPie, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewOrderDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
+    private void btnViewOrderDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderDetailsActionPerformed
 
         //Type type = (Type) organizationJComboBox.getSelectedItem();
 
-    }//GEN-LAST:event_addJButtonActionPerformed
+    }//GEN-LAST:event_btnViewOrderDetailsActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
-    }//GEN-LAST:event_backJButtonActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    private void viewPieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPieButtonActionPerformed
+    private void btnViewPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPieActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_viewPieButtonActionPerformed
+    }//GEN-LAST:event_btnViewPieActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addJButton;
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnViewOrderDetails;
+    private javax.swing.JButton btnViewPie;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHeaderManageOrg;
-    private javax.swing.JTable organizationJTable;
-    private javax.swing.JButton viewPieButton;
+    private javax.swing.JTable tblOrganization;
     // End of variables declaration//GEN-END:variables
 }

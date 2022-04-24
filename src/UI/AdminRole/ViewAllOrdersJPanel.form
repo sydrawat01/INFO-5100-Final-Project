@@ -25,7 +25,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -38,9 +38,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                      <Component id="viewPieButton" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="btnViewPie" min="-2" pref="148" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="addJButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnViewOrderDetails" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -55,15 +55,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="backJButton" min="-2" pref="32" max="-2" attributes="0"/>
+              <Component id="btnBack" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Component id="lblHeaderManageOrg" min="-2" pref="54" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="131" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="viewPieButton" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="addJButton" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnViewPie" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnViewOrderDetails" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
@@ -71,7 +71,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="addJButton">
+    <Component class="javax.swing.JButton" name="btnViewOrderDetails">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -82,10 +82,10 @@
         <Property name="text" type="java.lang.String" value="View Order Details"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewOrderDetailsActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="backJButton">
+    <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -96,7 +96,7 @@
         <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHeaderManageOrg">
@@ -110,7 +110,7 @@
         <Property name="text" type="java.lang.String" value="All Orders"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="viewPieButton">
+    <Component class="javax.swing.JButton" name="btnViewPie">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -121,7 +121,7 @@
         <Property name="text" type="java.lang.String" value="View Stats"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewPieButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewPieActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -131,7 +131,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="organizationJTable">
+        <Component class="javax.swing.JTable" name="tblOrganization">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b7" green="c2" red="e7" type="rgb"/>
