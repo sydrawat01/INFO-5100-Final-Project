@@ -21,51 +21,50 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="enterpriseLabel" alignment="1" pref="582" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="manageOrganizationJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                              <Component id="manageEmployeeJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                              <Component id="userJButton" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                              <Component id="btnRequestOrder" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                              <Component id="btnRequestFunds" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="85" pref="85" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Component id="enterpriseLabel" min="-2" pref="582" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
+              <Component id="manageOrganizationJButton" min="-2" pref="260" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
+              <Component id="manageEmployeeJButton" min="-2" pref="260" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
+              <Component id="userJButton" min="-2" pref="260" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
+              <Component id="btnRequestOrder" min="-2" pref="260" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
+              <Component id="btnRequestFunds" min="-2" pref="260" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
               <Component id="enterpriseLabel" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="450" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                  <Component id="manageOrganizationJButton" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Component id="manageEmployeeJButton" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Component id="userJButton" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Component id="btnRequestOrder" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                  <Component id="btnRequestFunds" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+              <Component id="manageOrganizationJButton" min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="manageEmployeeJButton" min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="userJButton" min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="btnRequestOrder" min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="btnRequestFunds" min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
