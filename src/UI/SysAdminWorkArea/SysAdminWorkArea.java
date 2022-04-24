@@ -4,6 +4,7 @@ import ChemoCare.Ecosystem;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.NetworkSystem.NetworkSystem;
 import ChemoCare.Org.Org;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -39,7 +40,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
     jSplitPane1 = new javax.swing.JSplitPane();
     jPanel1 = new javax.swing.JPanel();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTree = new javax.swing.JTree();
+    treeNetworkSystems = new javax.swing.JTree();
     jPanel2 = new javax.swing.JPanel();
     lblNode = new javax.swing.JLabel();
     lblSelectedNode = new javax.swing.JLabel();
@@ -51,16 +52,16 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
 
     setLayout(new java.awt.BorderLayout());
 
-    jTree.setBackground(new java.awt.Color(190, 194, 224));
-    jTree.setForeground(new java.awt.Color(255, 255, 255));
-    jTree.setMaximumSize(new java.awt.Dimension(130, 64));
-    jTree.setPreferredSize(new java.awt.Dimension(130, 64));
-    jTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+    treeNetworkSystems.setBackground(new java.awt.Color(190, 194, 224));
+    treeNetworkSystems.setForeground(new java.awt.Color(255, 255, 255));
+    treeNetworkSystems.setMaximumSize(new java.awt.Dimension(130, 64));
+    treeNetworkSystems.setPreferredSize(new java.awt.Dimension(130, 64));
+    treeNetworkSystems.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
       public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-        jTreeValueChanged(evt);
+        treeNetworkSystemsValueChanged(evt);
       }
     });
-    jScrollPane1.setViewportView(jTree);
+    jScrollPane1.setViewportView(treeNetworkSystems);
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -72,7 +73,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
     );
 
     jSplitPane1.setLeftComponent(jPanel1);
@@ -143,7 +144,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
           .addComponent(btnManageEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnManageAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnViewKPI, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(137, Short.MAX_VALUE))
+        .addContainerGap(241, Short.MAX_VALUE))
     );
 
     jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageAdmin, btnManageEnterprise, btnManageNetwork, btnViewKPI});
@@ -165,7 +166,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
         .addComponent(btnManageAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnViewKPI, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(30, Short.MAX_VALUE))
+        .addContainerGap(187, Short.MAX_VALUE))
     );
 
     jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageAdmin, btnManageEnterprise, btnManageNetwork, btnViewKPI});
@@ -175,20 +176,32 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
     add(jSplitPane1, java.awt.BorderLayout.CENTER);
   }// </editor-fold>//GEN-END:initComponents
 
-    private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged
-
-    }//GEN-LAST:event_jTreeValueChanged
+    private void treeNetworkSystemsValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_treeNetworkSystemsValueChanged
+      DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)treeNetworkSystems.getLastSelectedPathComponent();
+      if(selectedNode!=null){
+          lblSelectedNode.setText(selectedNode.toString());
+      }
+    }//GEN-LAST:event_treeNetworkSystemsValueChanged
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
-
+      ManageNetwork manageNetwork = new ManageNetwork(userProcessContainer, ecosystem);
+      userProcessContainer.add("manageNetwork", manageNetwork);
+      CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+      layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageNetworkActionPerformed
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
-
+      ManageEnterprises manageEnterprise = new ManageEnterprises(userProcessContainer, ecosystem);
+      userProcessContainer.add("manageEnterprises",manageEnterprise);
+      CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+      layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
-
+      ManageEnterpriseAdmins manageEnterpriseAdmin = new ManageEnterpriseAdmins(userProcessContainer, ecosystem);
+      userProcessContainer.add("manageEnterpriseAdmin",manageEnterpriseAdmin);
+      CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+      layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageAdminActionPerformed
 
     private void btnViewKPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewKPIActionPerformed
@@ -205,15 +218,15 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JSplitPane jSplitPane1;
-  private javax.swing.JTree jTree;
   private javax.swing.JLabel lblNode;
   private javax.swing.JLabel lblSelectedNode;
   private javax.swing.JLabel lblTitle;
+  private javax.swing.JTree treeNetworkSystems;
   // End of variables declaration//GEN-END:variables
 
   private void populateNetworkSystems() {
-    DefaultTreeModel model = (DefaultTreeModel)jTree.getModel();
-    ArrayList<NetworkSystem> networkList=ecosystem.getNetworkSystems();
+    DefaultTreeModel model = (DefaultTreeModel)treeNetworkSystems.getModel();
+    ArrayList<NetworkSystem> networkList = ecosystem.getNetworkSystems();
     ArrayList<Enterprise> enterpriseList;
     ArrayList<Org> orgList;
 

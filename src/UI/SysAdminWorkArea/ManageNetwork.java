@@ -4,6 +4,9 @@
  */
 package UI.SysAdminWorkArea;
 
+import ChemoCare.Ecosystem;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
@@ -13,8 +16,13 @@ public class ManageNetwork extends javax.swing.JPanel {
     /**
      * Creates new form ManageNetwork
      */
-    public ManageNetwork() {
-        initComponents();
+    private JPanel userProcessContainer;
+    private Ecosystem ecosystem;
+    
+    public ManageNetwork(JPanel userProcessContainer, Ecosystem ecosystem) {
+      initComponents();
+      this.userProcessContainer = userProcessContainer;
+      this.ecosystem = ecosystem;
     }
 
     /**
