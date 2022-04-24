@@ -224,7 +224,7 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
   private javax.swing.JTree treeNetworkSystems;
   // End of variables declaration//GEN-END:variables
 
-  private void populateNetworkSystems() {
+  public void populateNetworkSystems() {
     DefaultTreeModel model = (DefaultTreeModel)treeNetworkSystems.getModel();
     ArrayList<NetworkSystem> networkList = ecosystem.getNetworkSystems();
     ArrayList<Enterprise> enterpriseList;
