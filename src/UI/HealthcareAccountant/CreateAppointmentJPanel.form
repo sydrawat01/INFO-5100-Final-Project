@@ -57,13 +57,13 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="64" pref="64" max="-2" attributes="0"/>
-                                              <Component id="radioBtnOther" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rbtnOther" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                                              <Component id="radioBtnMale" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rbtnMale" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="radioBtnFemale" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rbtnFemale" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -75,7 +75,7 @@
                                       <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                      <Component id="emailTextField" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="txtEmail" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -91,16 +91,16 @@
                                                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Component id="radioBtnPatientInsuranceYes" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rbtnPatientInsuranceYes" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="jScrollPane1" min="-2" pref="405" max="-2" attributes="0"/>
                                               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                              <Component id="jButton1" min="-2" pref="112" max="-2" attributes="0"/>
+                                              <Component id="btnViewOnMap" min="-2" pref="112" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="radioBtnPatientInsuranceNo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbtnPatientInsuranceNo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -111,7 +111,7 @@
                                       <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
                                       <Component id="txtPatientSSN" min="-2" pref="138" max="-2" attributes="0"/>
                                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                      <Component id="btnFindPatient" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <Component id="btnFindPatients" min="-2" pref="107" max="-2" attributes="0"/>
                                       <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
@@ -181,9 +181,9 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jButton2" linkSize="2" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="btnTakePicture" linkSize="2" min="-2" pref="111" max="-2" attributes="0"/>
                                   <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
-                                  <Component id="jButton3" linkSize="2" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="btnSave" linkSize="2" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="103" pref="103" max="-2" attributes="0"/>
@@ -237,7 +237,7 @@
                       <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                       <Component id="txtPatientSSN" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnFindPatient" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="btnFindPatients" min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -282,9 +282,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="radioBtnOther" min="-2" max="-2" attributes="0"/>
-                                  <Component id="radioBtnMale" min="-2" max="-2" attributes="0"/>
-                                  <Component id="radioBtnFemale" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnOther" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnMale" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnFemale" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -306,12 +306,12 @@
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="emailTextField" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txtEmail" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="btnViewOnMap" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
@@ -324,8 +324,8 @@
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioBtnPatientInsuranceYes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioBtnPatientInsuranceNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbtnPatientInsuranceYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbtnPatientInsuranceNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblHavePolicy" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -362,8 +362,8 @@
                   <Component id="personImageLabels" min="-2" pref="160" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton2" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnTakePicture" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnSave" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -453,7 +453,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtPatientSSN">
     </Component>
-    <Component class="javax.swing.JButton" name="btnFindPatient">
+    <Component class="javax.swing.JButton" name="btnFindPatients">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -464,7 +464,7 @@
         <Property name="text" type="java.lang.String" value="Find Patient"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindPatientActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindPatientsActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -609,7 +609,7 @@
         <Property name="text" type="java.lang.String" value="Sex :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioBtnMale">
+    <Component class="javax.swing.JRadioButton" name="rbtnMale">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="ff" type="rgb"/>
@@ -620,10 +620,10 @@
         <Property name="text" type="java.lang.String" value="M"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnMaleActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnMaleActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioBtnFemale">
+    <Component class="javax.swing.JRadioButton" name="rbtnFemale">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="ff" type="rgb"/>
@@ -634,7 +634,7 @@
         <Property name="text" type="java.lang.String" value="F"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnFemaleActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnFemaleActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
@@ -651,7 +651,7 @@
         <Property name="text" type="java.lang.String" value="INSURANCE INFORMATION"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioBtnPatientInsuranceYes">
+    <Component class="javax.swing.JRadioButton" name="rbtnPatientInsuranceYes">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="ff" type="rgb"/>
@@ -662,10 +662,10 @@
         <Property name="text" type="java.lang.String" value="Yes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnPatientInsuranceYesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnPatientInsuranceYesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioBtnPatientInsuranceNo">
+    <Component class="javax.swing.JRadioButton" name="rbtnPatientInsuranceNo">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="ff" type="rgb"/>
@@ -676,7 +676,7 @@
         <Property name="text" type="java.lang.String" value="No"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioBtnPatientInsuranceNoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnPatientInsuranceNoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHavePolicy">
@@ -824,7 +824,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCoverage">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radioBtnOther">
+    <Component class="javax.swing.JRadioButton" name="rbtnOther">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="ff" type="rgb"/>
@@ -868,7 +868,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetPolicyNumActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnViewOnMap">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -879,7 +879,7 @@
         <Property name="text" type="java.lang.String" value="View On Map"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewOnMapActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -896,7 +896,7 @@
         <Property name="text" type="java.lang.String" value="Email:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="emailTextField">
+    <Component class="javax.swing.JTextField" name="txtEmail">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
@@ -963,7 +963,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnTakePicture">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -974,7 +974,7 @@
         <Property name="text" type="java.lang.String" value="Take Picture"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTakePictureActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="personImageLabels">
@@ -984,7 +984,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d1" green="da" red="fa" type="rgb"/>
@@ -995,7 +995,7 @@
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

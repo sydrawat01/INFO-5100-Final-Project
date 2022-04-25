@@ -28,12 +28,12 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        emailBtn = new javax.swing.JButton();
-        processRequestBtn = new javax.swing.JButton();
+        btnEmail = new javax.swing.JButton();
+        btnProcessRequest = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        tblWorkRequest = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblInsurance = new javax.swing.JTable();
@@ -48,26 +48,26 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Patient Billing Table");
 
-        emailBtn.setBackground(new java.awt.Color(250, 218, 209));
-        emailBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        emailBtn.setText("Send Email for Query");
-        emailBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnEmail.setBackground(new java.awt.Color(250, 218, 209));
+        btnEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEmail.setText("Send Email for Query");
+        btnEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailBtnActionPerformed(evt);
+                btnEmailActionPerformed(evt);
             }
         });
 
-        processRequestBtn.setBackground(new java.awt.Color(250, 218, 209));
-        processRequestBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        processRequestBtn.setText("Process Request");
-        processRequestBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnProcessRequest.setBackground(new java.awt.Color(250, 218, 209));
+        btnProcessRequest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnProcessRequest.setText("Process Request");
+        btnProcessRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processRequestBtnActionPerformed(evt);
+                btnProcessRequestActionPerformed(evt);
             }
         });
 
-        workRequestJTable.setBackground(new java.awt.Color(231, 194, 183));
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblWorkRequest.setBackground(new java.awt.Color(231, 194, 183));
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -107,7 +107,7 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
+        jScrollPane1.setViewportView(tblWorkRequest);
 
         btnAssignToMe.setBackground(new java.awt.Color(250, 218, 209));
         btnAssignToMe.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -118,12 +118,12 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
             }
         });
 
-        backJButton.setBackground(new java.awt.Color(250, 218, 209));
-        backJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        backJButton.setText("<<Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(250, 218, 209));
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -184,7 +184,7 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
                         .addGap(257, 257, 257)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
-                        .addComponent(backJButton))
+                        .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +199,7 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
                                         .addGap(268, 268, 268)
                                         .addComponent(btnAssignToMe)
                                         .addGap(103, 103, 103)
-                                        .addComponent(processRequestBtn)))
+                                        .addComponent(btnProcessRequest)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(357, 357, 357)
@@ -208,7 +208,7 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(369, 369, 369)
-                .addComponent(emailBtn)
+                .addComponent(btnEmail)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -220,7 +220,7 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backJButton)))
+                        .addComponent(btnBack)))
                 .addGap(73, 73, 73)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -228,49 +228,49 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssignToMe, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(processRequestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnProcessRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(emailBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addComponent(btnEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addGap(122, 122, 122))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailBtnActionPerformed
+    private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_emailBtnActionPerformed
+    }//GEN-LAST:event_btnEmailActionPerformed
 
-    private void processRequestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processRequestBtnActionPerformed
+    private void btnProcessRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessRequestActionPerformed
         // TODO add your handling code here:
         
         //        }
-    }//GEN-LAST:event_processRequestBtnActionPerformed
+    }//GEN-LAST:event_btnProcessRequestActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
         
-    }//GEN-LAST:event_backJButtonActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnAssignToMe;
-    private javax.swing.JButton emailBtn;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnEmail;
+    private javax.swing.JButton btnProcessRequest;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton processRequestBtn;
     private javax.swing.JTable tblInsurance;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }

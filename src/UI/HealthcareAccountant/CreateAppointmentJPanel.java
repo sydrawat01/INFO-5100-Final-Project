@@ -30,7 +30,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtPatientSSN = new javax.swing.JTextField();
-        btnFindPatient = new javax.swing.JButton();
+        btnFindPatients = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
@@ -45,11 +45,11 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         txtAge = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        radioBtnMale = new javax.swing.JRadioButton();
-        radioBtnFemale = new javax.swing.JRadioButton();
+        rbtnMale = new javax.swing.JRadioButton();
+        rbtnFemale = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
-        radioBtnPatientInsuranceYes = new javax.swing.JRadioButton();
-        radioBtnPatientInsuranceNo = new javax.swing.JRadioButton();
+        rbtnPatientInsuranceYes = new javax.swing.JRadioButton();
+        rbtnPatientInsuranceNo = new javax.swing.JRadioButton();
         lblHavePolicy = new javax.swing.JLabel();
         lblPolicyName = new javax.swing.JLabel();
         lblInsCompany = new javax.swing.JLabel();
@@ -66,13 +66,13 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         txtDate = new javax.swing.JTextField();
         lblCoverage = new javax.swing.JLabel();
         txtCoverage = new javax.swing.JTextField();
-        radioBtnOther = new javax.swing.JRadioButton();
+        rbtnOther = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         txtPatientIdentifier = new javax.swing.JTextField();
         btnResetPolicyNum = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnViewOnMap = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        emailTextField = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -80,9 +80,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         rePasswordJTextField = new javax.swing.JPasswordField();
         btnUpdate = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTakePicture = new javax.swing.JButton();
         personImageLabels = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(190, 194, 224));
 
@@ -105,12 +105,12 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Already registered? Provide SSN: ");
 
-        btnFindPatient.setBackground(new java.awt.Color(250, 218, 209));
-        btnFindPatient.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnFindPatient.setText("Find Patient");
-        btnFindPatient.addActionListener(new java.awt.event.ActionListener() {
+        btnFindPatients.setBackground(new java.awt.Color(250, 218, 209));
+        btnFindPatients.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnFindPatients.setText("Find Patient");
+        btnFindPatients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindPatientActionPerformed(evt);
+                btnFindPatientsActionPerformed(evt);
             }
         });
 
@@ -171,21 +171,21 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Sex :");
 
-        radioBtnMale.setBackground(new java.awt.Color(255, 102, 204));
-        radioBtnMale.setForeground(new java.awt.Color(255, 255, 255));
-        radioBtnMale.setText("M");
-        radioBtnMale.addActionListener(new java.awt.event.ActionListener() {
+        rbtnMale.setBackground(new java.awt.Color(255, 102, 204));
+        rbtnMale.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnMale.setText("M");
+        rbtnMale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioBtnMaleActionPerformed(evt);
+                rbtnMaleActionPerformed(evt);
             }
         });
 
-        radioBtnFemale.setBackground(new java.awt.Color(255, 102, 204));
-        radioBtnFemale.setForeground(new java.awt.Color(255, 255, 255));
-        radioBtnFemale.setText("F");
-        radioBtnFemale.addActionListener(new java.awt.event.ActionListener() {
+        rbtnFemale.setBackground(new java.awt.Color(255, 102, 204));
+        rbtnFemale.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnFemale.setText("F");
+        rbtnFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioBtnFemaleActionPerformed(evt);
+                rbtnFemaleActionPerformed(evt);
             }
         });
 
@@ -194,21 +194,21 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("INSURANCE INFORMATION");
 
-        radioBtnPatientInsuranceYes.setBackground(new java.awt.Color(255, 102, 204));
-        radioBtnPatientInsuranceYes.setForeground(new java.awt.Color(255, 255, 255));
-        radioBtnPatientInsuranceYes.setText("Yes");
-        radioBtnPatientInsuranceYes.addActionListener(new java.awt.event.ActionListener() {
+        rbtnPatientInsuranceYes.setBackground(new java.awt.Color(255, 102, 204));
+        rbtnPatientInsuranceYes.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnPatientInsuranceYes.setText("Yes");
+        rbtnPatientInsuranceYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioBtnPatientInsuranceYesActionPerformed(evt);
+                rbtnPatientInsuranceYesActionPerformed(evt);
             }
         });
 
-        radioBtnPatientInsuranceNo.setBackground(new java.awt.Color(255, 102, 204));
-        radioBtnPatientInsuranceNo.setForeground(new java.awt.Color(255, 255, 255));
-        radioBtnPatientInsuranceNo.setText("No");
-        radioBtnPatientInsuranceNo.addActionListener(new java.awt.event.ActionListener() {
+        rbtnPatientInsuranceNo.setBackground(new java.awt.Color(255, 102, 204));
+        rbtnPatientInsuranceNo.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnPatientInsuranceNo.setText("No");
+        rbtnPatientInsuranceNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioBtnPatientInsuranceNoActionPerformed(evt);
+                rbtnPatientInsuranceNoActionPerformed(evt);
             }
         });
 
@@ -268,9 +268,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         lblCoverage.setForeground(new java.awt.Color(255, 255, 255));
         lblCoverage.setText("Patient Insurance Coverage % :");
 
-        radioBtnOther.setBackground(new java.awt.Color(255, 102, 204));
-        radioBtnOther.setForeground(new java.awt.Color(255, 255, 255));
-        radioBtnOther.setText("Other");
+        rbtnOther.setBackground(new java.awt.Color(255, 102, 204));
+        rbtnOther.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnOther.setText("Other");
 
         jLabel4.setBackground(new java.awt.Color(255, 102, 204));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -288,12 +288,12 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(250, 218, 209));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("View On Map");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnViewOnMap.setBackground(new java.awt.Color(250, 218, 209));
+        btnViewOnMap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewOnMap.setText("View On Map");
+        btnViewOnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnViewOnMapActionPerformed(evt);
             }
         });
 
@@ -332,23 +332,23 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(250, 218, 209));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("Take Picture");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnTakePicture.setBackground(new java.awt.Color(250, 218, 209));
+        btnTakePicture.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTakePicture.setText("Take Picture");
+        btnTakePicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnTakePictureActionPerformed(evt);
             }
         });
 
         personImageLabels.setBackground(new java.awt.Color(255, 102, 204));
 
-        jButton3.setBackground(new java.awt.Color(250, 218, 209));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setBackground(new java.awt.Color(250, 218, 209));
+        btnSave.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -388,11 +388,11 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(64, 64, 64)
-                                                .addComponent(radioBtnOther))
+                                                .addComponent(rbtnOther))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(31, 31, 31)
-                                                .addComponent(radioBtnMale))
-                                            .addComponent(radioBtnFemale)))
+                                                .addComponent(rbtnMale))
+                                            .addComponent(rbtnFemale)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtHomePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(81, 81, 81)
@@ -402,7 +402,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                                         .addGap(9, 9, 9)
                                         .addComponent(jLabel5)
                                         .addGap(3, 3, 3)
-                                        .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(3, 3, 3)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -414,13 +414,13 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jLabel9)
                                                         .addGap(62, 62, 62)))
-                                                .addComponent(radioBtnPatientInsuranceYes))
+                                                .addComponent(rbtnPatientInsuranceYes))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnViewOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(radioBtnPatientInsuranceNo))))
+                                        .addComponent(rbtnPatientInsuranceNo))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -428,7 +428,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                                         .addGap(9, 9, 9)
                                         .addComponent(txtPatientSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnFindPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnFindPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(56, 56, 56)
                                         .addComponent(jLabel3)
                                         .addGap(11, 11, 11)
@@ -483,9 +483,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTakePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(39, 39, 39)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(103, 103, 103)
                                     .addComponent(jLabel24)
@@ -511,7 +511,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                             .addGap(0, 48, Short.MAX_VALUE)))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton3});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSave, btnTakePicture});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,7 +529,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(txtPatientSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnFindPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFindPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel3))
@@ -566,9 +566,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radioBtnOther)
-                                    .addComponent(radioBtnMale)
-                                    .addComponent(radioBtnFemale))))
+                                    .addComponent(rbtnOther)
+                                    .addComponent(rbtnMale)
+                                    .addComponent(rbtnFemale))))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -583,11 +583,11 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel5))
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnViewOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -595,8 +595,8 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioBtnPatientInsuranceYes)
-                    .addComponent(radioBtnPatientInsuranceNo)
+                    .addComponent(rbtnPatientInsuranceYes)
+                    .addComponent(rbtnPatientInsuranceNo)
                     .addComponent(lblHavePolicy))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -626,8 +626,8 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
                     .addComponent(personImageLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(30, 30, 30)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTakePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(185, 185, 185)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -664,9 +664,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnFindPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPatientActionPerformed
+    private void btnFindPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPatientsActionPerformed
 
-    }//GEN-LAST:event_btnFindPatientActionPerformed
+    }//GEN-LAST:event_btnFindPatientsActionPerformed
 
     private void txtHomePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHomePhoneActionPerformed
         // TODO add your handling code here:
@@ -676,21 +676,21 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAgeActionPerformed
 
-    private void radioBtnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnMaleActionPerformed
+    private void rbtnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_radioBtnMaleActionPerformed
+    }//GEN-LAST:event_rbtnMaleActionPerformed
 
-    private void radioBtnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnFemaleActionPerformed
+    private void rbtnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFemaleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_radioBtnFemaleActionPerformed
+    }//GEN-LAST:event_rbtnFemaleActionPerformed
 
-    private void radioBtnPatientInsuranceYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnPatientInsuranceYesActionPerformed
+    private void rbtnPatientInsuranceYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPatientInsuranceYesActionPerformed
         
-    }//GEN-LAST:event_radioBtnPatientInsuranceYesActionPerformed
+    }//GEN-LAST:event_rbtnPatientInsuranceYesActionPerformed
 
-    private void radioBtnPatientInsuranceNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnPatientInsuranceNoActionPerformed
+    private void rbtnPatientInsuranceNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPatientInsuranceNoActionPerformed
 
-    }//GEN-LAST:event_radioBtnPatientInsuranceNoActionPerformed
+    }//GEN-LAST:event_rbtnPatientInsuranceNoActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
@@ -704,10 +704,10 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnResetPolicyNumActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnViewOnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOnMapActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnViewOnMapActionPerformed
 
     private void nameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameJTextFieldActionPerformed
         // TODO add your handling code here:
@@ -718,26 +718,25 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnTakePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTakePictureActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnTakePictureActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnFindInsurance;
-    private javax.swing.JButton btnFindPatient;
+    private javax.swing.JButton btnFindPatients;
     private javax.swing.JButton btnResetPolicyNum;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnTakePicture;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JTextField emailTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnViewOnMap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -765,16 +764,17 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JPasswordField passwordJTextField;
     private javax.swing.JLabel personImageLabels;
-    private javax.swing.JRadioButton radioBtnFemale;
-    private javax.swing.JRadioButton radioBtnMale;
-    private javax.swing.JRadioButton radioBtnOther;
-    private javax.swing.JRadioButton radioBtnPatientInsuranceNo;
-    private javax.swing.JRadioButton radioBtnPatientInsuranceYes;
+    private javax.swing.JRadioButton rbtnFemale;
+    private javax.swing.JRadioButton rbtnMale;
+    private javax.swing.JRadioButton rbtnOther;
+    private javax.swing.JRadioButton rbtnPatientInsuranceNo;
+    private javax.swing.JRadioButton rbtnPatientInsuranceYes;
     private javax.swing.JPasswordField rePasswordJTextField;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCoverage;
     private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtHomePhone;
     private javax.swing.JTextField txtInsuranceCompany;
