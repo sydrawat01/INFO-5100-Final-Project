@@ -22,24 +22,21 @@ public class ManagerWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        tblWorkRequest = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
-        requestGovSecretaryBtn = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
-        checkStatsBtn = new javax.swing.JButton();
+        btnRequestGovSecretary = new javax.swing.JButton();
         btnEmail = new javax.swing.JButton();
-
-        jPanel1.setBackground(new java.awt.Color(190, 194, 224));
+        btnMenu = new javax.swing.JButton();
+        btnCheckStats = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Manger Work Area ");
 
-        workRequestJTable.setBackground(new java.awt.Color(231, 194, 183));
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblWorkRequest.setBackground(new java.awt.Color(231, 194, 183));
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -65,7 +62,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
+        jScrollPane1.setViewportView(tblWorkRequest);
 
         btnAssign.setBackground(new java.awt.Color(250, 218, 209));
         btnAssign.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -76,30 +73,12 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        requestGovSecretaryBtn.setBackground(new java.awt.Color(250, 218, 209));
-        requestGovSecretaryBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        requestGovSecretaryBtn.setText("Process Request");
-        requestGovSecretaryBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestGovSecretary.setBackground(new java.awt.Color(250, 218, 209));
+        btnRequestGovSecretary.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRequestGovSecretary.setText("Process Request");
+        btnRequestGovSecretary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestGovSecretaryBtnActionPerformed(evt);
-            }
-        });
-
-        btnMenu.setBackground(new java.awt.Color(250, 218, 209));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnMenu.setText("Manage Menu");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-
-        checkStatsBtn.setBackground(new java.awt.Color(250, 218, 209));
-        checkStatsBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        checkStatsBtn.setText("Check Order Stats");
-        checkStatsBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkStatsBtnActionPerformed(evt);
+                btnRequestGovSecretaryActionPerformed(evt);
             }
         });
 
@@ -112,46 +91,23 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnMenu)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnEmail)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnAssign)
-                        .addGap(30, 30, 30)
-                        .addComponent(requestGovSecretaryBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(checkStatsBtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(requestGovSecretaryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkStatsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
-        );
+        btnMenu.setBackground(new java.awt.Color(250, 218, 209));
+        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnMenu.setText("Manage Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+
+        btnCheckStats.setBackground(new java.awt.Color(250, 218, 209));
+        btnCheckStats.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCheckStats.setText("Check Order Stats");
+        btnCheckStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckStatsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -160,18 +116,41 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             .addGap(0, 778, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(12, 12, 12)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addComponent(btnMenu)
+                            .addGap(30, 30, 30)
+                            .addComponent(btnEmail)
+                            .addGap(33, 33, 33)
+                            .addComponent(btnAssign)
+                            .addGap(30, 30, 30)
+                            .addComponent(btnRequestGovSecretary)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCheckStats)))
+                    .addContainerGap(13, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 437, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(116, 116, 116)
+                    .addComponent(jLabel1)
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(28, 28, 28)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRequestGovSecretary, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCheckStats, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(116, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,20 +158,20 @@ public class ManagerWorkArea extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnAssignActionPerformed
 
-    private void requestGovSecretaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestGovSecretaryBtnActionPerformed
+    private void btnRequestGovSecretaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestGovSecretaryActionPerformed
         // TODO add your handling code here:
     
-    }//GEN-LAST:event_requestGovSecretaryBtnActionPerformed
+    }//GEN-LAST:event_btnRequestGovSecretaryActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
      
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void checkStatsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkStatsBtnActionPerformed
+    private void btnCheckStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckStatsActionPerformed
         // TODO add your handling code here:
       
-    }//GEN-LAST:event_checkStatsBtnActionPerformed
+    }//GEN-LAST:event_btnCheckStatsActionPerformed
 
     private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
         // TODO add your handling code here:
@@ -202,13 +181,12 @@ public class ManagerWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnCheckStats;
     private javax.swing.JButton btnEmail;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton checkStatsBtn;
+    private javax.swing.JButton btnRequestGovSecretary;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton requestGovSecretaryBtn;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,9 +26,9 @@ public class PatientPrescription extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         lblPatientidp = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblPatientName = new javax.swing.JLabel();
         lblConsultedBy = new javax.swing.JLabel();
         lblTreatment = new javax.swing.JLabel();
         txtPatientIdP = new javax.swing.JTextField();
@@ -37,25 +37,25 @@ public class PatientPrescription extends javax.swing.JPanel {
         txtPrescription = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaPrescription = new javax.swing.JTextArea();
-        btnPrintP = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
         btnback = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(190, 194, 224));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Patient Prescription");
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Patient Prescription");
 
         lblPatientidp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPatientidp.setForeground(new java.awt.Color(255, 255, 255));
         lblPatientidp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPatientidp.setText("Patient ID:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Patient Name:");
+        lblPatientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPatientName.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPatientName.setText("Patient Name:");
 
         lblConsultedBy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblConsultedBy.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,12 +71,12 @@ public class PatientPrescription extends javax.swing.JPanel {
         txtAreaPrescription.setRows(5);
         jScrollPane1.setViewportView(txtAreaPrescription);
 
-        btnPrintP.setBackground(new java.awt.Color(250, 218, 209));
-        btnPrintP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnPrintP.setText("Print");
-        btnPrintP.addActionListener(new java.awt.event.ActionListener() {
+        btnPrint.setBackground(new java.awt.Color(250, 218, 209));
+        btnPrint.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintPActionPerformed(evt);
+                btnPrintActionPerformed(evt);
             }
         });
 
@@ -99,12 +99,12 @@ public class PatientPrescription extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(280, 280, 280)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(280, 280, 280)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPatientidp, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
+                                    .addComponent(lblPatientName)
                                     .addComponent(lblConsultedBy, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTreatment, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(4, 4, 4)
@@ -117,7 +117,7 @@ public class PatientPrescription extends javax.swing.JPanel {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(439, 439, 439)
-                                .addComponent(btnPrintP, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 268, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -130,14 +130,14 @@ public class PatientPrescription extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(btnback)
                 .addGap(63, 63, 63)
-                .addComponent(jLabel1)
+                .addComponent(lblTitle)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblPatientidp)
                         .addGap(16, 16, 16)
-                        .addComponent(jLabel3)
+                        .addComponent(lblPatientName)
                         .addGap(16, 16, 16)
                         .addComponent(lblConsultedBy)
                         .addGap(14, 14, 14)
@@ -152,15 +152,15 @@ public class PatientPrescription extends javax.swing.JPanel {
                         .addComponent(txtPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addComponent(btnPrintP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(334, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPrintPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintPActionPerformed
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_btnPrintPActionPerformed
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
@@ -169,13 +169,13 @@ public class PatientPrescription extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrintP;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnback;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblConsultedBy;
+    private javax.swing.JLabel lblPatientName;
     private javax.swing.JLabel lblPatientidp;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTreatment;
     private javax.swing.JTextArea txtAreaPrescription;
     private javax.swing.JTextField txtConsultedBy;

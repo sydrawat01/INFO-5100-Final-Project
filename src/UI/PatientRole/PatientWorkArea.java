@@ -22,26 +22,22 @@ public class PatientWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        patientId = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        patientName = new javax.swing.JLabel();
+        tblWorkRequest = new javax.swing.JTable();
+        btnPrintInvoice = new javax.swing.JButton();
+        lblPatientId = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        insTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        btnprescription = new javax.swing.JButton();
+        tblIns = new javax.swing.JTable();
+        lblPatientName = new javax.swing.JLabel();
+        lblPatientID = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        lblPatientNm = new javax.swing.JLabel();
+        btnPrescription = new javax.swing.JButton();
+        btnViewHospital = new javax.swing.JButton();
         personImageLabels = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(190, 194, 224));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        workRequestJTable.setBackground(new java.awt.Color(231, 194, 183));
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblWorkRequest.setBackground(new java.awt.Color(231, 194, 183));
+        tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -60,30 +56,23 @@ public class PatientWorkArea extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
+        jScrollPane1.setViewportView(tblWorkRequest);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 638, 130));
+        btnPrintInvoice.setBackground(new java.awt.Color(250, 218, 209));
+        btnPrintInvoice.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnPrintInvoice.setText("Print Invoice");
+        btnPrintInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintInvoiceActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Patient Id:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, -1));
+        lblPatientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPatientId.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientId.setText("Patient Id:");
 
-        patientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        patientId.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(patientId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 178, 20));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Patient Name:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
-
-        patientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        patientName.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(patientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 170, 30));
-
-        insTable.setBackground(new java.awt.Color(231, 194, 183));
-        insTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblIns.setBackground(new java.awt.Color(231, 194, 183));
+        tblIns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -102,45 +91,39 @@ public class PatientWorkArea extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(insTable);
+        jScrollPane2.setViewportView(tblIns);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 640, 130));
+        lblPatientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPatientName.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(250, 218, 209));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("View Hospitals");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        lblPatientID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPatientID.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setText("Patients Portal");
+
+        lblPatientNm.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPatientNm.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientNm.setText("Patient Name:");
+
+        btnPrescription.setBackground(new java.awt.Color(250, 218, 209));
+        btnPrescription.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnPrescription.setText("Print Prescription");
+        btnPrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPrescriptionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 140, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Patients Portal");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(250, 218, 209));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("Print Invoice");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnViewHospital.setBackground(new java.awt.Color(250, 218, 209));
+        btnViewHospital.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewHospital.setText("View Hospitals");
+        btnViewHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnViewHospitalActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, -1, -1));
-
-        btnprescription.setBackground(new java.awt.Color(250, 218, 209));
-        btnprescription.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnprescription.setText("Print Prescription");
-        btnprescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnprescriptionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnprescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, 150, 30));
-        jPanel1.add(personImageLabels, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 130, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,7 +133,33 @@ public class PatientWorkArea extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(350, 350, 350)
+                            .addComponent(lblTitle))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(lblPatientId)
+                            .addGap(24, 24, 24)
+                            .addComponent(lblPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(52, 52, 52)
+                            .addComponent(lblPatientNm)
+                            .addGap(14, 14, 14)
+                            .addComponent(lblPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(personImageLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(160, 160, 160)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(160, 160, 160)
+                            .addComponent(btnViewHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(100, 100, 100)
+                            .addComponent(btnPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(120, 120, 120)
+                            .addComponent(btnPrintInvoice)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -159,41 +168,60 @@ public class PatientWorkArea extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitle)
+                    .addGap(11, 11, 11)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblPatientId)
+                                .addComponent(lblPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPatientNm))))
+                    .addGap(20, 20, 20)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(personImageLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(50, 50, 50)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(20, 20, 20)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnViewHospital)
+                        .addComponent(btnPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPrintInvoice))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnViewHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHospitalActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnViewHospitalActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnPrintInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInvoiceActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPrintInvoiceActionPerformed
 
-    private void btnprescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprescriptionActionPerformed
+    private void btnPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescriptionActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_btnprescriptionActionPerformed
+    }//GEN-LAST:event_btnPrescriptionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnprescription;
-    private javax.swing.JTable insTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnPrescription;
+    private javax.swing.JButton btnPrintInvoice;
+    private javax.swing.JButton btnViewHospital;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel patientId;
-    private javax.swing.JLabel patientName;
+    private javax.swing.JLabel lblPatientID;
+    private javax.swing.JLabel lblPatientId;
+    private javax.swing.JLabel lblPatientName;
+    private javax.swing.JLabel lblPatientNm;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel personImageLabels;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTable tblIns;
+    private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 }
