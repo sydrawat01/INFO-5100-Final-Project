@@ -39,4 +39,9 @@ public class NetworkSystem {
     return enterpriseDirectory;
   }
   
+  @Override
+  public String toString() {
+    return name;
+  }
+  
 }
