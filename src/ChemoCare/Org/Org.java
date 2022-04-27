@@ -74,11 +74,11 @@ public abstract class Org {
     this.orgName = orgName;
   }
 
-  public JobQueue getJObQueue() {
+  public JobQueue getJobQueue() {
     return jobQueue;
   }
 
-  public void setJObQueue(JobQueue jobQueue) {
+  public void setJobQueue(JobQueue jobQueue) {
     this.jobQueue = jobQueue;
   }
 

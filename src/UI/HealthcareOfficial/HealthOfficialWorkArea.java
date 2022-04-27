@@ -1,16 +1,44 @@
 package UI.HealthcareOfficial;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.HealthOfficialOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.JobRequest;
+
+import UI.DoctorRole.RequestLabTestsJPanel;
+import UI.GovtFinancialOfficial.FinancialProcessRequestsJPanel;
+import UI.SysAdminWorkArea.ManageEnterpriseAdmins;
+
 /**
  *
  * @author sid
  */
 public class HealthOfficialWorkArea extends javax.swing.JPanel {
-
+    private JPanel jPanel;
+    private Account userAccount;
+    private HealthOfficialOrg healthOfficialOrg;
+    private Enterprise enterprise;
   /**
    * Creates new form HealthOfficialWorkArea
    */
-  public HealthOfficialWorkArea() {
+  public HealthOfficialWorkArea(JPanel jpanel, Account account, Org org, Enterprise enterprise) {
     initComponents();
+        this.enterprise = enterprise;
+
+        this.jPanel = jpanel;
+
+        this.healthOfficialOrg = (HealthOfficialOrg) org;
+        this.userAccount = userAccount;
+
+//        populateTable();
   }
 
   /**
@@ -136,4 +164,28 @@ public class HealthOfficialWorkArea extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblGovtHealthOfficerWorkArea;
     // End of variables declaration//GEN-END:variables
+
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblGovtHealthOfficerWorkArea.getModel();
+
+        model.setRowCount(0);
+
+        for (JobRequest request : healthOfficialOrg.getJobQueue().getJobRequestList()) {
+            Object[] row = new Object[5];
+            String status = request.getStatus();
+            row[0] = ((GovtFundJob) request);
+            row[1] = request.getSender().getEmployee().getEmpName();
+            if (status.equalsIgnoreCase("Sent to Treasurer") || status.equalsIgnoreCase("Sent to Secretary")) {
+                row[2] = null;
+            } else {
+                row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getEmpName();
+            }
+            //row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[3] = request.getStatus();
+            row[4] = ((GovtFundJob) request).getRequestAmount();
+
+            model.addRow(row);
+        }
+    }
+
 }
