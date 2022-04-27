@@ -50,9 +50,9 @@ public class LandingPage extends javax.swing.JFrame {
         JlblUserName = new javax.swing.JLabel();
         JlblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        lblLogo = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         leftJPanel = new javax.swing.JPanel();
         LandingImg = new javax.swing.JLabel();
 
@@ -60,9 +60,10 @@ public class LandingPage extends javax.swing.JFrame {
 
         jSplitPane1.setDividerLocation(1200);
 
-        rightJPanel.setBackground(new java.awt.Color(190, 194, 224));
+        rightJPanel.setBackground(new java.awt.Color(209, 223, 241));
 
-        btnLogin.setBackground(new java.awt.Color(250, 218, 209));
+        btnLogin.setBackground(new java.awt.Color(64, 123, 255));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +71,8 @@ public class LandingPage extends javax.swing.JFrame {
             }
         });
 
-        btnLogout.setBackground(new java.awt.Color(250, 218, 209));
+        btnLogout.setBackground(new java.awt.Color(64, 123, 255));
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,34 +88,36 @@ public class LandingPage extends javax.swing.JFrame {
         JlblPassword.setForeground(new java.awt.Color(255, 255, 255));
         JlblPassword.setText("Password");
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/logo3.jpg"))); // NOI18N
-
         lblUserName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/codicon_account.png"))); // NOI18N
 
         lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/carbon_password.png"))); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/logo3.jpg"))); // NOI18N
 
         javax.swing.GroupLayout rightJPanelLayout = new javax.swing.GroupLayout(rightJPanel);
         rightJPanel.setLayout(rightJPanelLayout);
         rightJPanelLayout.setHorizontalGroup(
             rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
             .addGroup(rightJPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rightJPanelLayout.createSequentialGroup()
-                        .addComponent(lblUserName)
-                        .addGap(7, 7, 7)
-                        .addComponent(JlblUserName))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightJPanelLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(rightJPanelLayout.createSequentialGroup()
+                                .addComponent(lblUserName)
+                                .addGap(7, 7, 7)
+                                .addComponent(JlblUserName))))
+                    .addGroup(rightJPanelLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addComponent(lblPassword)
                         .addGap(7, 7, 7)
-                        .addComponent(JlblPassword)
-                        .addGap(30, 30, 30)))
+                        .addComponent(JlblPassword)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
         );
 
         rightJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLogin, btnLogout, txtUserName});
@@ -122,8 +126,8 @@ public class LandingPage extends javax.swing.JFrame {
             rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightJPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(lblLogo)
-                .addGap(59, 59, 59)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(rightJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rightJPanelLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -144,7 +148,7 @@ public class LandingPage extends javax.swing.JFrame {
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(rightJPanel);
@@ -290,8 +294,8 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JLabel LandingImg;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel leftJPanel;

@@ -44,13 +44,15 @@ public class PatientInvoiceAndPrescription extends javax.swing.JPanel {
         lblTotalAmount = new javax.swing.JLabel();
         txtBillAmount = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         lblPatientInvoice.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblPatientInvoice.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientInvoice.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientInvoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPatientInvoice.setText("Patient Invoice");
 
         lblPatientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientId.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientId.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientId.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPatientId.setText("Patient ID:");
 
@@ -78,31 +80,31 @@ public class PatientInvoiceAndPrescription extends javax.swing.JPanel {
         });
 
         lblPatientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientName.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientName.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPatientName.setText("Patient Name:");
 
         lblPolicyNumber.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPolicyNumber.setForeground(new java.awt.Color(255, 255, 255));
+        lblPolicyNumber.setForeground(new java.awt.Color(64, 123, 255));
         lblPolicyNumber.setText("Policy Number, if any :");
 
         lblDoctorName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblDoctorName.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoctorName.setForeground(new java.awt.Color(64, 123, 255));
         lblDoctorName.setText("Consulted By :");
 
         lblClaimAmount.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblClaimAmount.setForeground(new java.awt.Color(255, 255, 255));
+        lblClaimAmount.setForeground(new java.awt.Color(64, 123, 255));
         lblClaimAmount.setText("Claim Amount:");
 
         lblTotalAmount.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblTotalAmount.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalAmount.setForeground(new java.awt.Color(64, 123, 255));
         lblTotalAmount.setText("Total Bill Amount:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
+            .addGap(0, 1198, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -147,7 +149,7 @@ public class PatientInvoiceAndPrescription extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 415, Short.MAX_VALUE)
+            .addGap(0, 806, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
