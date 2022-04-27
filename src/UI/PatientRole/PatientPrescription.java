@@ -40,30 +40,30 @@ public class PatientPrescription extends javax.swing.JPanel {
         btnPrint = new javax.swing.JButton();
         btnback = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(190, 194, 224));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setForeground(new java.awt.Color(64, 123, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Patient Prescription");
 
         lblPatientidp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientidp.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientidp.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientidp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPatientidp.setText("Patient ID:");
 
         lblPatientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientName.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientName.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPatientName.setText("Patient Name:");
 
         lblConsultedBy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblConsultedBy.setForeground(new java.awt.Color(255, 255, 255));
+        lblConsultedBy.setForeground(new java.awt.Color(64, 123, 255));
         lblConsultedBy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblConsultedBy.setText("Consulted by:");
 
         lblTreatment.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblTreatment.setForeground(new java.awt.Color(255, 255, 255));
+        lblTreatment.setForeground(new java.awt.Color(64, 123, 255));
         lblTreatment.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTreatment.setText("Treatment:");
 
@@ -118,7 +118,7 @@ public class PatientPrescription extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(439, 439, 439)
                                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 268, Short.MAX_VALUE))
+                        .addGap(0, 266, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnback)))
@@ -153,7 +153,7 @@ public class PatientPrescription extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

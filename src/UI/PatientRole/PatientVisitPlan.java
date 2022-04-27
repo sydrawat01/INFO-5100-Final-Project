@@ -39,7 +39,9 @@ public class PatientVisitPlan extends javax.swing.JPanel {
         btnWeb = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        workRequestJTable.setBackground(new java.awt.Color(231, 194, 183));
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        workRequestJTable.setBackground(new java.awt.Color(209, 223, 241));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -62,14 +64,14 @@ public class PatientVisitPlan extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
 
         lblPatientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientId.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientId.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientId.setText("Patient Id:");
 
         patientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         patientId.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(64, 123, 255));
         jLabel2.setText("Patient Name:");
 
         patientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -121,21 +123,21 @@ public class PatientVisitPlan extends javax.swing.JPanel {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setForeground(new java.awt.Color(64, 123, 255));
         lblTitle.setText("Plan Your Next Visit Portal ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 868, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(1102, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(680, 680, 680)
-                            .addComponent(btnBack))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(120, 120, 120)
                             .addComponent(lblTitle))
@@ -157,16 +159,17 @@ public class PatientVisitPlan extends javax.swing.JPanel {
                             .addComponent(btnEmail)
                             .addGap(39, 39, 39)
                             .addComponent(btnWeb)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 344, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addContainerGap(771, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnBack)
-                    .addGap(1, 1, 1)
+                    .addGap(0, 372, Short.MAX_VALUE)
                     .addComponent(lblTitle)
                     .addGap(31, 31, 31)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +188,7 @@ public class PatientVisitPlan extends javax.swing.JPanel {
                         .addComponent(btnDir)
                         .addComponent(btnEmail)
                         .addComponent(btnWeb))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 115, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

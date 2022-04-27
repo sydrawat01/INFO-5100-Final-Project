@@ -36,7 +36,9 @@ public class PatientWorkArea extends javax.swing.JPanel {
         btnViewHospital = new javax.swing.JButton();
         personImageLabels = new javax.swing.JLabel();
 
-        tblWorkRequest.setBackground(new java.awt.Color(231, 194, 183));
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        tblWorkRequest.setBackground(new java.awt.Color(209, 223, 241));
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -68,10 +70,10 @@ public class PatientWorkArea extends javax.swing.JPanel {
         });
 
         lblPatientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientId.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientId.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientId.setText("Patient Id:");
 
-        tblIns.setBackground(new java.awt.Color(231, 194, 183));
+        tblIns.setBackground(new java.awt.Color(209, 223, 241));
         tblIns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -100,11 +102,11 @@ public class PatientWorkArea extends javax.swing.JPanel {
         lblPatientID.setForeground(new java.awt.Color(255, 255, 255));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setForeground(new java.awt.Color(64, 123, 255));
         lblTitle.setText("Patients Portal");
 
         lblPatientNm.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientNm.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientNm.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientNm.setText("Patient Name:");
 
         btnPrescription.setBackground(new java.awt.Color(250, 218, 209));
@@ -129,7 +131,7 @@ public class PatientWorkArea extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 877, Short.MAX_VALUE)
+            .addGap(0, 1198, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -164,7 +166,7 @@ public class PatientWorkArea extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 806, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

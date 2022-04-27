@@ -4,17 +4,33 @@
  */
 package UI.PharmacyTransportation;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JPanel;
+import ChemoCare.JobQueue.OrderJob;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import ChemoCare.Map.MapViewer;
+
 /**
  *
  * @author harshita
  */
 public class TransportProcessRequest extends javax.swing.JPanel {
+    
+    private JPanel jPanel;
+    private OrderJob orderItemRequest;
 
     /**
      * Creates new form TransportProcessRequest
      */
-    public TransportProcessRequest() {
+    public TransportProcessRequest(JPanel jPanel, OrderJob fundRequest) {
         initComponents();
+        this.jPanel = jPanel;
+        this.orderItemRequest = fundRequest;
+        txtAmount.setText(String.valueOf(orderItemRequest.getOrder().getAmount()));
+        txtLocation.setText(orderItemRequest.getVisitReason());
+        txtPopulation.setText(String.valueOf(orderItemRequest.getOrderMsg()));
     }
 
     /**
@@ -40,8 +56,12 @@ public class TransportProcessRequest extends javax.swing.JPanel {
         btnMap = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-        btnDeliver.setBackground(new java.awt.Color(250, 218, 209));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 255, 255));
+
+        btnDeliver.setBackground(new java.awt.Color(64, 123, 255));
         btnDeliver.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnDeliver.setForeground(new java.awt.Color(255, 255, 255));
         btnDeliver.setText("Deliver");
         btnDeliver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,19 +70,19 @@ public class TransportProcessRequest extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(64, 123, 255));
         jLabel1.setText("Transport Work Area");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(64, 123, 255));
         jLabel5.setText("Order Message");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(64, 123, 255));
         jLabel2.setText("Delivery Message");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(64, 123, 255));
         jLabel3.setText("Amount");
 
         txtAmount.setEnabled(false);
@@ -70,13 +90,14 @@ public class TransportProcessRequest extends javax.swing.JPanel {
         txtLocation.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(64, 123, 255));
         jLabel4.setText("Address");
 
         txtPopulation.setEnabled(false);
 
-        btnReject.setBackground(new java.awt.Color(250, 218, 209));
+        btnReject.setBackground(new java.awt.Color(64, 123, 255));
         btnReject.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,8 +105,9 @@ public class TransportProcessRequest extends javax.swing.JPanel {
             }
         });
 
-        btnMap.setBackground(new java.awt.Color(250, 218, 209));
+        btnMap.setBackground(new java.awt.Color(64, 123, 255));
         btnMap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnMap.setForeground(new java.awt.Color(255, 255, 255));
         btnMap.setText("View Directions");
         btnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +117,7 @@ public class TransportProcessRequest extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(250, 218, 209));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +130,7 @@ public class TransportProcessRequest extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 622, Short.MAX_VALUE)
+                .addGap(0, 1108, Short.MAX_VALUE)
                 .addComponent(btnBack))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -133,13 +156,13 @@ public class TransportProcessRequest extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGap(5, 5, 5)
                     .addComponent(btnMap)
-                    .addContainerGap(204, Short.MAX_VALUE)))
+                    .addContainerGap(690, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnBack)
-                .addGap(0, 507, Short.MAX_VALUE))
+                .addGap(0, 777, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(151, 151, 151)
@@ -165,7 +188,7 @@ public class TransportProcessRequest extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnDeliver, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(108, Short.MAX_VALUE)))
+                    .addContainerGap(378, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,8 +197,15 @@ public class TransportProcessRequest extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeliverActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-     
+        
+//        jPanel.remove(this);
+//        Component[] componentArray = jPanel.getComponents();
+//        Component component = componentArray[componentArray.length - 1];
+//        TransportationWorkArea dwjp = (TransportationWorkArea) component;
+//        dwjp.populateTable();
+//        CardLayout layout = (CardLayout) jPanel.getLayout();
+//        layout.previous(jPanel);        
+//     
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
@@ -184,6 +214,19 @@ public class TransportProcessRequest extends javax.swing.JPanel {
 
     private void btnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapActionPerformed
         // TODO add your handling code here:
+        if (txtLocation.getText().trim().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Enter address first");  
+        }else{
+        SwingUtilities.invokeLater(new Runnable() {
+ 
+            @Override
+            public void run() {
+                MapViewer browser = new MapViewer();
+                browser.setVisible(true);
+                browser.loadURL("https://www.google.com/maps/dir/?api=1&destination="+txtLocation.getText().trim());
+            }
+        });
+        }
      
     }//GEN-LAST:event_btnMapActionPerformed
 

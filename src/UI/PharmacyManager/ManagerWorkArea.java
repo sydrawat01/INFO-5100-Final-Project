@@ -31,11 +31,13 @@ public class ManagerWorkArea extends javax.swing.JPanel {
         btnMenu = new javax.swing.JButton();
         btnCheckStats = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(64, 123, 255));
         jLabel1.setText("Manger Work Area ");
 
-        tblWorkRequest.setBackground(new java.awt.Color(231, 194, 183));
+        tblWorkRequest.setBackground(new java.awt.Color(209, 223, 241));
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -64,7 +66,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblWorkRequest);
 
-        btnAssign.setBackground(new java.awt.Color(250, 218, 209));
+        btnAssign.setBackground(new java.awt.Color(64, 123, 255));
         btnAssign.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnAssign.setText("Assign To Me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +75,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnRequestGovSecretary.setBackground(new java.awt.Color(250, 218, 209));
+        btnRequestGovSecretary.setBackground(new java.awt.Color(64, 123, 255));
         btnRequestGovSecretary.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnRequestGovSecretary.setText("Process Request");
         btnRequestGovSecretary.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +84,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnEmail.setBackground(new java.awt.Color(250, 218, 209));
+        btnEmail.setBackground(new java.awt.Color(64, 123, 255));
         btnEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnEmail.setText("Send Email");
         btnEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +93,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnMenu.setBackground(new java.awt.Color(250, 218, 209));
+        btnMenu.setBackground(new java.awt.Color(64, 123, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnMenu.setText("Manage Menu");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +102,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnCheckStats.setBackground(new java.awt.Color(250, 218, 209));
+        btnCheckStats.setBackground(new java.awt.Color(64, 123, 255));
         btnCheckStats.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCheckStats.setText("Check Order Stats");
         btnCheckStats.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +115,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
+            .addGap(0, 1198, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(12, 12, 12)
@@ -132,11 +134,11 @@ public class ManagerWorkArea extends javax.swing.JPanel {
                             .addComponent(btnRequestGovSecretary)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCheckStats)))
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                    .addContainerGap(433, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGap(0, 806, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(116, 116, 116)
@@ -150,7 +152,7 @@ public class ManagerWorkArea extends javax.swing.JPanel {
                         .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnCheckStats, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(116, Short.MAX_VALUE)))
+                    .addContainerGap(485, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -1,5 +1,8 @@
 package UI.PharmacyTransportation;
 
+import javax.swing.table.DefaultTableModel;
+import ChemoCare.JobQueue.JobRequest;
+
 /**
  *
  * @author sid
@@ -28,12 +31,15 @@ public class TransportationWorkArea extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequest = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(64, 123, 255));
         jLabel1.setText("Transport Work Area ");
 
-        btnRequestGovSecretary.setBackground(new java.awt.Color(250, 218, 209));
+        btnRequestGovSecretary.setBackground(new java.awt.Color(64, 123, 255));
         btnRequestGovSecretary.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRequestGovSecretary.setForeground(new java.awt.Color(255, 255, 255));
         btnRequestGovSecretary.setText("Process Request");
         btnRequestGovSecretary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,8 +47,9 @@ public class TransportationWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnAssign.setBackground(new java.awt.Color(250, 218, 209));
+        btnAssign.setBackground(new java.awt.Color(64, 123, 255));
         btnAssign.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(255, 255, 255));
         btnAssign.setText("Assign To Me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,7 +57,7 @@ public class TransportationWorkArea extends javax.swing.JPanel {
             }
         });
 
-        tblWorkRequest.setBackground(new java.awt.Color(231, 194, 183));
+        tblWorkRequest.setBackground(new java.awt.Color(209, 223, 241));
         tblWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -83,7 +90,7 @@ public class TransportationWorkArea extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 782, Short.MAX_VALUE)
+            .addGap(0, 1198, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(24, 24, 24)
@@ -97,11 +104,11 @@ public class TransportationWorkArea extends javax.swing.JPanel {
                             .addGap(77, 77, 77)
                             .addComponent(btnRequestGovSecretary)
                             .addGap(212, 212, 212)))
-                    .addContainerGap(24, Short.MAX_VALUE)))
+                    .addContainerGap(440, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGap(0, 806, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(116, 116, 116)
@@ -112,7 +119,7 @@ public class TransportationWorkArea extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnRequestGovSecretary, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(116, Short.MAX_VALUE)))
+                    .addContainerGap(485, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,6 +132,28 @@ public class TransportationWorkArea extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnRequestGovSecretaryActionPerformed
 
+//    public void populateTable() {
+//        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+//        model.setRowCount(0);
+//
+//        for (JobRequest request : treasurerOrganization.getWorkQueue().getWorkRequests()) {
+//            String status = request.getStatus();
+//            Object[] row = new Object[6];
+//            row[0] = request.getSender().getEmployee().getName();
+//            if (status.equalsIgnoreCase("Sent to Treasurer") || status.equalsIgnoreCase("Sent to Secretary")) {
+//                row[1] = null;
+//            } else {
+//                row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+//            }
+//            //row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+//            row[2] = status;
+//            row[3] = ((OrderWorkRequest) request).getBillAmount();
+//            row[4] = ((OrderWorkRequest) request).getMessage();
+//            row[5] = request;
+//
+//            model.addRow(row);
+//        }
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
