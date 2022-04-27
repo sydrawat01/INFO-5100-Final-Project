@@ -1,17 +1,56 @@
 package UI.PharmacyManager;
 
+
+//import UI.GovernmentTreasurerRole.*;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Order.Order;
+import ChemoCare.Org.HealthOfficialOrg;
+import ChemoCare.Org.ManagerOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.FinancialOfficialOrg;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.OrderJob;
+import ChemoCare.JobQueue.JobRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+import UI.LabAttendant.LabAttendantProcessRequest;
+import UI.GovtFinancialOfficial.*;
+
+
 /**
  *
  * @author sid
  */
 public class ManagerWorkArea extends javax.swing.JPanel {
-
+     private JPanel jPanel;
+    private Account account;
+    private ManagerOrg managerOrg;
+    private Enterprise enterprise;
+    List<Order> completed = new ArrayList<>();
+    List<Order> inProgress = new ArrayList<>();
   /**
    * Creates new form ManagerWorkArea
    */
-  public ManagerWorkArea() {
-    initComponents();
-  }
+     public ManagerWorkArea(JPanel jpanel, Account account, Org org, Enterprise enterprise) {
+        initComponents();
+        this.enterprise = enterprise;
+        this.jPanel = jpanel;
+        this.managerOrg = (ManagerOrg) org;
+        this.account = account;
+
+        populateTable();
+    }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -157,30 +196,138 @@ public class ManagerWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        
+          int selectedRow = tblWorkRequest.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            JobRequest request = (OrderJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            if (request.getStatus().equals("Sent to Pharma")) {
+                request.setReceiver(account);
+                request.setStatus("Pending on Manager");
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Success !! Request is assigned to you ");
+            } else {
+                JOptionPane.showMessageDialog(null, "Can't assign this work request, as the work request is in " + request.getStatus() + " status", "Warning!", JOptionPane.WARNING_MESSAGE);
+            }
+        }        
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnRequestGovSecretaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestGovSecretaryActionPerformed
         // TODO add your handling code here:
+        
+         int selectedRow = tblWorkRequest.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            OrderJob request = (OrderJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            if (request.getStatus().equalsIgnoreCase("Sent to Pharma")) {
+                JOptionPane.showMessageDialog(null, "Please assign selected request first");
+                return;
+            }
+            if (request.getStatus().equalsIgnoreCase("Accepted")) {
+                JOptionPane.showMessageDialog(null, "Request already completed", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.equals(request.getReceiver())) {
+                JOptionPane.showMessageDialog(null, "Not Authorized", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.equals(request.getReceiver())) {
+                JOptionPane.showMessageDialog(null, "Not Authorized", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.getEmployee().equals(request.getReceiver().getEmployee())) {
+                JOptionPane.showMessageDialog(null, "Request assigned to other Officer", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (request.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Cannot process a Rejected Request", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            //request.setStatus("Processing");
+            ManagerProcessRequest managerProcessWorkRequest = new ManagerProcessRequest(jPanel, request, enterprise, account);
+            jPanel.add("ManagerProcessWorkRequestJPanel", managerProcessWorkRequest);
+            CardLayout layout = (CardLayout) jPanel.getLayout();
+            layout.next(jPanel);
+        }
     
     }//GEN-LAST:event_btnRequestGovSecretaryActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
+        
+            ManageMenu managerProcessWorkRequestJPanel = new ManageMenu(jPanel, enterprise);
+            jPanel.add("MnagerProcessWorkRequestJPanel", managerProcessWorkRequestJPanel);
+            CardLayout layout = (CardLayout) jPanel.getLayout();
+            layout.next(jPanel);
      
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCheckStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckStatsActionPerformed
         // TODO add your handling code here:
+        
+        
+//        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
+//        defaultPieDataset.setValue("Orders still under Progress", inProgress.size());
+//        defaultPieDataset.setValue("Order Completed Successfully", completed.size());
+//        JFreeChart chart = ChartFactory.createPieChart("Order Status Pie Chart", defaultPieDataset, true, true, true);
+//        PiePlot piePlot =(PiePlot) chart.getPlot();
+//        ChartFrame frame = new ChartFrame("Order Status Pie Chart", chart);
+//        frame.setVisible(true);
+//        frame.setSize(500,500);
       
     }//GEN-LAST:event_btnCheckStatsActionPerformed
 
     private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
-        // TODO add your handling code here:
-    
+          // TODO add your handling code here:
+          
+           int selectedRow = tblWorkRequest.getSelectedRow();
+        String to="";
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            OrderJob request = (OrderJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            to = request.getSender().getEmployee().getEmpEmail();
+            SendEmailJPanel emailJPanel = new SendEmailJPanel(jPanel,to,"Pharma");
+            jPanel.add("emailJPanel", emailJPanel);
+            CardLayout layout = (CardLayout) jPanel.getLayout();
+            layout.next(jPanel);
+        }
+        
     }//GEN-LAST:event_btnEmailActionPerformed
 
+   public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+        model.setRowCount(0);
 
+        for (JobRequest request : managerOrg.getJobQueue().getJobRequestList()) {
+            String status = request.getStatus();
+            Object[] row = new Object[6];
+            row[0] = request.getSender().getEmployee().getEmpName();
+            if (status.equalsIgnoreCase("Sent to Pharma")) {
+                row[1] = null;
+            } else {
+                row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getEmpName();
+            }
+            row[2] = status;
+            row[3] = ((OrderJob) request).getBillAmt();
+            row[4] = ((OrderJob) request).getMessage();
+            row[5] = request;
+
+            model.addRow(row);
+            if(status.equals("Accepted"))
+            {
+              completed.add(((OrderJob) request).getOrder());
+            }
+            else
+            {
+               inProgress.add(((OrderJob) request).getOrder()); 
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnCheckStats;

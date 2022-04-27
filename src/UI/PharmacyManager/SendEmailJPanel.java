@@ -4,17 +4,36 @@
  */
 package UI.PharmacyManager;
 
+import ChemoCare.Order.ItemList;
+import ChemoCare.Order.Order;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import ChemoCare.Map.SendEmail;
+import java.util.List;
+import UI.HealthcareAccountant.ProcessMedicalBillsJPanel;
+import UI.PatientRole.PatientVisitPlan;
+//import userinterface.HealthcareAccountantRole.ProcessMedicalBillingsJPanel;
+//import userinterface.PatientRole.PatientPlanVisitJPanel;
+
 /**
  *
  * @author harshita
  */
-public class SendEmail extends javax.swing.JPanel {
+public class SendEmailJPanel extends javax.swing.JPanel {
+      JPanel userProcessContainer;
+    private String type;
 
     /**
      * Creates new form SendEmail
      */
-    public SendEmail() {
-        initComponents();
+    public SendEmailJPanel(JPanel userProcessContainer, String to, String type) {
+      initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.type = type;
+        
+        txtSendTo.setText(to);
     }
 
     /**
@@ -130,11 +149,54 @@ public class SendEmail extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-    
+  String labResult = txtResult.getText().trim();
+       String message = txtBody.getText().trim();
+       String to = txtSendTo.getText().trim();
+        if (labResult.equals("")) {
+            JOptionPane.showMessageDialog(null, "Subject is mandatory");
+            return;
+        }
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory");
+            return;
+        }
+        if (to.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory");
+            return;
+        }
+        try{
+            SendEmail.send(to, message, labResult);
+            JOptionPane.showMessageDialog(null, "Email sent");
+            txtResult.setText("");
+            txtBody.setText("");
+            txtSendTo.setEnabled(false);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    
+        }    
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+           userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        if(type.equals("Pharma"))
+        {
+        ManagerWorkArea wjp = (ManagerWorkArea) component;
+        }
+        else if(type.equals("Customer")){
+            ProcessMedicalBillsJPanel ppj= (ProcessMedicalBillsJPanel) component;
+            ppj.populateTable();
+            }
+        else
+        {
+            ProcessMedicalBillsJPanel pmj= (ProcessMedicalBillsJPanel) component;
+            pmj.populateTable();
+            pmj.populateInsuranceClaimTable();
+        }
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);       
     }//GEN-LAST:event_btnBackActionPerformed
 
 

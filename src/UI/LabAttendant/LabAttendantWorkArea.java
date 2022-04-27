@@ -1,17 +1,64 @@
 package UI.LabAttendant;
 
+import ChemoCare.Account.Account;
+
+import ChemoCare.Org.LabAttendantOrg;
+import javax.swing.JPanel;
+
+import ChemoCare.Ecosystem;
+import ChemoCare.Org.LabAttendantOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.JobQueue.JobRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sid
  */
 public class LabAttendantWorkArea extends javax.swing.JPanel {
 
+    
+        private JPanel userProcessContainer;
+    private Ecosystem business;
+    private Account account;
+    private LabAttendantOrg labAttendantOrg;
   /**
    * Creates new form LabAttendantWorkArea
    */
-  public LabAttendantWorkArea() {
-    initComponents();
-  }
+    public LabAttendantWorkArea(JPanel userProcessContainer, Account account, Org org, Ecosystem business) {
+        initComponents();
+
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.business = business;
+        this.labAttendantOrg = (LabAttendantOrg) org;
+
+        populateTable();
+    }
+    
+      public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+
+        model.setRowCount(0);
+
+        for (JobRequest request : labAttendantOrg.getJobQueue().getJobRequestList()) {
+            Object[] row = new Object[6];
+            row[0] = request;
+            row[1] = request.getSender().getEmployee().getEmpName();
+            row[2] = ((PatientVisitJob) request).getLabAssistant();
+            row[3] = request.getStatus();
+            row[4] = ((PatientVisitJob) request).getPatient().getPatientFName() + " " + ((PatientVisitJob) request).getPatient().getPatientLName();
+            row[5] = ((PatientVisitJob) request).getPatient().getPatientID();
+            model.addRow(row);
+        }
+    }
+
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -117,12 +164,69 @@ public class LabAttendantWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+      int selectedRow = workRequestJTable.getSelectedRow();
 
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null,"Please select a row first");
+            return;
+        }
+
+        PatientVisitJob request = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 0);
+        if (request.getLabAssistant() == null) {
+            if (request.getStatus().equalsIgnoreCase("SentToLab")) {
+                request.setLabAssistant(account);
+                request.setStatus("Pending on Lab Assistant");
+                //  request.setReceiver(userAccount);
+                populateTable();
+                JOptionPane.showMessageDialog(null, "The request is assigned to You!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Cannot assign this lab request as the current status is: " + request.getStatus());
+            }
+        }
+        else
+        {
+            if(account.equals(request.getLabAssistant()))
+            {
+                JOptionPane.showMessageDialog(null,"Request is already assigned to you");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Request is assigned to other Lab Assistant");
+            }
+        }
     
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+       int selectedRow = workRequestJTable.getSelectedRow();
 
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+
+        PatientVisitJob request = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 0);
+
+       // request.setStatus("Processing");
+        LabAttendantProcessRequest processWorkRequestJPanel = new LabAttendantProcessRequest(userProcessContainer, request);
+        if (request.getLabAssistant() != null) {
+            if (account.equals(request.getLabAssistant())) {
+                if (request.getStatus().equalsIgnoreCase("Pending on Lab Assistant")) {
+
+                    userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                    layout.next(userProcessContainer);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot process the request as the status is: " + request.getStatus());
+                }
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Not authorised to process the request");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please assign the request first");
+        }
 
     }//GEN-LAST:event_btnProcessActionPerformed
 

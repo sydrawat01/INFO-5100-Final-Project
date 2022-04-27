@@ -4,17 +4,31 @@
  */
 package UI.LabAttendant;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.PatientVisitJob;
+
 /**
  *
  * @author harshita
  */
 public class LabAttendantProcessRequest extends javax.swing.JPanel {
+    
+    
+    JPanel userProcessContainer;
+    PatientVisitJob patientTreatmentWorkRequest;
 
     /**
      * Creates new form LabAttendantProcessRequest
      */
-    public LabAttendantProcessRequest() {
+      public LabAttendantProcessRequest(JPanel userProcessContainer, PatientVisitJob patientTreatmentWorkRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.patientTreatmentWorkRequest = patientTreatmentWorkRequest;
     }
 
     /**
@@ -100,12 +114,32 @@ public class LabAttendantProcessRequest extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitBtnActionPerformed
+      String labResult = resultJTextField.getText().trim();
+        if (labResult.equals("")) {
+            JOptionPane.showMessageDialog(null, "Result is mandatory");
+            return;
+        } else {
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                patientTreatmentWorkRequest.setLabResult(labResult);
+                patientTreatmentWorkRequest.setStatus("Lab Test Completed");
+                JOptionPane.showMessageDialog(null, "Result submitted successfully");
+                resultJTextField.setText("");
+                btnSubmitBtn.setEnabled(false);
+            }
 
+        }
 
     }//GEN-LAST:event_btnSubmitBtnActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+      userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        LabAttendantWorkArea dwjp = (LabAttendantWorkArea) component;
+        dwjp.populateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

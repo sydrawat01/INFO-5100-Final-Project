@@ -4,18 +4,57 @@
  */
 package UI.PharmacyManager;
 
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Enterprise.PharmacyEnterprise;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.Org.Type; 
+import ChemoCare.Org.OrgDirectory;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+
 /**
  *
  * @author harshita
  */
 public class ManageMenu extends javax.swing.JPanel {
+    
+        private Org directory;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+
 
     /**
      * Creates new form ManageMenu
      */
-    public ManageMenu() {
-        initComponents();
+    public ManageMenu(JPanel userProcessContainer, Enterprise enterprise) {
+            initComponents();
+        this.userProcessContainer = userProcessContainer;
+ 
+        this.enterprise = enterprise;
+
+        populateTable();
     }
+    
+        private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        PharmacyEnterprise restaurant = (PharmacyEnterprise) enterprise;
+        HashMap menuItem = restaurant.getMenu();
+        model.setRowCount(0);
+
+        for (Object i: menuItem.keySet()) {
+            Object[] row = new Object[2];
+            row[0] = i;
+            row[1] = menuItem.get(i);
+
+            model.addRow(row);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +113,6 @@ public class ManageMenu extends javax.swing.JPanel {
 
         btnDelete.setBackground(new java.awt.Color(64, 123, 255));
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +122,6 @@ public class ManageMenu extends javax.swing.JPanel {
 
         btnAddMenuItem.setBackground(new java.awt.Color(64, 123, 255));
         btnAddMenuItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnAddMenuItem.setForeground(new java.awt.Color(255, 255, 255));
         btnAddMenuItem.setText("Add Menu Item");
         btnAddMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +135,6 @@ public class ManageMenu extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(64, 123, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,16 +214,53 @@ public class ManageMenu extends javax.swing.JPanel {
     private void btnAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMenuItemActionPerformed
 
         //Type type = (Type) organizationJComboBox.getSelectedItem();
+       PharmacyEnterprise restaurant = (PharmacyEnterprise) enterprise;
+        HashMap menuItem = restaurant.getMenu();
+        String item = txtItem.getText().trim();
+        String price = txtItemPrice.getText().trim();
+        Double itemPrice=0.0;
+        try
+        {
+            itemPrice = Double.parseDouble(price);
+            menuItem.put(item, itemPrice);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Price can only be integer");
+            return;
+        }
+        
+        //populateTable();
+        txtItem.setText("");
+        txtItemPrice.setText("");
+        populateTable();
         
     }//GEN-LAST:event_btnAddMenuItemActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+     userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
  
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        
+        PharmacyEnterprise restaurant = (PharmacyEnterprise) enterprise;
+        HashMap menuItem = restaurant.getMenu();
+        int selectedRow = organizationJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details", "Warning!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            //Organization organization = (Organization) organizationJTable.getValueAt(selectedRow, 1);
+            String item = (String) organizationJTable.getValueAt(selectedRow, 0);
+            menuItem.remove(item);
+            //enterprise.getOrganizationDirectory().getOrganizations().remove(organization);
+            populateTable();
+            JOptionPane.showMessageDialog(null, "Item deleted!");
+            
+        }
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 

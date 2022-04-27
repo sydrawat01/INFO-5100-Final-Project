@@ -4,17 +4,48 @@
  */
 package UI.PharmacyManager;
 
+//import userinterface.GovernmentTreasurerRole.*;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Map.MapViewer;
+import ChemoCare.Map.SMS;
+import ChemoCare.Map.SendEmail;
+import ChemoCare.Order.ItemList;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.TransportOrg;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.OrderJob;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author harshita
  */
 public class ManagerProcessRequest extends javax.swing.JPanel {
+   private JPanel jPanel;
+    private OrderJob orderItemRequest;
+    private Enterprise enterprise;
+    private Account account;
 
     /**
      * Creates new form ManagerProcessRequest
      */
-    public ManagerProcessRequest() {
+      public ManagerProcessRequest(JPanel jPanel, OrderJob fundRequest, Enterprise enterprise, Account account) {
         initComponents();
+        this.jPanel = jPanel;
+        this.orderItemRequest = fundRequest;
+        this.account = account;
+        this.enterprise = enterprise;
+        txtAmount.setText(String.valueOf(orderItemRequest.getOrder().getAmount()));
+        txtLocation.setText(orderItemRequest.getVisitReason());
+        txtPopulation.setText(String.valueOf(orderItemRequest.getOrderMsg()));
+
     }
 
     /**
@@ -42,7 +73,6 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
 
         btnSendToTransport.setBackground(new java.awt.Color(64, 123, 255));
         btnSendToTransport.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSendToTransport.setForeground(new java.awt.Color(255, 255, 255));
         btnSendToTransport.setText("Send To Transport");
         btnSendToTransport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,7 +82,6 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
 
         btnReject.setBackground(new java.awt.Color(64, 123, 255));
         btnReject.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +101,6 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(64, 123, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +121,6 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
 
         btnViewOnMap.setBackground(new java.awt.Color(64, 123, 255));
         btnViewOnMap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnViewOnMap.setForeground(new java.awt.Color(255, 255, 255));
         btnViewOnMap.setText("View on Map");
         btnViewOnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +178,7 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(0, 726, Short.MAX_VALUE))
+                .addGap(0, 1553, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(167, 167, 167)
@@ -175,11 +202,72 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSendToTransport, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(423, Short.MAX_VALUE)))
+                    .addContainerGap(1250, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendToTransportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendToTransportActionPerformed
+     btnSendToTransport.setEnabled(true);
+        String message = txtMessage.getText();
+        String sub = "Your Order is Ready to deliver";
+        String odrderDtl = "Order Details\n*************************************************\n";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        }
+        else{
+        orderItemRequest.setMessage(message);
+        
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+         if (dialogResult == JOptionPane.YES_OPTION) {
+        orderItemRequest.setSender(account);
+        orderItemRequest.setReceiver(null);
+        orderItemRequest.setStatus("Sent to Transport");
+
+        Org org = null;
+        for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+            if (organization instanceof TransportOrg) {
+                org = organization;
+                break;
+            }
+        }
+        if (org != null) {
+            org.getJobQueue().getJobRequestList().add(orderItemRequest);
+            account.getJobQueue().getJobRequestList().add(orderItemRequest);
+        }
+        //Send email
+        try{
+                    
+                    List<ItemList> itm = orderItemRequest.getOrder().getItemList();
+                    for(ItemList i:itm)
+                    {
+                        odrderDtl=odrderDtl+"Item: "+i.getItem()+" , Quantity: "+i.getQuantity()+", Item Price: $"+i.getTotal()+"\n";
+                    }
+                    odrderDtl = odrderDtl+"*************************************************\n";
+                    odrderDtl=odrderDtl+"\n\nTotal Price: $"+orderItemRequest.getOrder().getAmount();
+                SendEmail.send(orderItemRequest.getHospitalAdmin().getEmployee().getEmpEmail(),"\nHi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\n\nYour Order# "+ orderItemRequest.getOrder().getItemID() +
+                        " is ready for delivery"+"\n\n\n\n"+odrderDtl+"\n\nThanks,\n",sub);
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\nYour order# : "+orderItemRequest.getOrder().getItemID()+" is ready for delivery"+
+                        "\n\nThanks");
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+        JOptionPane.showMessageDialog(null, "Request to Transport sent Successful!!!");
+        txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnSendToTransport.setEnabled(false);
+        }
+
+        txtMessage.setText("");
+        }
      
     }//GEN-LAST:event_btnSendToTransportActionPerformed
 
