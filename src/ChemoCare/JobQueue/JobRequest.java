@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author sid
  */
-public class JobRequest {
+public abstract class JobRequest {
   private String message;
   private Account sender;
   private Account receiver;
