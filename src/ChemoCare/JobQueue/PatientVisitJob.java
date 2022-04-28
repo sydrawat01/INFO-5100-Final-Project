@@ -106,9 +106,9 @@ public class PatientVisitJob extends JobRequest{
     this.assignedDoctor = assignedDoctor;
   }
 
-  public boolean isIsComplete() {
-    return isComplete;
-  }
+    public boolean getIsComplete() {
+        return isComplete;
+    }
 
   public void setIsComplete(boolean isComplete) {
     this.isComplete = isComplete;

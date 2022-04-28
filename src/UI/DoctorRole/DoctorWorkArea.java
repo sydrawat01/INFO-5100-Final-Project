@@ -1,18 +1,71 @@
 package UI.DoctorRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.DoctorOrg;
+import ChemoCare.Ecosystem;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.JobQueue.JobRequest;
+import UI.HealthcareAccountant.CreateAppointmentJPanel;
+import javax.swing.JPanel;
+
+import java.awt.CardLayout;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+
 /**
  *
  * @author sid
  */
 public class DoctorWorkArea extends javax.swing.JPanel {
-
+       private JPanel userProcessContainer;
+    private DoctorOrg doctorOrg;
+    private Enterprise enterprise;
+    private Account account;
   /**
    * Creates new form DoctorWorkArea
    */
-  public DoctorWorkArea() {
+  public DoctorWorkArea(JPanel userProcessContainer, Account account, DoctorOrg org, Enterprise enterprise) {
     initComponents();
+    
+        this.userProcessContainer = userProcessContainer;
+        this.doctorOrg = org;
+        this.enterprise = enterprise;
+        this.account = account;
+        lblValue.setText(enterprise.getOrgName());
+        populateRequestTable();
   }
+public void populateRequestTable() {
 
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+
+        model.setRowCount(0);
+
+        for (JobRequest request : doctorOrg.getJobQueue().getJobRequestList()) {
+            Object[] row = new Object[8];
+            row[0] = ((PatientVisitJob) request).getRegDate();
+            row[1] = String.valueOf(((PatientVisitJob) request).getPatient().getPatientID());
+            row[2] = ((PatientVisitJob) request).getPatient().getPatientFName() + " " + ((PatientVisitJob) request).getPatient().getPatientLName();
+            row[3] = ((PatientVisitJob) request);
+            row[4] = ((PatientVisitJob) request).getAssignedDoctor();
+            row[5] = ((PatientVisitJob) request).getLabAssistant();
+            row[6] = ((PatientVisitJob) request).getLabResult();
+            row[7] = request.getStatus();
+
+            model.addRow(row);
+//            if(patientToLab.get((PatientVisitWorkRequest)request) == null)
+//            {
+//                patientToLab.put((PatientVisitWorkRequest)request, null);
+//            }
+
+        }
+    }
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,23 +234,145 @@ public class DoctorWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
+         int selectedRow = workRequestJTable.getSelectedRow();
+        PatientVisitJob workRequest;
 
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        } else {
+            workRequest = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 3);
+            if (workRequest.getAssignedDoctor() != null) {
+                if (account.equals(workRequest.getAssignedDoctor())) {
+                    if (workRequest.getStatus().equalsIgnoreCase("Under Consultation")) {
+
+                        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                        userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestsJPanel(userProcessContainer, account, enterprise, workRequest));
+                        layout.next(userProcessContainer);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Can not create the Lab request as the current status is " + workRequest.getStatus());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Not Authorised");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please assign the request first");
+            }
+        }
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
+   int selectedRow = workRequestJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        } else {
 
+            JobRequest patientTreatmentWorkRequest = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 3);
+            if (((PatientVisitJob) patientTreatmentWorkRequest).getAssignedDoctor() == null) {
+
+                if (patientTreatmentWorkRequest.getStatus().equalsIgnoreCase("Waiting for Doctor")) {
+                    //patientTreatmentWorkRequest.setReceiver(userAccount);
+                    ((PatientVisitJob) patientTreatmentWorkRequest).setAssignedDoctor(account);
+                    patientTreatmentWorkRequest.setStatus("Under Consultation");
+                    populateRequestTable();
+                    JOptionPane.showMessageDialog(null, "Success !! Request is assigned to you ");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot assign this patient as its current state is: " + patientTreatmentWorkRequest.getStatus());
+                }
+
+            } else {
+                if(account.equals(((PatientVisitJob) patientTreatmentWorkRequest).getAssignedDoctor())) {
+                 JOptionPane.showMessageDialog(null, "Request is already assigned to you");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Not Authorized");
+                }
+            }
+        }
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProvidePrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProvidePrescriptionActionPerformed
-        
+         int selectedRow = workRequestJTable.getSelectedRow();
+        PatientVisitJob workRequest;
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        } else {
+            workRequest = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 3);
+            if(workRequest.getAssignedDoctor() != null)
+            {
+            if (account.equals(workRequest.getAssignedDoctor())) {
+                if (workRequest.getStatus().equalsIgnoreCase("Lab Test Completed") || workRequest.getStatus().equalsIgnoreCase("Under Consultation")) {
+
+                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                    userProcessContainer.add("ProvidePrescriptionJPanel", new ProvidePrescriptionJPanel(userProcessContainer, account, enterprise, workRequest));
+                    layout.next(userProcessContainer);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot prescribe the Patient as the status is: " + workRequest.getStatus());
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Not Authorised");
+            }
+        }
+            else {
+                JOptionPane.showMessageDialog(null, "Please assign the request first");
+            }
+        }        
     }//GEN-LAST:event_btnProvidePrescriptionActionPerformed
 
     private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
-    
+      int selectedRow = workRequestJTable.getSelectedRow();
+        PatientVisitJob workRequest;
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        } else {
+            workRequest = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 3);
+            if(workRequest.getAssignedDoctor() != null)
+            {
+            if (account.equals(workRequest.getAssignedDoctor())) {
+                if (workRequest.getStatus().equalsIgnoreCase("Prescription Provided")) {
+
+                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                    userProcessContainer.add("RequestBillingJPanel", new RequestBillingsJPanel(userProcessContainer, account, enterprise, workRequest));
+                    layout.next(userProcessContainer);
+                } else {
+                    if(workRequest.getStatus().equalsIgnoreCase("Consultation Completed"))
+                    {
+                        JOptionPane.showMessageDialog(null, "Treatment is already complete!");
+                    }
+                    else
+                    {
+                    JOptionPane.showMessageDialog(null, "Cannot complete the treatment. Please provide Prescription first!");
+                }
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Not Authorised");
+            }
+        }
+            else {
+                JOptionPane.showMessageDialog(null, "Please assign the request first");
+            }
+        }    
     }//GEN-LAST:event_btnCompleteActionPerformed
 
     private void btnViewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatientActionPerformed
-        
+      int selectedRow = workRequestJTable.getSelectedRow();
+        PatientVisitJob patientVisitJob;
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        } else {
+            patientVisitJob = (PatientVisitJob) workRequestJTable.getValueAt(selectedRow, 3);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            userProcessContainer.add("ViewPatientJPanel", new ViewPatientsJPanel(userProcessContainer, account, enterprise, patientVisitJob));
+            layout.next(userProcessContainer);
+        }        
     }//GEN-LAST:event_btnViewPatientActionPerformed
 
 

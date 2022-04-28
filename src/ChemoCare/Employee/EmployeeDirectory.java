@@ -12,7 +12,9 @@ public class EmployeeDirectory {
   public EmployeeDirectory() {
     empList = new ArrayList<>();
   }
-
+ public ArrayList<Employee> getEmpList() {
+        return empList;
+    }
   public Employee createEmployee(String name) {
     Employee emp = new Employee();
     emp.setEmpName(name);
