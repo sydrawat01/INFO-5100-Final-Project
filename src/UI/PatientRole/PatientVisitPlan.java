@@ -4,17 +4,42 @@
  */
 package UI.PatientRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.CancerCenterEnterprise;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Map.MapViewer;
+import ChemoCare.NetworkSystem.NetworkSystem;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author harshita
+ * @author harshita, sid
  */
 public class PatientVisitPlan extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientVisitPlan
      */
-    public PatientVisitPlan() {
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Account account;
+    private Ecosystem ecosystem;
+    
+    public PatientVisitPlan(JPanel userProcessContainer, Account account, Enterprise enterprise,Ecosystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.ecosystem = business;
+        patientId.setText(account.getCustomer().getPatientID());
+        patientName.setText(account.getCustomer().getPatientFName()+" "+account.getCustomer().getPatientLName());
+        populateTable();
     }
 
     /**
@@ -193,27 +218,96 @@ public class PatientVisitPlan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+      userProcessContainer.remove(this);
+      Component[] componentArray = userProcessContainer.getComponents();
+      Component component = componentArray[componentArray.length - 1];
+      PatientWorkArea patientWA = (PatientWorkArea) component;
+      patientWA.populateTable();
+      patientWA.populateInsuranceTable();
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapActionPerformed
-        // TODO add your handling code here:
-     
+      // TODO add your handling code here:
+      int selectedRow = workRequestJTable.getSelectedRow();
+      if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a row first");
+        return;
+      }
+      String location = workRequestJTable.getValueAt(selectedRow, 2).toString();
+      if (location.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Select a row first");
+      } else {
+        SwingUtilities.invokeLater(new Runnable() {
+          @Override
+          public void run() {
+            MapViewer browser = new MapViewer();
+            browser.setVisible(true);
+            browser.loadURL("https://www.google.com/maps/search/?api=1&query=" + location.trim());
+          }
+        });
+      }
     }//GEN-LAST:event_btnMapActionPerformed
 
     private void btnDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDirActionPerformed
-        // TODO add your handling code here:
-    
+      // TODO add your handling code here:
+      int selectedRow = workRequestJTable.getSelectedRow();
+      if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a row first");
+        return;
+      }
+      String location = workRequestJTable.getValueAt(selectedRow, 2).toString();
+      if (location.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Select a row first");
+      } else {
+        SwingUtilities.invokeLater(new Runnable() {
+          @Override
+          public void run() {
+            MapViewer browser = new MapViewer();
+            browser.setVisible(true);
+            browser.loadURL("https://www.google.com/maps/dir/?api=1&destination=" + location.trim());
+          }
+        });
+      }
     }//GEN-LAST:event_btnDirActionPerformed
 
     private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
         // TODO add your handling code here:
-  
+      int selectedRow = workRequestJTable.getSelectedRow();
+      String to = "";
+      if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a row first");
+        return;
+      } else {
+        to = workRequestJTable.getValueAt(selectedRow, 3).toString();
+        SendEmailJPanel emailJPanel = new SendEmailJPanel(userProcessContainer, to, "Customer");
+        userProcessContainer.add("emailJPanel", emailJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+      }
     }//GEN-LAST:event_btnEmailActionPerformed
 
     private void btnWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebActionPerformed
-        // TODO add your handling code here:
- 
+      // TODO add your handling code here:
+      int selectedRow = workRequestJTable.getSelectedRow();
+      if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a row first");
+        return;
+      }
+      String location = workRequestJTable.getValueAt(selectedRow, 4).toString();
+      if (location.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Select a row first");
+      } else {
+        SwingUtilities.invokeLater(new Runnable() {
+          @Override
+          public void run() {
+            MapViewer browser = new MapViewer();
+            browser.setVisible(true);
+            browser.loadURL(location.trim());
+          }
+        });
+      }
     }//GEN-LAST:event_btnWebActionPerformed
 
 
@@ -231,4 +325,25 @@ public class PatientVisitPlan extends javax.swing.JPanel {
     private javax.swing.JLabel patientName;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
+
+  public void populateTable() {
+    DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+    model.setRowCount(0);
+    for (NetworkSystem ns : ecosystem.getNetworkSystems()) {
+      for (Enterprise e : ns.getEnterpriseDirectory().
+          getEnterpriseList()) {
+        if ((e instanceof CancerCenterEnterprise) && (ns.getZipcode() == e.getZipcode())) {
+          String website = "https://www.google.com";
+          Object[] row = new Object[5];
+          row[0] = e.getOrgName();
+          row[1] = ns.getName();
+          row[2] = e.getAddress();
+          row[3] = e.getEmail();
+          row[4] = website;
+          model.addRow(row);
+        }
+      }
+
+    }
+  }
 }

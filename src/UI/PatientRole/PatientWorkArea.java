@@ -1,5 +1,24 @@
 package UI.PatientRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.CancerCenterEnterprise;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Enterprise.InsuranceCompanyEnterprise;
+import ChemoCare.JobQueue.InsuranceJob;
+import ChemoCare.JobQueue.JobRequest;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.NetworkSystem.NetworkSystem;
+import ChemoCare.Org.DoctorOrg;
+import ChemoCare.Org.InsuranceAgentOrg;
+import ChemoCare.Org.Org;
+import java.awt.CardLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sid
@@ -9,8 +28,22 @@ public class PatientWorkArea extends javax.swing.JPanel {
   /**
    * Creates new form PatientWorkArea
    */
-  public PatientWorkArea() {
+  JPanel userProcessContainer;
+  Enterprise enterprise;
+  Account account;
+  Ecosystem ecosystem;
+  public PatientWorkArea(JPanel userProcessContainer, Account account, Enterprise enterprise, Ecosystem business) {
     initComponents();
+    this.userProcessContainer = userProcessContainer;
+    this.enterprise = enterprise;
+    this.account = account;
+    this.ecosystem = business;
+    lblPatientID.setText(account.getCustomer().getPatientID());
+    lblPatientName.setText(account.getCustomer().getPatientFName()+" "+account.getCustomer().getPatientLName());
+    
+    populateTable();
+    populateInsuranceTable();
+    addPatientImage();
   }
 
   /**
@@ -196,18 +229,45 @@ public class PatientWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewHospitalActionPerformed
-        // TODO add your handling code here:
-        
+      // TODO add your handling code here:
+      PatientVisitPlan patientVisitPlan = new PatientVisitPlan(userProcessContainer, account,enterprise, ecosystem);
+        userProcessContainer.add("PatientPlanVisitJPanel", patientVisitPlan);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewHospitalActionPerformed
 
     private void btnPrintInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInvoiceActionPerformed
-        // TODO add your handling code here:
-        
+      // TODO add your handling code here:
+      int selectedRow = tblWorkRequest.getSelectedRow();
+
+      if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a row first");
+        return;
+      }
+      PatientVisitJob visit =
+          (PatientVisitJob) tblWorkRequest.getValueAt(selectedRow, 0);
+      PatientInvoiceAndPrescription invoicePrescription =
+          new PatientInvoiceAndPrescription(userProcessContainer, account, enterprise, ecosystem, visit);
+      userProcessContainer.add("invoicePrescription ",invoicePrescription);
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPrintInvoiceActionPerformed
 
     private void btnPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescriptionActionPerformed
-        // TODO add your handling code here:
+      // TODO add your handling code here:
+      int selectedRow = tblWorkRequest.getSelectedRow();
 
+      if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(null, "Please select a row first");
+        return;
+      }
+      PatientVisitJob visit = (PatientVisitJob) tblWorkRequest.getValueAt(selectedRow, 0);
+
+      PatientPrescription managePrescription =
+          new PatientPrescription(userProcessContainer, account,enterprise, ecosystem, visit);
+      userProcessContainer.add("managePrescription ", managePrescription);
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPrescriptionActionPerformed
 
 
@@ -226,4 +286,76 @@ public class PatientWorkArea extends javax.swing.JPanel {
     private javax.swing.JTable tblIns;
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
+
+  public void populateTable() {
+    DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+    model.setRowCount(0);
+    for (NetworkSystem net : ecosystem.getNetworkSystems()) {
+      for (Enterprise enter : net.getEnterpriseDirectory().getEnterpriseList()) {
+        if ((enter instanceof CancerCenterEnterprise) && (net.getZipcode() == enter.getZipcode())) {
+          for (Org org : enter.getOrgDirectory().getOrganizations()) {
+            if (org instanceof DoctorOrg) {
+              for (JobRequest request : org.getJobQueue().getJobRequestList()) {
+                if (((PatientVisitJob) request).getPatient().getPatientID().equals(account.getCustomer().getPatientID())) {
+                  String status = request.getStatus();
+                  Object[] row = new Object[5];
+                  row[0] = request;
+                  row[1] = status;
+                  row[2] = ((PatientVisitJob) request).getBillAmount();
+                  row[3] = ((PatientVisitJob) request).getPatient().getInsuranceCustomer().getInsurancePlanNumber();
+                  if (((PatientVisitJob) request).getAssignedDoctor() != null) {
+                    row[4] = ((PatientVisitJob) request).
+                        getAssignedDoctor().getEmployee().getEmpName();
+                  } else {
+                    row[4] = "Not Assigned";
+                  }
+
+                  model.addRow(row);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public void populateInsuranceTable() {
+    DefaultTableModel model = (DefaultTableModel) tblIns.getModel();
+    model.setRowCount(0);
+    for (NetworkSystem net : ecosystem.getNetworkSystems()) {
+      for (Enterprise enter : net.getEnterpriseDirectory().getEnterpriseList()) {
+        if (enter instanceof InsuranceCompanyEnterprise) {
+          for (Org org : enter.getOrgDirectory().getOrganizations()) {
+            if (org instanceof InsuranceAgentOrg) {
+              for (JobRequest request : org.getJobQueue().getJobRequestList()) {
+                if (((InsuranceJob) request).getSsn().equals(account.getCustomer().getSSN())) {
+                  String status = request.getStatus();
+                  Object[] row = new Object[5];
+                  row[0] = request;
+                  row[1] = status;
+                  row[2] = ((InsuranceJob) request).getBillAmount();
+                  row[3] = ((InsuranceJob) request).getClaimAmount();
+                  row[4] = ((InsuranceJob) request).getAgent();
+                  model.addRow(row);
+                }
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+  public void addPatientImage() {
+    String Path;
+        Path = lblPatientID.getText()+".jpg";
+        ImageIcon icon = new ImageIcon(Path);
+        Image img = icon.getImage();
+        Image imagescaled = img.getScaledInstance(130,120,Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imagescaled);
+        personImageLabels.setIcon(scaledIcon);
+  }
 }

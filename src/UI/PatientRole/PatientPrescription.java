@@ -4,17 +4,62 @@
  */
 package UI.PatientRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.PatientVisitJob;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.print.PrinterException;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
- * @author harshita
+ * @author harshita, sid
  */
 public class PatientPrescription extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientPrescription
      */
-    public PatientPrescription() {
+  private JPanel userProcessContainer;
+  private Enterprise enterprise;
+  private Account account;
+  private Ecosystem ecosystem;
+
+  private PatientVisitJob visitJob;
+    public PatientPrescription(JPanel userProcessContainer, Account account, Enterprise enterprise, Ecosystem ecosystem, PatientVisitJob visitJob) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.ecosystem = ecosystem;
+        this.visitJob = visitJob;
+        
+        setUneditable();
+        
+        try {
+        txtPatientIdP.setText(account.getCustomer().getPatientID());
+        txtPatientNameP.setText(account.getCustomer().getPatientFName() + " " + account.getCustomer().getPatientLName());
+        txtConsultedBy.setText(visitJob.getAssignedDoctor().getEmployee().getEmpName());
+        txtPrescription.setText(visitJob.getPrescription());
+
+        setUneditable();
+
+        String patientIdp = String.format(txtPatientIdP.getText());
+        String patientNamep = String.format(txtPatientNameP.getText());
+        String doctorNamep = String.format(txtConsultedBy.getText());
+        String prescription = String.format(txtPrescription.getText());
+
+        txtAreaPrescription.append("\t Patient Prescription\n\n" +
+            " Patient ID: " + patientIdp + "\n Patient Name: " + patientNamep +
+            "\n Consulted By: " + doctorNamep + "\n Prescription: " +
+            prescription + "\n\n \t Thank You For Visiting" +
+            "\n\n \t Please Take Care");
+      } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Nothing to display ");
+      }
     }
 
     /**
@@ -158,13 +203,29 @@ public class PatientPrescription extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        // TODO add your handling code here:
-        
+      // TODO add your handling code here:
+      try {
+        boolean complete = txtAreaPrescription.print();
+        if (complete) {
+          /* show a success message  */
+          JOptionPane.showMessageDialog(null, "Printed");
+        } else {
+          /*show a message indicating that printing was cancelled */
+          JOptionPane.showMessageDialog(null,
+              "Couldnot print because of technical issues!");
+        }
+      } catch (PrinterException pe) {
+        /* Printing failed, report to the user */
+      }
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-        // TODO add your handling code here:
-        
+      // TODO add your handling code here:
+      userProcessContainer.remove(this);
+      Component[] componentArray = userProcessContainer.getComponents();
+      Component component = componentArray[componentArray.length - 1];
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnbackActionPerformed
 
 
@@ -183,4 +244,11 @@ public class PatientPrescription extends javax.swing.JPanel {
     private javax.swing.JTextField txtPatientNameP;
     private javax.swing.JTextField txtPrescription;
     // End of variables declaration//GEN-END:variables
+
+  public void setUneditable() {
+    txtPatientIdP.setEditable(false);
+    txtPatientNameP.setEditable(false);
+    txtConsultedBy.setEditable(false);
+    txtPrescription.setEditable(false);
+  }
 }

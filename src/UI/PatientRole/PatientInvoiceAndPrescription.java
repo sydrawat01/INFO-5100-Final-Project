@@ -4,17 +4,39 @@
  */
 package UI.PatientRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.PatientVisitJob;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.print.PrinterException;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
- * @author harshita
+ * @author harshita, sid
  */
 public class PatientInvoiceAndPrescription extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientInvoiceAndPrescription
      */
-    public PatientInvoiceAndPrescription() {
+  private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Account userAccount;
+    private Ecosystem ecoSystem;
+    
+    private PatientVisitJob visitJob;
+    public PatientInvoiceAndPrescription(JPanel userProcessContainer, Account account, Enterprise enterprise, Ecosystem ecosystem, PatientVisitJob visitJob) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.userAccount = userAccount;
+        this.ecoSystem = ecoSystem;
+        this.visitJob = visitJob;
+        double claimAmount = 0.0;
     }
 
     /**
@@ -198,12 +220,28 @@ public class PatientInvoiceAndPrescription extends javax.swing.JPanel {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
-       
+        try {
+        boolean complete = txtAreaReceipt.print();
+        if (complete) {
+          /* show a success message  */
+          JOptionPane.showMessageDialog(null, "Printed");
+        } else {
+          /*show a message indicating that printing was cancelled */
+          JOptionPane.showMessageDialog(null,
+              "Couldnot print because of technical issues!");
+        }
+      } catch (PrinterException pe) {
+        /* Printing failed, report to the user */
+      }  
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-       
+       userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
