@@ -132,13 +132,88 @@ public class FinancialOfficialWorkArea extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         
+        int selectedRow = tblWorkRequest.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            JobRequest request = (GovtFundJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            if (request.getStatus().equals("Sent to Treasurer")) {
+                request.setReceiver(account);
+                request.setStatus("Pending on " + request.getReceiver().getEmployee().getEmpName());
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Success !! Request is assigned to you ");
+            } else {
+                JOptionPane.showMessageDialog(null, "Can't assign this work request, as the work request is in " + request.getStatus() + " status", "Warning!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnRequestGovSecretaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestGovSecretaryActionPerformed
         // TODO add your handling code here:
     
+        int selectedRow = tblWorkRequest.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            GovtFundJob request = (GovtFundJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            if (request.getStatus().equalsIgnoreCase("Sent to Treasurer")) {
+                JOptionPane.showMessageDialog(null, "Please assign selected request first");
+                return;
+            }
+            if (request.getStatus().equalsIgnoreCase("Accepted")) {
+                JOptionPane.showMessageDialog(null, "Request already completed", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.equals(request.getReceiver())) {
+                JOptionPane.showMessageDialog(null, "Not Authorized", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.equals(request.getReceiver())) {
+                JOptionPane.showMessageDialog(null, "Not Authorized", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.getEmployee().equals(request.getReceiver().getEmployee())) {
+                JOptionPane.showMessageDialog(null, "Request assigned to other Officer", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (request.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Cannot process a Rejected Request", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            //request.setStatus("Processing");
+            FinancialProcessRequestsJPanel financialProcessWorkRequestJPanel = new FinancialProcessRequestsJPanel (jPanel, request);
+            jPanel.add("TreasurerProcessWorkRequestJPanel", financialProcessWorkRequestJPanel);
+            CardLayout layout = (CardLayout) jPanel.getLayout();
+            layout.next(jPanel);
+        }
+        
     }//GEN-LAST:event_btnRequestGovSecretaryActionPerformed
 
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+        model.setRowCount(0);
+
+        for (JobRequest request : financialOfficialOrg.getJobQueue().getJobRequestList()) {
+            String status = request.getStatus();
+            Object[] row = new Object[6];
+            row[0] = request.getSender().getEmployee().getEmpName();
+            if (status.equalsIgnoreCase("Sent to Treasurer") || status.equalsIgnoreCase("Sent to Secretary")) {
+                row[1] = null;
+            } else {
+                row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getEmpName();
+            }
+            //row[1] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[2] = status;
+            row[3] = ((GovtFundJob) request).getRequestAmount();
+            row[4] = ((GovtFundJob) request).getMessage();
+            row[5] = request;
+
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;

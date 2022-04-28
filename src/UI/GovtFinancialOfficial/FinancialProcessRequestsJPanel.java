@@ -4,6 +4,14 @@
  */
 package UI.GovtFinancialOfficial;
 
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.Map.SMS;
+import ChemoCare.Map.SendEmail;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
@@ -13,8 +21,18 @@ public class FinancialProcessRequestsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FinancialProcessRequestsJPanel
      */
-    public FinancialProcessRequestsJPanel() {
+    
+    private JPanel jPanel;
+    private GovtFundJob governmentFundRequest;
+    
+    public FinancialProcessRequestsJPanel(JPanel jPanel, GovtFundJob fundRequest) {
         initComponents();
+        this.jPanel = jPanel;
+        this.governmentFundRequest = fundRequest;
+        txtAmount.setText(String.valueOf(governmentFundRequest.getRequestAmount()));
+        txtLocation.setText(governmentFundRequest.getLocation());
+        txtPopulation.setText(String.valueOf(governmentFundRequest.getPopulation()));
+
     }
 
     /**
@@ -173,13 +191,92 @@ public class FinancialProcessRequestsJPanel extends javax.swing.JPanel {
 
     private void btnDisburseAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisburseAmountActionPerformed
 
+        btnDisburseAmount.setEnabled(true);
+        String message = txtMessage.getText();
+        String sub="Your Fund request is Disbursed";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        }
+        else
+        {
+        governmentFundRequest.setMessage(message);
+         int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+         if (dialogResult == JOptionPane.YES_OPTION) {
+        governmentFundRequest.setStatus("Accepted");
+        try{
+                SendEmail.send(governmentFundRequest.getAdminEmail(),"\nHi "+governmentFundRequest.getAdminName()+","+"\n\nYour funding request for Location "+ governmentFundRequest.getLocation()+
+                        " is approved and now disbursed"
+                +"\n\n\nThanks\nGovenrment",sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+governmentFundRequest.getAdminName()+","+"\nYour Funds are disbursed for location: "+governmentFundRequest.getLocation()+
+                        "\n\nThanks,\nGovernment");
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+        JOptionPane.showMessageDialog(null, "Funds Disbursed Successfully!!!");
+        btnDisburseAmount.setEnabled(false);
+        txtMessage.setText("");
+        btnReject.setEnabled(false);
+        }
+         txtMessage.setText("");
+        }
+
     }//GEN-LAST:event_btnDisburseAmountActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
+        jPanel.remove(this);
+        Component[] componentArray = jPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        FinancialOfficialWorkArea dwjp = (FinancialOfficialWorkArea) component;
+        dwjp.populateTable();
+        CardLayout layout = (CardLayout) jPanel.getLayout();
+        layout.previous(jPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+
+        String message = txtMessage.getText();
+        String sub="Your Fund request is Rejected by Treasurer";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        } else {
+        governmentFundRequest.setMessage(message);
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+            
+            if (dialogResult == JOptionPane.YES_OPTION) {
+        governmentFundRequest.setStatus("Rejected");
+        try{
+                SendEmail.send(governmentFundRequest.getAdminEmail(),"\nHi "+governmentFundRequest.getAdminName()+","+"\n\nYour funding request for Location "+ governmentFundRequest.getLocation()+
+                        " is Rejected by: "+governmentFundRequest.getReceiver().getEmployee().getEmpName()+"\n\n\n Message: "+message+"\n\n\nThanks\nGovenrment",sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+governmentFundRequest.getAdminName()+","+"\nYour Funds request is rejected for location: "+governmentFundRequest.getLocation()+
+                        "\nMessage: "+message+"\n\nThanks,\nGovernment");
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+        JOptionPane.showMessageDialog(null, "Rejected!");
+         txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnDisburseAmount.setEnabled(false);
+        }
+         txtMessage.setText("");   
+        }
 
     }//GEN-LAST:event_btnRejectActionPerformed
 
