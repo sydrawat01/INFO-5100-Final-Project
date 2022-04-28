@@ -4,7 +4,9 @@ import ChemoCare.Account.Account;
 import ChemoCare.Ecosystem;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.Org.Org;
+import ChemoCare.Org.ManagerOrg;
 import UI.PharmacyManager.ManagerWorkArea;
+import UI.PharmacyManager.ManageMenu;
 import javax.swing.JPanel;
 
 /**
@@ -14,6 +16,6 @@ import javax.swing.JPanel;
 public class Manager extends Role {
   @Override
   public JPanel createWorkArea(JPanel userProcessContainer, Account account, Org org, Enterprise enterprise, Ecosystem ecosystem) {
-    return new ManagerWorkArea();
+    return new ManagerWorkArea(userProcessContainer, account,(ManagerOrg)org, enterprise);
   }
 }

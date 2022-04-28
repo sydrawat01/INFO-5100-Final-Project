@@ -14,6 +14,6 @@ import javax.swing.JPanel;
 public class LabAttendant extends Role {
   @Override
   public JPanel createWorkArea(JPanel userProcessContainer, Account account, Org org, Enterprise enterprise, Ecosystem business) {
-    return new LabAttendantWorkArea();
+    return new LabAttendantWorkArea(userProcessContainer, account, org, business);
   }
 }

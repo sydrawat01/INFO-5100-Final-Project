@@ -4,6 +4,7 @@ import ChemoCare.Account.Account;
 import ChemoCare.Ecosystem;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.Org.Org;
+import ChemoCare.Org.InsurancePlannerOrg;
 import UI.InsurancePlanner.InsurancePlannerWorkArea;
 import javax.swing.JPanel;
 
@@ -14,6 +15,6 @@ import javax.swing.JPanel;
 public class InsurancePlanner extends Role {
   @Override
   public JPanel createWorkArea(JPanel userProcessContainer, Account account, Org org, Enterprise enterprise, Ecosystem business) {
-    return new InsurancePlannerWorkArea();
+    return new InsurancePlannerWorkArea(userProcessContainer, account, (InsurancePlannerOrg)org, enterprise);
   }
 }

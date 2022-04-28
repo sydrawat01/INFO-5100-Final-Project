@@ -4,6 +4,7 @@ import ChemoCare.Account.Account;
 import ChemoCare.Ecosystem;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.Org.Org;
+import ChemoCare.Org.FinancialOfficialOrg;
 import UI.GovtFinancialOfficial.FinancialOfficialWorkArea;
 import javax.swing.JPanel;
 
@@ -14,6 +15,6 @@ import javax.swing.JPanel;
 public class GovtFinancialOfficial extends Role {
   @Override
   public JPanel createWorkArea(JPanel userProcessContainer, Account userAccount, Org org, Enterprise enterprise, Ecosystem business) {
-    return new FinancialOfficialWorkArea();
+    return new FinancialOfficialWorkArea(userProcessContainer, userAccount, (FinancialOfficialOrg)org, enterprise);
   }
 }
