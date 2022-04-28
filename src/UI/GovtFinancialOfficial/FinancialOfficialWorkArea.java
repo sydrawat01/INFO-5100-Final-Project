@@ -1,16 +1,37 @@
 package UI.GovtFinancialOfficial;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.HealthOfficialOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.FinancialOfficialOrg;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.JobRequest;
+
 /**
  *
  * @author sid
  */
 public class FinancialOfficialWorkArea extends javax.swing.JPanel {
-
+   private JPanel jPanel;
+    private Account account;
+    private FinancialOfficialOrg financialOfficialOrg;
+    private Enterprise enterprise;
   /**
    * Creates new form FinancialOfficialWorkArea
    */
-  public FinancialOfficialWorkArea() {
+  public FinancialOfficialWorkArea(JPanel jpanel, Account account, Org organization, Enterprise enterprise) {
     initComponents();
+        this.enterprise = enterprise;
+        this.jPanel = jpanel;
+        this.financialOfficialOrg = (FinancialOfficialOrg) organization;
+        this.account = account;
   }
 
   /**
