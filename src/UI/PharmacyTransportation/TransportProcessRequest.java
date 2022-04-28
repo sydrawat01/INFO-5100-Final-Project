@@ -11,6 +11,10 @@ import ChemoCare.JobQueue.OrderJob;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import ChemoCare.Map.MapViewer;
+import ChemoCare.Map.SMS;
+import ChemoCare.Map.SendEmail;
+import ChemoCare.Order.ItemList;
+import java.util.List;
 
 /**
  *
@@ -193,23 +197,113 @@ public class TransportProcessRequest extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeliverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliverActionPerformed
-    
+
+        btnDeliver.setEnabled(true);
+        String message = txtMessage.getText();
+        String sub = "Your Order is delivered";
+        String odrderDtl = "Order Details\n*************************************************\n";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        }
+        else
+        {
+        orderItemRequest.setMessage(message);
+         int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+         if (dialogResult == JOptionPane.YES_OPTION) {
+        orderItemRequest.setStatus("Accepted");
+        try{
+                    
+                    List<ItemList> itm = orderItemRequest.getOrder().getItemList();
+                    for(ItemList i:itm)
+                    {
+                        odrderDtl=odrderDtl+"Item: "+i.getItem()+" , Quantity: "+i.getQuantity()+", Item Price: $"+i.getTotal()+"\n";
+                    }
+                    odrderDtl = odrderDtl+"*************************************************\n";
+                    odrderDtl=odrderDtl+"\n\nTotal Price: $"+orderItemRequest.getOrder().getAmount();
+                SendEmail.send(orderItemRequest.getHospitalAdmin().getEmployee().getEmpEmail(),"\nHi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\n\nYour Order# "+ orderItemRequest.getOrder().getItemID()+
+                        " is delivered by: "+orderItemRequest.getReceiver().getEmployee().getEmpName()
+                +"\n\n\n\n"+odrderDtl+"\n\nThanks,\n",sub);
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\nYour order# : "+orderItemRequest.getOrder().getItemID()+" is delivered!"+
+                        "\n\nThanks");
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+        JOptionPane.showMessageDialog(null, "Order Delivered Successfully!!!");
+        btnDeliver.setEnabled(false);
+        txtMessage.setText("");
+        btnReject.setEnabled(false);
+        }
+         txtMessage.setText("");
+        }
     }//GEN-LAST:event_btnDeliverActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         
-//        jPanel.remove(this);
-//        Component[] componentArray = jPanel.getComponents();
-//        Component component = componentArray[componentArray.length - 1];
-//        TransportationWorkArea dwjp = (TransportationWorkArea) component;
-//        dwjp.populateTable();
-//        CardLayout layout = (CardLayout) jPanel.getLayout();
-//        layout.previous(jPanel);        
-//     
+        jPanel.remove(this);
+        Component[] componentArray = jPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        TransportationWorkArea dwjp = (TransportationWorkArea) component;
+        dwjp.populateTable();
+        CardLayout layout = (CardLayout) jPanel.getLayout();
+        layout.previous(jPanel);   
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
     
+        String message = txtMessage.getText();
+        String sub = "Your Order is Rejected";
+        String odrderDtl = "Order Details\n*************************************************\n";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        } else {
+        orderItemRequest.setMessage(message);
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+            
+            if (dialogResult == JOptionPane.YES_OPTION) {
+        orderItemRequest.setStatus("Rejected");
+        try{
+                    
+                    List<ItemList> itm = orderItemRequest.getOrder().getItemList();
+                    for(ItemList i:itm)
+                    {
+                        odrderDtl=odrderDtl+"Item: "+i.getItem()+" , Quantity: "+i.getQuantity()+", Item Price: $"+i.getTotal()+"\n";
+                    }
+                    odrderDtl = odrderDtl+"*************************************************\n";
+                    odrderDtl=odrderDtl+"\n\nTotal Price: $"+orderItemRequest.getOrder().getAmount();
+                SendEmail.send(orderItemRequest.getHospitalAdmin().getEmployee().getEmpEmail(),"\nHi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\n\nYour Order# "+ orderItemRequest.getOrder().getItemID()+
+                        " is Rejected by: "+orderItemRequest.getReceiver().getEmployee().getEmpName()+"\nMessage: "+message
+                +"\n\n\n\n"+odrderDtl+"\n\nThanks,\n",sub);
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\nYour order# : "+orderItemRequest.getOrder().getItemID()+" is rejected\nMessage: "+message+
+                        "\n\nThanks");
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+         txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnDeliver.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Rejected");
+        }
+         txtMessage.setText("");   
+        }
+        
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapActionPerformed

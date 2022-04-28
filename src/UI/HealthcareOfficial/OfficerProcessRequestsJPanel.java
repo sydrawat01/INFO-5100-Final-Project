@@ -4,17 +4,43 @@
  */
 package UI.HealthcareOfficial;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.Map.SendEmail;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.SecretaryOrg;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
  */
-public class OfficerPrecessRequestsJPanel extends javax.swing.JPanel {
+public class OfficerProcessRequestsJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form OfficerPrecessRequestsJPanel
      */
-    public OfficerPrecessRequestsJPanel() {
+    
+    private JPanel jPanel;
+    private Enterprise enterprise;
+    private Account userAccount;
+    private GovtFundJob governmentFundRequest;
+    private HealthOfficialWorkArea officerWorkAreaJPanel;
+    
+    public OfficerProcessRequestsJPanel(JPanel jPanel, Account userAccount, GovtFundJob fundRequest, Enterprise enterprise) {
         initComponents();
+        
+        this.jPanel = jPanel;
+        this.enterprise = enterprise;
+        this.userAccount = userAccount;
+        this.governmentFundRequest = fundRequest;
+        txtAmount.setText(String.valueOf(governmentFundRequest.getRequestAmount()));
+        txtLocation.setText(governmentFundRequest.getLocation());
+        txtPopulation.setText(String.valueOf(governmentFundRequest.getPopulation()));
     }
 
     /**
@@ -169,16 +195,95 @@ public class OfficerPrecessRequestsJPanel extends javax.swing.JPanel {
 
     private void btnSendRequestToSecretaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestToSecretaryActionPerformed
         // TODO add your handling code here:
+        
+        String message = txtMessage.getText();
+        String sub="Your Fund request is approved by Health Officer";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        } else {
+            governmentFundRequest.setMessage(message);
+            
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+            
+            if (dialogResult == JOptionPane.YES_OPTION) {
+            
+            governmentFundRequest.setSender(userAccount);
+            governmentFundRequest.setStatus("Sent to Secretary");
+            try{
+                SendEmail.send(governmentFundRequest.getAdminEmail(),"\nHi "+governmentFundRequest.getAdminName()+","+"\n\nYour funding request for Location "+ governmentFundRequest.getLocation()+
+                        " is approved by Health Officer: "+userAccount.getEmployee().getEmpName()
+                +"\n\n\nThanks\nGovenrment",sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+
+            Org org = null;
+            for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+                if (organization instanceof SecretaryOrg) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null) {
+                org.getJobQueue().getJobRequestList().add(governmentFundRequest);
+                userAccount.getJobQueue().getJobRequestList().add(governmentFundRequest);
+            }
+            JOptionPane.showMessageDialog(null, "Request to Secretary Successful!!!");
+            txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnSendRequestToSecretary.setEnabled(false);
+            }
+            txtMessage.setText("");
+        }
 
     }//GEN-LAST:event_btnSendRequestToSecretaryActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        jPanel.remove(this);
+        Component[] componentArray = jPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        HealthOfficialWorkArea owjp = (HealthOfficialWorkArea) component;
+        owjp.populateTable();
+        CardLayout layout = (CardLayout) jPanel.getLayout();
+        layout.previous(jPanel);
+        
         
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
     
+        String message = txtMessage.getText();
+        String sub="Your Fund request is approved by Health Officer";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        } else {
+            governmentFundRequest.setMessage(message);
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+            
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                governmentFundRequest.setStatus("Rejected");
+                try{
+                SendEmail.send(governmentFundRequest.getAdminEmail(),"\nHi "+governmentFundRequest.getAdminName()+","+"\n\nYour funding request for Location "+ governmentFundRequest.getLocation()+
+                        " is Rejected by Secretary: "+userAccount.getEmployee().getEmpName()+"\n\n\n Message: "+message+"\n\n\nThanks\nGovenrment",sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+                JOptionPane.showMessageDialog(null, "Rejected!");
+                txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnSendRequestToSecretary.setEnabled(false);
+            }
+           
+            txtMessage.setText("");
+        }
+        
     }//GEN-LAST:event_btnRejectActionPerformed
 
 

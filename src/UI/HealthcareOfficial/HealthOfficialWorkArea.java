@@ -38,7 +38,7 @@ public class HealthOfficialWorkArea extends javax.swing.JPanel {
         this.healthOfficialOrg = (HealthOfficialOrg) org;
         this.userAccount = userAccount;
 
-//        populateTable();
+        populateTable();
   }
 
   /**
@@ -149,10 +149,64 @@ public class HealthOfficialWorkArea extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
+        
+        int selectedRow = tblGovtHealthOfficerWorkArea.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            JobRequest request = (GovtFundJob) tblGovtHealthOfficerWorkArea.getValueAt(selectedRow, 0);
+            if (request.getStatus().equals("Sent")) {
+                request.setReceiver(userAccount);
+                request.setStatus("Pending on " + request.getReceiver().getEmployee().getEmpName());
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Success !! Request is assigned to you ");
+            } else {
+                JOptionPane.showMessageDialog(null, "Can't assign this work request, as the work request is in " + request.getStatus() + " status" , "Warning!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessRequestActionPerformed
         // TODO add your handling code here:
+        
+        int selectedRow = tblGovtHealthOfficerWorkArea.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+
+            GovtFundJob request = (GovtFundJob) tblGovtHealthOfficerWorkArea.getValueAt(selectedRow, 0);
+
+            if (request.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Cannot process a Rejected Request", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (request.getStatus().equalsIgnoreCase("Sent to Secretary")) {
+                JOptionPane.showMessageDialog(null, "Request already processed", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (request.getStatus().equalsIgnoreCase("Sent")) {
+                JOptionPane.showMessageDialog(null, "Assign the request first");
+                return;
+            }
+            if(!userAccount.equals(request.getReceiver())){
+             JOptionPane.showMessageDialog(null, "Not Authorized", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            if (!userAccount.getEmployee().equals(request.getReceiver().getEmployee())) {
+                JOptionPane.showMessageDialog(null, "Request assigned to other Officer", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            } else {
+
+                OfficerProcessRequestsJPanel panel = new OfficerProcessRequestsJPanel(jPanel, userAccount, request, enterprise);
+                jPanel.add("OfficerProcessWorkRequestJPanel", panel);
+                CardLayout layout = (CardLayout) jPanel.getLayout();
+                layout.next(jPanel);
+
+            }
+    }        
         
     }//GEN-LAST:event_btnProcessRequestActionPerformed
 
