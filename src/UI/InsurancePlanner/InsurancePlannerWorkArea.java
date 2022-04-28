@@ -1,16 +1,38 @@
 package UI.InsurancePlanner;
 
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+import ChemoCare.Org.InsurancePlannerOrg;
+import ChemoCare.Account.Account;
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Enterprise.InsuranceCompanyEnterprise;
+import ChemoCare.Insurance.Insurance;
+
 /**
  *
  * @author sid
  */
 public class InsurancePlannerWorkArea extends javax.swing.JPanel {
-
+  private JPanel userProcessContainer;
+    private Account account;
+    private InsurancePlannerOrg insurancePlannerOrg;
+    private InsuranceCompanyEnterprise insuranceCompanyEnterprise;
   /**
    * Creates new form InsurancePlannerWorkArea
    */
-  public InsurancePlannerWorkArea() {
+  public InsurancePlannerWorkArea(JPanel userProcessContainer, Account account, InsurancePlannerOrg insurancePlannerOrg, Enterprise enterprise) {
     initComponents();
+    
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.insurancePlannerOrg = insurancePlannerOrg;
+        this.insuranceCompanyEnterprise = (InsuranceCompanyEnterprise) enterprise;
   }
 
   /**

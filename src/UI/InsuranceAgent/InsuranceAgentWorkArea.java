@@ -1,16 +1,36 @@
 package UI.InsuranceAgent;
 
+import javax.swing.JPanel;
+import java.awt.CardLayout;
+import java.util.UUID;
+import javax.swing.JPanel;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.HealthOfficialOrg;
+import ChemoCare.Org.InsuranceAgentOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Account.Account;
+//import UI.HealthcareAccountant.CreateAppointmentJPanel;
+
 /**
  *
  * @author sid
  */
 public class InsuranceAgentWorkArea extends javax.swing.JPanel {
+    
+         private JPanel userProcessContainer;
+    private Account account;
+    private InsuranceAgentOrg insuranceAgentOrg  ;
+    private Enterprise enterprise;
 
   /**
    * Creates new form InsuranceAgentWorkArea
    */
-  public InsuranceAgentWorkArea() {
+  public InsuranceAgentWorkArea(JPanel jpanel, Account account, Org org, Enterprise enterprise) {
     initComponents();
+      this.userProcessContainer = jpanel;
+        this.account = account;
+        this.insuranceAgentOrg = (InsuranceAgentOrg)org;
+        this.enterprise = enterprise;
   }
 
   /**
@@ -81,7 +101,10 @@ public class InsuranceAgentWorkArea extends javax.swing.JPanel {
     }//GEN-LAST:event_btnProcessInsuranceRequestActionPerformed
 
     private void btnAddsNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddsNewUserActionPerformed
-        
+//     String policyNumber = UUID.randomUUID().toString().substring(0,7);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        userProcessContainer.add("AddNewPolicyHolderJPanel", new AddNewPolicyInsured(userProcessContainer, account, enterprise, policyNumber));
+//        layout.next(userProcessContainer);        
     }//GEN-LAST:event_btnAddsNewUserActionPerformed
 
 
