@@ -4,8 +4,15 @@
  */
 package UI.DoctorRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.PatientVisitJob;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Desktop;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,8 +23,20 @@ public class ProvidePrescriptionJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ProvidePrescriptionJPanel
      */
-    public ProvidePrescriptionJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Account userAccount;
+    private Enterprise enterprise;
+    private PatientVisitJob request;
+    
+    public ProvidePrescriptionJPanel(JPanel userProcessContainer, Account userAccount, Enterprise enterprise, PatientVisitJob workRequest) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        this.request = workRequest;
+        populateTable();
     }
 
     /**
@@ -224,7 +243,7 @@ public class ProvidePrescriptionJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DoctorWorkAreaJPanel dwjp = (DoctorWorkAreaJPanel) component;
+        DoctorWorkArea dwjp = (DoctorWorkArea) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);     
@@ -233,12 +252,28 @@ public class ProvidePrescriptionJPanel extends javax.swing.JPanel {
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
 
+        String filePath = "ICD.xlsx";
+        Desktop dt = Desktop.getDesktop();
+        try{
+        dt.open(new File(filePath));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Cannot open file due to technical issue");
+        }
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAgeActionPerformed
 
+    private void populateTable() {
+        txtFirstName.setText(request.getPatient().getPatientFName());
+        txtLastName.setText(request.getPatient().getPatientLName());
+       // txtBirthDate1.setText(String.valueOf(request.getPatient().getDateOfBirth()));
+        txtAge.setText(String.valueOf(request.getPatient().getAge()));
+        txtMedicalCondition.setText(request.getVisitReason());
+        txtAssignedDoctor.setText(request.getAssignedDoctor().getEmployee().getEmpName());
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnButton;
