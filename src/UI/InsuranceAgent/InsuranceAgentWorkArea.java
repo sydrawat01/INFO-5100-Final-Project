@@ -1,36 +1,33 @@
 package UI.InsuranceAgent;
 
-import javax.swing.JPanel;
 import java.awt.CardLayout;
 import java.util.UUID;
 import javax.swing.JPanel;
 import ChemoCare.Enterprise.Enterprise;
-import ChemoCare.Org.HealthOfficialOrg;
 import ChemoCare.Org.InsuranceAgentOrg;
 import ChemoCare.Org.Org;
 import ChemoCare.Account.Account;
-//import UI.HealthcareAccountant.CreateAppointmentJPanel;
 
 /**
  *
  * @author sid
  */
-public class InsuranceAgentWorkArea extends javax.swing.JPanel {
-    
-         private JPanel userProcessContainer;
-    private Account account;
-    private InsuranceAgentOrg insuranceAgentOrg  ;
-    private Enterprise enterprise;
-
+public class InsuranceAgentWorkArea extends javax.swing.JPanel {  
+  
   /**
    * Creates new form InsuranceAgentWorkArea
    */
+  private JPanel userProcessContainer;
+  private Account account;
+  private InsuranceAgentOrg insuranceAgentOrg;
+  private Enterprise enterprise;
+  
   public InsuranceAgentWorkArea(JPanel jpanel, Account account, Org org, Enterprise enterprise) {
     initComponents();
-      this.userProcessContainer = jpanel;
-        this.account = account;
-        this.insuranceAgentOrg = (InsuranceAgentOrg)org;
-        this.enterprise = enterprise;
+    this.userProcessContainer = jpanel;
+    this.account = account;
+    this.insuranceAgentOrg = (InsuranceAgentOrg)org;
+    this.enterprise = enterprise;
   }
 
   /**
@@ -96,15 +93,17 @@ public class InsuranceAgentWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessInsuranceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessInsuranceRequestActionPerformed
-        // TODO add your handling code here:
-        
+      // TODO add your handling code here:
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("ProcessInsuranceRequestsJPanel", new AllInsuranceRequests(userProcessContainer, account, enterprise,insuranceAgentOrg ));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnProcessInsuranceRequestActionPerformed
 
     private void btnAddsNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddsNewUserActionPerformed
-//     String policyNumber = UUID.randomUUID().toString().substring(0,7);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        userProcessContainer.add("AddNewPolicyHolderJPanel", new AddNewPolicyInsured(userProcessContainer, account, enterprise, policyNumber));
-//        layout.next(userProcessContainer);        
+      String planNumber = UUID.randomUUID().toString().substring(0,7);
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      userProcessContainer.add("AddNewPolicy", new AddNewPolicyInsured(userProcessContainer, account, enterprise, planNumber));
+      layout.next(userProcessContainer);        
     }//GEN-LAST:event_btnAddsNewUserActionPerformed
 
 

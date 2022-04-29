@@ -4,6 +4,18 @@
  */
 package UI.InsuranceAgent;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.InsuranceJob;
+import ChemoCare.Map.SMS;
+import ChemoCare.Map.SendEmail;
+import ChemoCare.Org.InsuranceTreasurerOrg;
+import ChemoCare.Org.Org;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
@@ -13,8 +25,17 @@ public class InsuranceProcessRequest extends javax.swing.JPanel {
     /**
      * Creates new form InsuranceProcessRequest
      */
-    public InsuranceProcessRequest() {
+    private JPanel userProcessContainer;
+    private Account account;
+    private Enterprise enterprise;
+    private InsuranceJob insuranceJob;
+    public InsuranceProcessRequest(JPanel userProcessContainer, Account account, Enterprise enterprise, InsuranceJob insuranceJob) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.insuranceJob = insuranceJob;
+        this.account = account;
+        populateFields();
     }
 
     /**
@@ -200,15 +221,134 @@ public class InsuranceProcessRequest extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMessagesActionPerformed
 
     private void btnAcceptSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptSendActionPerformed
+      String message = txtMessages.getText();
+      String sub = "Your Insurance claim is approved";
+      if (message.equals("")) {
+        JOptionPane.showMessageDialog(null, "Message is mandatory!");
+        return;
+      } else {
+        insuranceJob.setMessage(message);
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+            "Do you want to proceed?");
 
+        if (dialogResult == JOptionPane.YES_OPTION) {
+          Org org = null;
+          for (Org organization
+              : enterprise.getOrgDirectory().
+                  getOrganizations()) {
+            if (organization instanceof InsuranceTreasurerOrg) {
+              org = organization;
+              break;
+            }
+          }
+
+          if (org != null) {
+            org.getJobQueue().getJobRequestList().add(insuranceJob);
+            account.getJobQueue().getJobRequestList().add(insuranceJob);
+          }
+
+          JOptionPane.showMessageDialog(null,
+              "Request Approved and Sent To Finance Department");
+          insuranceJob.setStatus("Sent To Finance Department");
+          insuranceJob.setAgent(account.getEmployee().
+              getEmpName());
+          insuranceJob.setReceiver(null);
+
+          txtMessages.setText("");
+          btnRejectRequest.setEnabled(false);
+          btnAcceptSend.setEnabled(false);
+          try {
+            SendEmail.send(insuranceJob.getCustomerEmail(), "\nHi " +
+                insuranceJob.getInsuranceCustomer().
+                    getCustomerFName() + "," +
+                "\n\nYour Insurance claim of amount: " + insuranceJob.
+                    getClaimAmount() +
+                " is approved" + "\n\n\nThanks\n" + insuranceJob.
+                    getInsuranceCompany(), sub);
+          } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                "Email Could not be sent due to technical issues");
+            System.out.println(ex.getMessage());
+          }
+          //Send SMS
+          try {
+            SMS.SendSMS("+14793190560", "Hi " + insuranceJob.
+                getInsuranceCustomer().
+                getCustomerFName() + "," +
+                "\n\nYour Insurance claim of amount: " + insuranceJob.
+                    getClaimAmount() +
+                " is approved" + "\n\nThanks,\n" + insuranceJob.
+                    getInsuranceCompany());
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+          //Send SMS end
+
+        }
+        txtMessages.setText("");
+      }
     }//GEN-LAST:event_btnAcceptSendActionPerformed
 
     private void btnRejectRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectRequestActionPerformed
+      String message = txtMessages.getText();
+      String sub = "Your Insurance claim is rejected";
+      if (message.equals("")) {
+        JOptionPane.showMessageDialog(null, "Message is mandatory!");
+        return;
+      } else {
+        insuranceJob.setMessage(message);
 
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+            "Do you want to proceed?");
+        if (dialogResult == JOptionPane.YES_OPTION) {
+
+          insuranceJob.setStatus("Rejected");
+          insuranceJob.setMessage(txtMessages.getText().
+              trim());
+          insuranceJob.setAgent(account.getEmployee().
+              getEmpName());
+          try {
+            SendEmail.send(insuranceJob.getCustomerEmail(), "\nHi " +
+                insuranceJob.getInsuranceCustomer().
+                    getCustomerFName() + "," +
+                "\n\nYour Insurance claim of amount: " + insuranceJob.
+                    getClaimAmount() +
+                " is rejected" + "\nMessage: " + message + "\n\n\nThanks\n" +
+                insuranceJob.getInsuranceCompany(), sub);
+          } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                "Email Could not be sent due to technical issues");
+            System.out.println(ex.getMessage());
+          }
+          //Send SMS
+          try {
+            SMS.SendSMS("+14793190560", "Hi " + insuranceJob.
+                getInsuranceCustomer().
+                getCustomerFName() + "," +
+                "\n\nYour Insurance claim of amount: " + insuranceJob.
+                    getClaimAmount() +
+                " is rejected" + "\nMessage: " + message + "\n\nThanks,\n" +
+                insuranceJob.getInsuranceCompany());
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+          //Send SMS end
+          txtMessages.setText("");
+          btnRejectRequest.setEnabled(false);
+          btnAcceptSend.setEnabled(false);
+        }
+        txtMessages.setText("");
+      }
     }//GEN-LAST:event_btnRejectRequestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
+      userProcessContainer.remove(this);
+      Component[] componentArray = userProcessContainer.getComponents();
+      Component component = componentArray[componentArray.length - 1];
+      AllInsuranceRequests allInsuranceRequests = (AllInsuranceRequests) component;
+      allInsuranceRequests.populateTable();
+      CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+      layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
@@ -228,4 +368,12 @@ public class InsuranceProcessRequest extends javax.swing.JPanel {
     private javax.swing.JTextField txtMessages;
     private javax.swing.JTextField txtPolicyNumbers;
     // End of variables declaration//GEN-END:variables
+
+  private void populateFields() {
+    txtPolicyNumbers.setText(insuranceJob.getPolicyNumber());
+    txtCustomersName.setText(insuranceJob.getInsuranceCustomer().
+        getCustomerFName() + " " + insuranceJob.getInsuranceCustomer().getCustomerLName());
+    txtBillAmounts.setText(String.valueOf(insuranceJob.getBillAmount()));
+    txtClaimAmounts.setText(String.valueOf(insuranceJob.getClaimAmount()));
+  }
 }

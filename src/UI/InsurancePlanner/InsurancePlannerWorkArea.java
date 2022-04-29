@@ -1,11 +1,9 @@
 package UI.InsurancePlanner;
 
-import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 import ChemoCare.Org.InsurancePlannerOrg;
 import ChemoCare.Account.Account;
@@ -33,6 +31,8 @@ public class InsurancePlannerWorkArea extends javax.swing.JPanel {
         this.account = account;
         this.insurancePlannerOrg = insurancePlannerOrg;
         this.insuranceCompanyEnterprise = (InsuranceCompanyEnterprise) enterprise;
+        
+        populateTable();
   }
 
   /**
@@ -198,7 +198,67 @@ public class InsurancePlannerWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreatePolicyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePolicyActionPerformed
-       
+       String planName = txtPolicyName.getText().trim();
+        String planCoverageTxt = txtPolicyCoverage.getText().trim();
+        String monthlyPremiumTxt = txtMonthlyPrem.getText().trim();
+        String planTerms = txtPolicyTC.getText().trim();
+        if (planName.equals("")) {
+            JOptionPane.showMessageDialog(null, "Policy Name is mandatory");
+            return;
+        }
+
+        if (planCoverageTxt.equals("")) {
+            JOptionPane.showMessageDialog(null, "Policy Coverage is mandatory");
+            return;
+        }
+
+        if (monthlyPremiumTxt.equals("")) {
+            JOptionPane.showMessageDialog(null, "Monthly Premium is mandatory");
+            return;
+        }
+
+        if (planTerms.equals("")) {
+            JOptionPane.showMessageDialog(null, "Policy TC is mandatory");
+            return;
+        }
+
+        double planReimbursement = 0;
+        try {
+            planReimbursement = Double.parseDouble(planCoverageTxt);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter numeric values for insurance coverage");
+
+            return;
+        }
+
+        double monthlyPremium = 0;
+        try {
+            monthlyPremium = Double.parseDouble(monthlyPremiumTxt);
+        } catch (NumberFormatException ne) {
+            JOptionPane.showMessageDialog(null, "Please enter numeric values for monthly premium");
+            return;
+        }
+
+        List<Insurance> policies = insuranceCompanyEnterprise.getInsurancePlanDirectory().getInsurancePlans();
+        for (Insurance insurance : policies) {
+            if (planName.equalsIgnoreCase(insurance.getPlanName())) {
+                JOptionPane.showMessageDialog(null, "Policy already exists, please provide some other policy name");
+                return;
+            }
+        }
+        Insurance insurance = new Insurance(planName, insuranceCompanyEnterprise.getOrgName(), planReimbursement);
+        insurance.setTerms(planTerms);
+        insurance.setMonthlyPremium(monthlyPremium);
+
+        // InsuranceCompanyEnterprise insuranceCompanyEnterprise = insuranceCompanyEnterprise;
+        insuranceCompanyEnterprise.getInsurancePlanDirectory().getInsurancePlans().add(insurance);
+        JOptionPane.showMessageDialog(null, "Policy Added Successfully");
+        System.out.println("Policy Added Successfully:" + insuranceCompanyEnterprise.getInsurancePlanDirectory().getInsurancePlans());
+        populateTable();
+        txtPolicyName.setText("");
+        txtMonthlyPrem.setText("");
+        txtPolicyCoverage.setText("");
+        txtPolicyTC.setText("");
     }//GEN-LAST:event_btnCreatePolicyActionPerformed
 
 
@@ -218,4 +278,18 @@ public class InsurancePlannerWorkArea extends javax.swing.JPanel {
     private javax.swing.JTextField txtPolicyName;
     private javax.swing.JTextField txtPolicyTC;
     // End of variables declaration//GEN-END:variables
+
+  private void populateTable() {
+    DefaultTableModel model = (DefaultTableModel) tblPolicies.getModel();
+    model.setRowCount(0);
+    List<Insurance> plans = insuranceCompanyEnterprise.getInsurancePlanDirectory().getInsurancePlans();
+    for (Insurance insurancePolicy : plans) {
+      Object[] row = new Object[4];
+      row[0] = insurancePolicy;
+      row[1] = insurancePolicy.getReimbursement();
+      row[2] = insurancePolicy.getMonthlyPremium();
+      row[3] = insurancePolicy.getTerms();
+      model.addRow(row);
+    }
+  }
 }

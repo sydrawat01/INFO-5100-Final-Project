@@ -10,6 +10,7 @@ import ChemoCare.Enterprise.CancerCenterEnterprise;
 import ChemoCare.Enterprise.Enterprise;
 import ChemoCare.Map.MapViewer;
 import ChemoCare.NetworkSystem.NetworkSystem;
+import UI.PharmacyManager.SendEmailJPanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
