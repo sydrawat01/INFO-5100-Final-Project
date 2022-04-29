@@ -21,6 +21,10 @@ public class OrderJob extends JobRequest {
     this.visitReason = visitReason;
   }
 
+    public OrderJob() {
+         
+    }
+
   public String getRegDate() {
     return regDate;
   }

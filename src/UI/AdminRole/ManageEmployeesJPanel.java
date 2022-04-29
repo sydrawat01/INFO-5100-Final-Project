@@ -4,19 +4,69 @@
  */
 package UI.AdminRole;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import ChemoCare.Employee.Employee;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.OrgDirectory;
+import ChemoCare.Org.PatientOrg;
+
 /**
  *
  * @author harshita
  */
 public class ManageEmployeesJPanel extends javax.swing.JPanel {
 
+    private OrgDirectory organizationDir;
+    private JPanel userProcessContainer;
     /**
      * Creates new form ManageEmployeesJPanel
      */
-    public ManageEmployeesJPanel() {
+     public ManageEmployeesJPanel(JPanel userProcessContainer,OrgDirectory organizationDir) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organizationDir = organizationDir;
+        
+        populateOrganizationComboBox();
+        populateOrganizationEmpComboBox();
     }
 
+      public void populateOrganizationComboBox(){
+        cmbOrganization.removeAllItems();
+        
+        for (Org organization : organizationDir.getOrganizations()){
+            
+            if(!(organization instanceof PatientOrg))
+            cmbOrganizationEmployee.addItem(organization);
+        }
+    }
+      
+        public void populateOrganizationEmpComboBox(){
+        cmbOrganizationEmployee.removeAllItems();
+        
+        for (Org organization : organizationDir.getOrganizations()){
+            
+             if(!(organization instanceof PatientOrg))
+            cmbOrganizationEmployee.addItem(organization);
+        }
+    }
+        
+      
+    private void populateTable(Org organization){
+        DefaultTableModel model = (DefaultTableModel) tblOrganization.getModel();
+        
+        model.setRowCount(0);
+        
+        for (Employee employee : organization.getEmployeeDirectory().getEmpList()){
+            Object[] row = new Object[2];
+            row[0] = employee.getEmpID();
+            row[1] = employee.getEmpName();
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,17 +232,32 @@ public class ManageEmployeesJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
-
+            
+                Org organization = (Org) cmbOrganizationEmployee.getSelectedItem();
+        String name = txtName.getText();
+        if(name == null || name.equals("")){
+            JOptionPane.showMessageDialog(null, "Name Cannot be empty!");
+            return;
+        }    
+        organization.getEmployeeDirectory().createEmployee(name);
+        populateTable(organization);
+        txtName.setText("");
+        JOptionPane.showMessageDialog(null, "Employee created!");
         
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
     private void cmbOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationActionPerformed
-        
+  Org organization = (Org) cmbOrganization.getSelectedItem();
+        if (organization != null){
+            populateTable(organization);
+        }        
     }//GEN-LAST:event_cmbOrganizationActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
-        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void cmbOrganizationEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationEmployeeActionPerformed

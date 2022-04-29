@@ -4,12 +4,71 @@
  */
 package UI.AdminRole;
 
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import ChemoCare.Ecosystem;
+import ChemoCare.Employee.Employee;
+import ChemoCare.Employee.EmployeeDirectory;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.PatientOrg;
+import ChemoCare.Role.Role;
+import ChemoCare.Account.Account;
+
 /**
  *
  * @author harshita
  */
 public class ManageUserAccountsJPanel extends javax.swing.JPanel {
+    
+    private JPanel container;
+    private Enterprise enterprise;
+    private Ecosystem ecosystem;
+    
+        public ManageUserAccountsJPanel(JPanel container, Enterprise enterprise, Ecosystem ecosystem) {
+        initComponents();
+        this.enterprise = enterprise;
+        this.container = container;
+        this.ecosystem = ecosystem;
 
+        popOrganizationComboBox();
+        popData();
+    }
+
+       public void popOrganizationComboBox() {
+        cmbOrganization.removeAllItems();
+
+        for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+            if (!(organization instanceof PatientOrg)) {
+                cmbOrganization.addItem(organization);
+            }
+        }
+    }
+       
+        public void popData() {
+
+        DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
+
+        model.setRowCount(0);
+
+        for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+            for (Account ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                Object row[] = new Object[2];
+                row[0] = ua;
+                row[1] = ua.getRole();
+                ((DefaultTableModel) tblUser.getModel()).addRow(row);
+            }
+        }
+    }
     /**
      * Creates new form ManageUserAccountsJPanel
      */
@@ -223,7 +282,9 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        
+        container.remove(this);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.previous(container);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void cmbOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationActionPerformed
@@ -231,9 +292,71 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbOrganizationActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        
-    }//GEN-LAST:event_btnCreateActionPerformed
+        String userName = txtName.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        String rePassword = String.valueOf(txtrePassword.getPassword());
+        Org organization = (Org) cmbOrganization.getSelectedItem();
+        Employee employee = (Employee) cmbEmployee.getSelectedItem();
+        Role role = (Role) cmbRole.getSelectedItem();
 
+        if (userName == null || userName.equals("")) {
+            txtName.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(null, "Username cannot be empty");
+            return;
+        }
+
+        if (password == null || password.equals("")) {
+            txtName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(null, "Password cannot be empty");
+            return;
+        }
+
+        if (!passwordPatternCorrect()) {
+            JOptionPane.showMessageDialog(null, "Password should be at least 6 Characters "
+                    + "digits and a combination of number , uppercase letter, "
+                    + "lowercase letter and Special characters are not allowed other than $, +, _");
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            return;
+        }
+
+        if (!password.equals(rePassword)) {
+            JOptionPane.showMessageDialog(null, "Passwords don't match");
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtrePassword.setBorder(BorderFactory.createLineBorder(Color.RED));
+            return;
+        } else {
+
+            List<Account> userAccountList = organization.getUserAccountDirectory().getUserAccountList();
+            //List<UserAccount> userAccountList = ecosystem.getUserAccountDirectory().getUserAccountList();
+            for (Account userAccount : userAccountList) {
+                if (userAccount.getUsername().equals(userName)) {
+                    JOptionPane.showMessageDialog(null, "username already taken!!");
+                    txtName.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    return;
+                }
+            }
+
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+            //UserAccount userAccount = ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+            popData();
+            txtName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtPassword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtrePassword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtPassword.setText("");
+            txtrePassword.setText("");
+            txtName.setText("");
+            //Added dialog box -- nikita
+            JOptionPane.showMessageDialog(null, "Successfully created User Account!!");
+            // Dialog box ends -- nikita
+        }        
+    }//GEN-LAST:event_btnCreateActionPerformed
+    private boolean passwordPatternCorrect() {
+        Pattern p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$+_])(?=\\S+$).{6,}$");
+        Matcher m = p.matcher(String.valueOf(txtPassword.getPassword()));
+        boolean b = m.matches();
+        return b;
+    }
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed

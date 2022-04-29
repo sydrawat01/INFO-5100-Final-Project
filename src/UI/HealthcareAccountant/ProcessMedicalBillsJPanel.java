@@ -4,17 +4,50 @@
  */
 package UI.HealthcareAccountant;
 
+import javax.swing.JPanel;
+
+
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.AccountantOrg;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.AccountsBillingJob;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.InsuranceJob;
+import ChemoCare.JobQueue.JobRequest;
+import UI.PharmacyManager.SendEmailJPanel;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author harshita
  */
 public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
 
+    
+    
+    private JPanel userProcessContainer;
+    private Account account;
+    private Enterprise enterprise;
+    private AccountantOrg accountantOrg;
+    private Ecosystem ecosystem;
     /**
      * Creates new form PrrocessMedicalBillsJPanel
      */
-    public ProcessMedicalBillsJPanel() {
+    public ProcessMedicalBillsJPanel(JPanel userProcessContainer, Account account, Enterprise enterprise, AccountantOrg accountantOrg, Ecosystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
+        this.accountantOrg = accountantOrg;
+        this.ecosystem = ecosystem;
+         populateTable();
+        populateInsuranceClaimTable();
     }
 
     /**
@@ -242,20 +275,91 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
     private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
         // TODO add your handling code here:
         
+        int selectedRow = tblWorkRequest.getSelectedRow();
+        String to;
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from patient billing table!");
+            return;
+        } else {
+            
+            AccountsBillingJob ins = (AccountsBillingJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            to= ins.getPatient().getPatientEmail();
+            SendEmailJPanel emailJPanel = new SendEmailJPanel(userProcessContainer,to,"Account");
+            userProcessContainer.add("emailJPanel", emailJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
+        
     }//GEN-LAST:event_btnEmailActionPerformed
 
     private void btnProcessRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessRequestActionPerformed
         // TODO add your handling code here:
+          int selectedRow = tblWorkRequest.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row !");
+            return;
+        } else {
+
+            AccountsBillingJob accountBillingRequest = (AccountsBillingJob) tblWorkRequest.getValueAt(selectedRow, 5);
+
+            if (accountBillingRequest.getReceiver() != null) {
+                if (accountBillingRequest.getReceiver().equals(account)) {
+                    if(accountBillingRequest.getStatus().equalsIgnoreCase("Pending on Accountant"))
+                    {
+                    AccountantProcessRequestJPanel panel = new AccountantProcessRequestJPanel(userProcessContainer, account, accountBillingRequest, enterprise, ecosystem);
+                    userProcessContainer.add("AccountantProcessRequestJPanel", panel);
+                    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                    layout.next(userProcessContainer);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Cannot process Request as request is in  " + accountBillingRequest.getStatus());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Not authorised!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please assign the request first!");
+            }
+        }
         
         //        }
     }//GEN-LAST:event_btnProcessRequestActionPerformed
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
+     
+                int selectedRow = tblWorkRequest.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row !");
+            return;
+        } else {
+            JobRequest request = (AccountsBillingJob) tblWorkRequest.getValueAt(selectedRow, 5);
+            if (request.getReceiver() == null) {
+
+                request.setReceiver(account);
+                request.setStatus("Pending on Accountant");
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Request succesfully assigned to you!");
+//             else {
+//                JOptionPane.showMessageDialog(null, "Can't assign this work request, as the work request is in " + request.getStatus() + " status");
+//            }
+            } else {
+                JOptionPane.showMessageDialog(null, "The request is already assigned ");
+            }
+        }
+
         
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+           userProcessContainer.remove(this);
+//        Component[] componentArray = userProcessContainer.getComponents();
+//        Component component = componentArray[componentArray.length - 1];
+//        DoctorWorkAreaJPanel dwjp = (DoctorWorkAreaJPanel) component;
+//        dwjp.populateRequestTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -273,4 +377,59 @@ public class ProcessMedicalBillsJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblInsurance;
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
+public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequest.getModel();
+
+        model.setRowCount(0);
+
+        for (JobRequest request : accountantOrg.getJobQueue().getJobRequestList()) {
+            Object[] row = new Object[6];
+            String status = request.getStatus();
+            row[0] = ((AccountsBillingJob) request).getPatient();
+            row[1] = ((AccountsBillingJob) request).getPatient().getPatientFName() + " " + ((AccountsBillingJob) request).getPatient().getPatientLName();
+            row[2] = request.getSender().getEmployee().getEmpName();
+            if (status.equalsIgnoreCase("Sent to Treasurer") || status.equalsIgnoreCase("Sent to Secretary")) {
+                row[2] = null;
+            } else {
+                row[3] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getEmpName();
+            }
+            //row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[4] = request.getStatus();
+            row[5] = ((AccountsBillingJob) request);
+
+            model.addRow(row);
+        }
+
+    }
+
+    public void populateInsuranceClaimTable() {
+        List<InsuranceJob> insuranceWorkRequests = new ArrayList<>();
+        ArrayList<JobRequest> workRequests = account.getJobQueue().getJobRequestList();
+        for(JobRequest workRequest : workRequests)
+        {
+            if(workRequest instanceof InsuranceJob)
+            {
+                insuranceWorkRequests.add((InsuranceJob) workRequest);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblInsurance.getModel();
+        
+        model.setRowCount(0);
+        for(InsuranceJob insuranceWorkRequest: insuranceWorkRequests)
+        {
+            Object[] row = new Object[6];
+         row[0]=insuranceWorkRequest;
+         row[1] = account.getEmployee().getEmpName();
+         row[2] = insuranceWorkRequest.getReceiver()==null?"":insuranceWorkRequest.getReceiver().getEmployee().getEmpName();
+         row[3] = insuranceWorkRequest.getBillAmount();
+         row[4] = insuranceWorkRequest.getClaimAmount();
+         row[5] = insuranceWorkRequest.getStatus();
+         model.addRow(row);
+            
+        }
+        //System.out.println("Insur"+ insuranceWorkRequests.size());
+    }
+
+
 }

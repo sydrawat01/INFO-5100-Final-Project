@@ -4,17 +4,82 @@
  */
 package UI.HealthcareAccountant;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+import com.github.sarxos.webcam.WebcamUtils;
+
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Enterprise.CancerCenterEnterprise;
+import ChemoCare.Enterprise.InsuranceCompanyEnterprise;
+import ChemoCare.Insurance.Insurance;
+import ChemoCare.InsuranceCustomer.InsuranceCustomer;
+import ChemoCare.Map.MapViewer;
+import ChemoCare.NetworkSystem.NetworkSystem;
+import ChemoCare.Org.DoctorOrg;
+import ChemoCare.Org.LabAttendantOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Patient.Patient;
+
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.Role.*;
+
 /**
  *
  * @author harshita
  */
 public class CreateAppointmentJPanel extends javax.swing.JPanel {
+    
+    private JPanel userProcessContainer;
+    private Account account;
+    private Enterprise enterprise;
+    private Ecosystem ecosystem;
+    private String patientId;
+    private Patient cus;
 
     /**
      * Creates new form CreateAppointmentJPanel
      */
-    public CreateAppointmentJPanel() {
+    public CreateAppointmentJPanel(JPanel userProcessContainer, Account account, Enterprise enterprise, Ecosystem ecoSystem, String patientId) {
         initComponents();
+        this.account = account;
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.ecosystem = ecoSystem;
+        this.patientId = patientId;
+        btnUpdate.setEnabled(false);
+        populateField();
     }
 
     /**
@@ -26,6 +91,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -172,6 +238,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         jLabel25.setText("Sex :");
 
         rbtnMale.setBackground(new java.awt.Color(255, 102, 204));
+        buttonGroup1.add(rbtnMale);
         rbtnMale.setForeground(new java.awt.Color(255, 255, 255));
         rbtnMale.setText("M");
         rbtnMale.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +248,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         });
 
         rbtnFemale.setBackground(new java.awt.Color(255, 102, 204));
+        buttonGroup1.add(rbtnFemale);
         rbtnFemale.setForeground(new java.awt.Color(255, 255, 255));
         rbtnFemale.setText("F");
         rbtnFemale.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +337,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         lblCoverage.setText("Patient Insurance Coverage % :");
 
         rbtnOther.setBackground(new java.awt.Color(255, 102, 204));
+        buttonGroup1.add(rbtnOther);
         rbtnOther.setForeground(new java.awt.Color(255, 255, 255));
         rbtnOther.setText("Other");
 
@@ -661,7 +730,13 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        
+           userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AccountantWorkArea dwjp = (AccountantWorkArea) component;
+        dwjp.populateAllPatientsTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnFindPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPatientsActionPerformed
@@ -707,6 +782,20 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     private void btnViewOnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOnMapActionPerformed
         // TODO add your handling code here:
         
+        if (txtAddress.getText().trim().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Enter address first");  
+        }else{
+        SwingUtilities.invokeLater(new Runnable() {
+ 
+            @Override
+            public void run() {
+                MapViewer browser = new MapViewer();
+                browser.setVisible(true);
+                browser.loadURL("https://www.google.com/maps/search/?api=1&query="+txtAddress.getText().trim());
+            }
+        });
+        }
+        
     }//GEN-LAST:event_btnViewOnMapActionPerformed
 
     private void nameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameJTextFieldActionPerformed
@@ -715,15 +804,182 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        nameJTextField.setEnabled(false);
+        passwordJTextField.setEnabled(false);
+        rePasswordJTextField.setEnabled(false);
+        txtSSN.setEnabled(false);
+        txtPatientSSN.setEnabled(false);
+        txtPatientIdentifier.setEnabled(false);
+        btnCreate.setEnabled(false);
+        if(cus==null){
+            JOptionPane.showMessageDialog(null, "Cannot update customer");
+        }
+        else{
+            if (txtFirstName.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide first name");
+                return;
+            }
+            if (txtLastName.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide last name");
+                return;
+            }
+            if (buttonGroup1.isSelected(null)) {
+                JOptionPane.showMessageDialog(null, "Please select gender");
+                return;
+            }
+            if (txtHomePhone.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide phone");
+                return;
+            }
+            if (txtSSN.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide SSN");
+                return;
+            }
+            if (txtAge.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide age");
+                return;
+            }
+            if (txtAddress.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide address");
+                return;
+            }
+
+            if (txtEmail.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please provide email");
+                return;
+            }
+
+            else {
+
+                String registrationDate = txtDate.getText().trim();
+
+                String firstName = txtFirstName.getText().trim();
+                String lastName = txtLastName.getText().trim();
+                String email = txtEmail.getText().trim();
+                String gender = "Male";
+                if (rbtnFemale.isSelected()) {
+                    gender = "Female";
+                } else if (rbtnOther.isSelected()) {
+                    gender = "Other";
+                }
+
+                String phoneNo = txtHomePhone.getText().trim();
+
+                if (!phonePatternCorrect()) {
+                    JOptionPane.showMessageDialog(null, "/* Following are valid phone number examples */             \n"
+                        + "              \"1234567890\", \"123-456-7890\", \"(123)4567890\", \"(123)456-7890\",\n"
+                        + "              /* Following are invalid phone numbers */ \n"
+                        + "              \"(1234567890)\",\"123)4567890\", \"12345678901\", \"(1)234567890\",");
+                    txtHomePhone.setBorder(BorderFactory.createLineBorder(Color.RED));
+
+                    return;
+                }
+
+                if (phonePatternCorrect()) {
+                    txtHomePhone.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+                }
+
+                if (!emailPatternCheck()) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid email Id");
+                    txtEmail.setBorder(BorderFactory.createLineBorder(Color.RED));
+
+                    return;
+                }
+
+                if (emailPatternCheck()) {
+                    txtEmail.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+                }
+
+                String age = txtAge.getText().trim();
+
+                try {
+                    Integer.parseInt(age);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Please provide integer values in Age textfield");
+                    return;
+                }
+
+                String address = txtAddress.getText().trim();
+
+                cus.setAppointmentDate(txtDate.getText());
+                cus.setPatientFName(firstName);
+                cus.setPatientLName(lastName);
+                cus.setGender(gender);
+                cus.setPhoneNumber(phoneNo);
+                cus.setAge(age);
+                cus.setAddress(address);
+                cus.setPatientEmail(email);
+                btnUpdate.setEnabled(false);
+                btnTakePicture.setEnabled(false);
+                btnSave.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Customer Information Updated Successfully!");
+            }
+        }
        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnTakePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTakePictureActionPerformed
         // TODO add your handling code here:
+        JButton btnGo = new JButton("Capture");
+            String filepath = "/userinterface/";
+            try{
+            Webcam webcam = Webcam.getDefault();
+            webcam.setViewSize(WebcamResolution.VGA.getSize());
+
+
+
+            WebcamPanel panel = new WebcamPanel(webcam);
+            panel.setFPSDisplayed(true);
+            panel.setDisplayDebugInfo(true);
+            panel.setImageSizeDisplayed(true);
+            panel.setMirrored(true);
+
+
+
+            JFrame window = new JFrame ("Camera capture ");
+            window.add(panel);
+            window.add(btnGo, BorderLayout.SOUTH);
+            btnGo.addActionListener(new ActionListener() 
+            {
+
+                public void actionPerformed(ActionEvent e) 
+                {
+
+    //                Properties pro = getProperties();
+    //                filePath = pro.getProperty("RobotWorkPlace")+"CamPic/Pic";
+    //                filePath = getClass().getResource()
+
+                    WebcamUtils.capture(webcam, txtPatientIdentifier.getText()+".jpg");
+                    //BufferedImage image = webcam.getImage();
+                    JOptionPane.showMessageDialog(null,"Image taken");
+                    webcam.close();
+
+                }
+            }
+            );
+            window.setResizable(true);
+    //        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.pack();
+            window.setLocationRelativeTo(null);
+            window.setVisible(true);
+            }
+            catch(Exception e)
+            {
+            JOptionPane.showMessageDialog(null,"Error writing file");
+            return;
+            }
     }//GEN-LAST:event_btnTakePictureActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-
+            String Path;
+            Path = txtPatientIdentifier.getText()+".jpg";
+            ImageIcon icon = new ImageIcon(Path);
+            Image img = icon.getImage();
+            Image imagescaled = img.getScaledInstance(180,160,Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(imagescaled);
+            personImageLabels.setIcon(scaledIcon);
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
@@ -737,6 +993,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTakePicture;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnViewOnMap;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -786,4 +1043,149 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtReasonForVisit;
     private javax.swing.JTextField txtSSN;
     // End of variables declaration//GEN-END:variables
+  private void populateField() {
+        LocalDateTime localTimeUpdate = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss");
+        txtDate.setText(localTimeUpdate.format(dateTimeFormat));
+
+        txtPatientIdentifier.setText(patientId);
+
+        //lblPolicyNum.setEnabled(false);
+        btnFindInsurance.setEnabled(false);
+        txtPolicyNum.setEnabled(false);
+        txtInsuranceCompany.setEnabled(false);
+        txtPolicyName.setEnabled(false);
+
+        txtCoverage.setEnabled(false);
+
+        //lblCoverage.setEnabled(false);
+        //lblInsCompany.setEnabled(false);
+
+        //lblPolicyName.setEnabled(false);
+    }
+
+    private void refresh() {
+
+        txtPatientIdentifier.setText(UUID.randomUUID().toString().substring(0, 7));
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtHomePhone.setText("");
+        txtAge.setText("");
+        txtSSN.setText("");
+        txtAddress.setText("");
+        txtReasonForVisit.setText("");
+        txtEmail.setText("");
+        txtPolicyName.setText("");
+        txtPolicyNum.setText("");
+        txtCoverage.setText("");
+        txtInsuranceCompany.setText("");
+    }
+
+    private boolean phonePatternCorrect() {
+
+        Pattern pattern = Pattern.compile("\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}");
+        Matcher matcher = pattern.matcher(txtHomePhone.getText());
+
+        boolean b = false;
+
+        if (matcher.matches()) {
+            b = true;
+        } else {
+            b = false;
+        }
+
+        return b;
+    }
+
+    private boolean ssnPatternCheck() {
+
+        Pattern pattern = Pattern.compile("^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$");
+        Matcher matcher = pattern.matcher(txtSSN.getText());
+
+        boolean b = false;
+
+        if (matcher.matches()) {
+            b = true;
+        } else {
+            b = false;
+        }
+
+        return b;
+    }
+    private boolean emailPatternCheck() {
+
+        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(txtEmail.getText());
+
+        boolean b = false;
+
+        if (matcher.matches()) {
+            b = true;
+        } else {
+            b = false;
+        }
+
+        return b;
+    }
+      private boolean passwordPatternCorrect() {
+        Pattern p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$+_])(?=\\S+$).{6,}$");
+        Matcher m = p.matcher(String.valueOf(passwordJTextField.getPassword()));
+        boolean b = m.matches();
+        return b;
+    }
+
+    private void autopopulateFields(Patient patient) {
+        txtFirstName.setText(patient.getPatientFName());
+        txtLastName.setText(patient.getPatientLName());
+        txtPatientIdentifier.setText(patient.getPatientID());
+        txtHomePhone.setText(patient.getPhoneNumber());
+        txtSSN.setText(patient.getSSN());
+        txtAge.setText(patient.getAge());
+        txtAddress.setText(patient.getAddress());
+        txtEmail.setText(patient.getPatientEmail());
+        try{
+        nameJTextField.setText(patient.getUserAccount().getUsername());
+        passwordJTextField.setText(patient.getUserAccount().getPassword());
+        rePasswordJTextField.setText(patient.getUserAccount().getPassword());
+        }catch(Exception exc){
+            nameJTextField.setEnabled(false);
+            passwordJTextField.setEnabled(false);
+            rePasswordJTextField.setEnabled(false);
+        }
+        
+
+        String Path;
+        Path = txtPatientIdentifier.getText()+".jpg";
+        ImageIcon icon = new ImageIcon(Path);
+        Image img = icon.getImage();
+        Image imagescaled = img.getScaledInstance(180,160,Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imagescaled);
+        personImageLabels.setIcon(scaledIcon);
+       
+        String sex = patient.getGender();
+        
+        if(sex.equals("Male"))
+        {
+            rbtnMale.setSelected(true);
+        }
+        
+        else if(sex.equals("Female"))
+        {
+            rbtnFemale.setSelected(true);
+        }
+        
+        else if(sex.equals("Other"))
+        {
+            rbtnOther.setSelected(true);
+        }
+        nameJTextField.setEnabled(false);
+        passwordJTextField.setEnabled(false);
+        rePasswordJTextField.setEnabled(false);
+        txtSSN.setEnabled(false);
+        txtPatientSSN.setEnabled(false);
+        txtPatientIdentifier.setEnabled(false);
+
+    }
+
+
 }

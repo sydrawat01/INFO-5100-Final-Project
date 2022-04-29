@@ -1,16 +1,46 @@
 package UI.InsuranceTreasurer;
 
+import javax.swing.JPanel;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.InsuranceTreasurerOrg;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.InsuranceJob;
+import ChemoCare.JobQueue.JobRequest;
+
+
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sid
  */
 public class InsuranceTreasurerWorkArea extends javax.swing.JPanel {
-
+    private JPanel userProcessContainer;
+    private Account account;
+    private InsuranceTreasurerOrg insuranceTreasurerOrg;
+    private Enterprise enterprise;
   /**
    * Creates new form InsuranceTreasurerWorkArea
    */
-  public InsuranceTreasurerWorkArea() {
+  public InsuranceTreasurerWorkArea(JPanel userProcessContainer, Account account, InsuranceTreasurerOrg insuranceTreasurerOrg, Enterprise enterprise) {
     initComponents();
+    
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.insuranceTreasurerOrg = insuranceTreasurerOrg;
+        this.enterprise = enterprise;
   }
 
   /**

@@ -1,17 +1,53 @@
 package UI.HealthcareAccountant;
 
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Enterprise.CancerCenterEnterprise;
+import ChemoCare.NetworkSystem.NetworkSystem;
+import ChemoCare.Org.AccountantOrg;
+import ChemoCare.Org.DoctorOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Patient.Patient;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.AccountsBillingJob;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.JobQueue.JobRequest;
+
 /**
  *
  * @author sid
  */
 public class AccountantWorkArea extends javax.swing.JPanel {
+    
+    private JPanel userProcessContainer;
+    private Account account;
+    private AccountantOrg accountantOrg;
+    private Enterprise enterprise;
+    private Ecosystem ecosystem;
+    List<Patient> underTreatmentPatients = new ArrayList<>();
+    List<Patient> treatedPatients = new ArrayList<>();
 
   /**
    * Creates new form AccountantWorkArea
    */
-  public AccountantWorkArea() {
-    initComponents();
-  }
+    public AccountantWorkArea(JPanel userProcessContainer, Account account, AccountantOrg accountantOrg, Enterprise enterprise, Ecosystem ecosystem) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.accountantOrg = accountantOrg;
+        this.account = account;
+        this.enterprise = enterprise;
+        this.ecosystem = ecosystem;
+
+        populateAllPatientsTable();
+
+    }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -89,6 +125,11 @@ public class AccountantWorkArea extends javax.swing.JPanel {
         });
 
         btnProcessMedicalBills.setText("Process Medical Billings");
+        btnProcessMedicalBills.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessMedicalBillsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -143,11 +184,32 @@ public class AccountantWorkArea extends javax.swing.JPanel {
 
     private void btnViewAppointmentStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentStatusActionPerformed
         // TODO add your handling code here:
+        
+//        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
+//        defaultPieDataset.setValue("In Progress", underTreatmentPatients.size());
+//        defaultPieDataset.setValue("Completed Successfully", treatedPatients.size());
+//        JFreeChart chart = ChartFactory.createPieChart("Appointment Status Pie Chart", defaultPieDataset, true, true, true);
+//        PiePlot piePlot =(PiePlot) chart.getPlot();
+//        ChartFrame frame = new ChartFrame("Appointment Status Pie Chart", chart);
+//        frame.setVisible(true);
+//        frame.setSize(500,500);
     }//GEN-LAST:event_btnViewAppointmentStatusActionPerformed
 
     private void btnCreateAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAppointmentsActionPerformed
         // TODO add your handling code here:
+        
+        String patientId = UUID.randomUUID().toString().substring(0, 7);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("CreateAppointmentJPanel", new CreateAppointmentJPanel(userProcessContainer, account, enterprise, ecosystem, patientId));
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateAppointmentsActionPerformed
+
+    private void btnProcessMedicalBillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessMedicalBillsActionPerformed
+        // TODO add your handling code here:
+           CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("ProcessMedicalBillsJPanel", new ProcessMedicalBillsJPanel(userProcessContainer, account, enterprise, accountantOrg, ecosystem));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnProcessMedicalBillsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateAppointments;
@@ -158,4 +220,73 @@ public class AccountantWorkArea extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAllPatients;
     // End of variables declaration//GEN-END:variables
+public void populateAllPatientsTable() {
+        List<Patient> patients = ((CancerCenterEnterprise) enterprise).getPatientDirectory().getPatientList();
+        DefaultTableModel dtm = (DefaultTableModel) tblAllPatients.getModel();
+        dtm.setRowCount(0);
+        /*for (Patient patient : patients) {
+            Object[] row = new Object[6];
+
+            row[0] = patient;
+            row[1] = patient.getPatientFirstName() + " " + patient.getPatientLastName();
+            row[2] = patient.getPhoneNumber();
+            row[3] = patient.getAddress();
+            row[4] = patient.isIsTreatmentComplete() ? "Treatment Complete" : "Treatment In Progress";
+            row[5] = patient.getAppointmentDate();
+
+            dtm.addRow(row);
+        }
+        for (WorkRequest request : accountantOrganization.getWorkQueue().getWorkRequests()) {
+            Object[] row = new Object[7];
+            String status = request.getStatus();
+            row[0] = ((AccountantBillingRequest) request).getPatient().getPatientId();
+            row[1] = ((AccountantBillingRequest) request).getPatient().getPatientFirstName() + " " + ((AccountantBillingRequest) request).getPatient().getPatientLastName();
+            row[2] = ((AccountantBillingRequest) request).getPatient().getPhoneNumber();
+            row[3] = ((AccountantBillingRequest) request).getPatient().getAddress();
+            row[4] = status.equals("Patient Transaction Completed")? "Treatment Complete" : "Treatment In Progress";
+            row[5] = ((AccountantBillingRequest) request).getPatient().getAppointmentDate();
+            row[6] = ((AccountantBillingRequest) request).getBillingAmount();
+
+            dtm.addRow(row);
+        }*/
+        //for(Network net:ecoSystem.getNetworks()){
+            //for(Enterprise enter: net.getEnterpriseDirectory().getEnterpriseList()){
+                //if ((enter instanceof HealthCenterEnterprise)&&(net.getZip()==enterprise.getZipcode()))
+                //{
+                    for (Org org : enterprise.getOrgDirectory().getOrganizations()) 
+                    {
+                        if (org instanceof DoctorOrg) 
+                        {
+                            for (JobRequest request : org.getJobQueue().getJobRequestList()) 
+                            {
+                                //if(((PatientVisitWorkRequest) request).getPatient().getPatientId()==userAccount.getCus().getPatientId())
+                                //{
+                                    String status = request.getStatus();
+                                    Object[] row = new Object[7];
+                                    row[0] = ((PatientVisitJob) request).getPatient().getPatientID();
+                                    row[1] = ((PatientVisitJob) request).getPatient().getPatientFName();
+                                    row[2] = ((PatientVisitJob) request).getPatient().getPhoneNumber();
+                                    row[3] = ((PatientVisitJob) request).getPatient().getAddress();
+                                    row[5] = ((PatientVisitJob) request).getPatient().getAppointmentDate();
+                                    row[4] = ((PatientVisitJob) request).getIsComplete()? "Treatment Complete" : "Treatment In Progress";
+                                    row[6] = ((PatientVisitJob) request).getBillAmount();
+                                    dtm.addRow(row);
+                                    if(((PatientVisitJob) request).getIsComplete())
+                                    {
+                                      treatedPatients.add(((PatientVisitJob) request).getPatient());
+                                    } else {
+                                        underTreatmentPatients.add(((PatientVisitJob) request).getPatient());
+                                    }
+                                //}
+                            }
+                        }
+                    //}
+                    
+                //}
+            //}
+            
+        }
+    }
+
+
 }

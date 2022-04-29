@@ -4,17 +4,65 @@
  */
 package UI.AdminRole;
 
+
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.NetworkSystem.NetworkSystem;
+import ChemoCare.Org.HealthOfficialOrg;
+import ChemoCare.Org.LabAttendantOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.LabTestJob;
+import ChemoCare.JobQueue.JobRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author harshita
+ * @author jeelpatel
  */
 public class RequestFundsJPanel extends javax.swing.JPanel {
+    
+        private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Account account;
+    private Ecosystem ecosystem;
 
     /**
-     * Creates new form RequestFundsJPanel
+     * Creates new form RequestFunds
      */
-    public RequestFundsJPanel() {
+    public RequestFundsJPanel(JPanel jPanel, Enterprise enterprise, Account account, Ecosystem ecosystem) {
         initComponents();
+           this.userProcessContainer = jPanel;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.ecosystem = ecosystem;
+        populateRequestTable();
+    }
+        public void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        double totalFunds = 0;
+        model.setRowCount(0);
+        for (JobRequest request : account.getJobQueue().getJobRequestList()) {
+            if(request instanceof GovtFundJob){
+            Object[] row = new Object[4];
+            row[0] = String.valueOf(((GovtFundJob) request).getLocation());
+            row[1] = request.getReceiver();
+            row[2] = request.getStatus();
+            row[3] = String.valueOf(((GovtFundJob) request).getRequestAmount());
+            model.addRow(row);
+            if (request.getStatus().equalsIgnoreCase("Accepted")) {
+                totalFunds += ((GovtFundJob) request).getRequestAmount();
+            }
+        }
+       }
+        txtFundsReceived.setText(String.valueOf(totalFunds));
+
     }
 
     /**
@@ -26,109 +74,66 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRequestTest = new javax.swing.JButton();
+        lblRequestFunds = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtLabTextMessage = new javax.swing.JTextField();
-        btnBack = new javax.swing.JButton();
-        valueLabel = new javax.swing.JLabel();
-        enterpriseLabel = new javax.swing.JLabel();
+        txtLocation = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        txtpopulation = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cmbOrder = new javax.swing.JComboBox<>();
+        txtAmount = new javax.swing.JTextField();
+        btnSendFundRequest = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMenu = new javax.swing.JTable();
+        workRequestJTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        txtPrice = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblOrder = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        btnAddItem = new javax.swing.JButton();
-        btnRemoveItem = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
+        txtFundsReceived = new javax.swing.JTextField();
+        backJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(190, 194, 224));
-
-        btnRequestTest.setBackground(new java.awt.Color(250, 218, 209));
-        btnRequestTest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRequestTest.setText("Place Order");
-        btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestTestActionPerformed(evt);
-            }
-        });
+        lblRequestFunds.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblRequestFunds.setForeground(new java.awt.Color(255, 255, 255));
+        lblRequestFunds.setText("Request Funds");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Message:");
+        jLabel1.setText("Location: ");
 
-        txtLabTextMessage.addActionListener(new java.awt.event.ActionListener() {
+        txtLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLabTextMessageActionPerformed(evt);
+                txtLocationActionPerformed(evt);
             }
         });
-
-        btnBack.setBackground(new java.awt.Color(250, 218, 209));
-        btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnBack.setText("<<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
-        valueLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        valueLabel.setForeground(new java.awt.Color(255, 255, 255));
-        valueLabel.setText("<value>");
-
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        enterpriseLabel.setForeground(new java.awt.Color(255, 255, 255));
-        enterpriseLabel.setText("EnterPrise :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Quantity:");
+        jLabel2.setText("Population:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Final Order ");
-
-        cmbOrder.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", " " }));
-        cmbOrder.addActionListener(new java.awt.event.ActionListener() {
+        txtpopulation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbOrderActionPerformed(evt);
+                txtpopulationActionPerformed(evt);
             }
         });
 
-        tblMenu.setBackground(new java.awt.Color(231, 194, 183));
-        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Mienu Item", "Item Price", "Pharmacy"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true
-            };
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Amount:");
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        txtAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAmountActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(tblMenu);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Total Price:");
+        btnSendFundRequest.setBackground(new java.awt.Color(255, 204, 51));
+        btnSendFundRequest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSendFundRequest.setText("Send Fund Request");
+        btnSendFundRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendFundRequestActionPerformed(evt);
+            }
+        });
 
-        txtPrice.setEditable(false);
-
-        tblOrder.setBackground(new java.awt.Color(231, 194, 183));
-        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
+        workRequestJTable.setBackground(new java.awt.Color(204, 255, 153));
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -136,47 +141,42 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Item", "Price", "Quantity", "Total"
+                "Location", "Receiver", "Status", "Amount"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblOrder);
+        jScrollPane1.setViewportView(workRequestJTable);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("All Funds Requests");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Order Menu");
+        jLabel5.setText("Total Funds Received :");
 
-        btnAddItem.setBackground(new java.awt.Color(250, 218, 209));
-        btnAddItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnAddItem.setText("Add Item");
-        btnAddItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddItemActionPerformed(evt);
-            }
-        });
+        txtFundsReceived.setEditable(false);
 
-        btnRemoveItem.setBackground(new java.awt.Color(250, 218, 209));
-        btnRemoveItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRemoveItem.setText("Remove Item");
-        btnRemoveItem.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setBackground(new java.awt.Color(255, 204, 51));
+        backJButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveItemActionPerformed(evt);
-            }
-        });
-
-        btnView.setBackground(new java.awt.Color(250, 218, 209));
-        btnView.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnView.setText("Vew All Orders");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
 
@@ -184,166 +184,172 @@ public class RequestFundsJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(201, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(153, 153, 153))))
+            .addGap(0, 666, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(37, 37, 37)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(230, 230, 230)
-                            .addComponent(jLabel5)
-                            .addGap(101, 101, 101)
-                            .addComponent(enterpriseLabel)
-                            .addGap(10, 10, 10)
-                            .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(136, 136, 136)
+                            .addComponent(jLabel5))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(185, 185, 185)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(37, 37, 37)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtpopulation, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(txtFundsReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSendFundRequest))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(190, 190, 190)
-                            .addComponent(jLabel2)
-                            .addGap(23, 23, 23)
-                            .addComponent(cmbOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(228, 228, 228)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(230, 230, 230)
-                            .addComponent(jLabel3))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(140, 140, 140)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(140, 140, 140)
-                            .addComponent(jLabel4)
-                            .addGap(12, 12, 12)
-                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(txtLabTextMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(btnRequestTest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(backJButton)
+                            .addGap(131, 131, 131)
+                            .addComponent(lblRequestFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(37, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(493, Short.MAX_VALUE))
+            .addGap(0, 473, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
+                    .addGap(22, 22, 22)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblRequestFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(20, 20, 20)
-                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(170, 170, 170)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGap(20, 20, 20)
+                            .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(cmbOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(33, 33, 33)
-                    .addComponent(jLabel3)
-                    .addGap(21, 21, 21)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(46, 46, 46)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLabTextMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel1))))
-                    .addGap(30, 30, 30)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRemoveItem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRequestTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(txtpopulation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(16, 16, 16)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGap(18, 18, 18)
+                    .addComponent(btnSendFundRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtFundsReceived, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(28, 28, 28)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(22, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
-
-    }//GEN-LAST:event_btnRequestTestActionPerformed
-
-    private void txtLabTextMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLabTextMessageActionPerformed
+    private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLabTextMessageActionPerformed
+    }//GEN-LAST:event_txtLocationActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void cmbOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrderActionPerformed
+    private void txtpopulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpopulationActionPerformed
         // TODO add your handling code here:
-        /*int selectedRow = menuTable.getSelectedRow();
-        Double total = Double.parseDouble(priceTextField.getText());
-        Double itemtotal=0.0;
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details", "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
+    }//GEN-LAST:event_txtpopulationActionPerformed
+
+    private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmountActionPerformed
+
+    private void btnSendFundRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFundRequestActionPerformed
+
+        String location = txtLocation.getText().trim();
+        String population = txtpopulation.getText();
+        String amount = txtAmount.getText();
+        if (location.equals("") || population.equals("") || amount.equals("")) {
+            JOptionPane.showMessageDialog(null, "All fields are mandatory");
+        } else {
+            try {
+                Integer.parseInt(population);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please type an Integer for population");
+                return;
+            }
+            try {
+                Double.parseDouble(amount);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please type an Integer value for amount");
+                return;
+            }
+            GovtFundJob governmentFundRequest = new GovtFundJob(location, Integer.parseInt(population), Double.parseDouble(amount));
+            governmentFundRequest.setSender(account);
+            governmentFundRequest.setStatus("Sent");
+            governmentFundRequest.setAdminEmail(account.getEmployee().getEmpEmail());
+            governmentFundRequest.setAdminName(account.getEmployee().getEmpName());
+
+            Org org = null;
+
+            List<NetworkSystem> networks = ecosystem.getNetworkSystems();
+            int zip = enterprise.getZipcode();
+            //
+
+            for (NetworkSystem network : networks) {
+                if(network.getZipcode()==zip)
+                {
+                    List<Enterprise> enterprises = network.getEnterpriseDirectory().getEnterpriseList();
+                    for (Enterprise enter : enterprises) {
+
+                        List<Org> organizations = enter.getOrgDirectory().getOrganizations();
+                        for (Org organization : organizations) {
+                            if (organization instanceof HealthOfficialOrg) {
+                                org = organization;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (org != null) {
+                org.getJobQueue().getJobRequestList().add(governmentFundRequest);
+                account.getJobQueue().getJobRequestList().add(governmentFundRequest);
+            }
+            populateRequestTable();
         }
-        else{
-            itemtotal = (Double) menuTable.getValueAt(selectedRow, 1)*Double.parseDouble(orderCombo.getSelectedItem().toString());
-            priceTextField.setText(String.valueOf(total+itemtotal));
+    }//GEN-LAST:event_btnSendFundRequestActionPerformed
 
-        }*/
-    }//GEN-LAST:event_cmbOrderActionPerformed
-
-    private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnAddItemActionPerformed
-
-    private void btnRemoveItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItemActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnRemoveItemActionPerformed
-
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnViewActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddItem;
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRemoveItem;
-    private javax.swing.JButton btnRequestTest;
-    private javax.swing.JButton btnView;
-    private javax.swing.JComboBox<String> cmbOrder;
-    private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnSendFundRequest;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblMenu;
-    private javax.swing.JTable tblOrder;
-    private javax.swing.JTextField txtLabTextMessage;
-    private javax.swing.JTextField txtPrice;
-    private javax.swing.JLabel valueLabel;
+    private javax.swing.JLabel lblRequestFunds;
+    private javax.swing.JTextField txtAmount;
+    private javax.swing.JTextField txtFundsReceived;
+    private javax.swing.JTextField txtLocation;
+    private javax.swing.JTextField txtpopulation;
+    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

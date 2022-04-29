@@ -4,17 +4,44 @@
  */
 package UI.GovtSecretary;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JPanel;
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Map.SendEmail;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.SecretaryOrg;
+import ChemoCare.Org.FinancialOfficialOrg;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.GovtFundJob;
+import UI.HealthcareOfficial.OfficerProcessRequestsJPanel;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author harshita
  */
 public class SecretaryProcessRequestJPanel extends javax.swing.JPanel {
-
+  private JPanel jPanel;
+    private Enterprise enterprise;
+    private Account account;
+    private GovtFundJob govtFundJob;
     /**
      * Creates new form SecretaryProcessRequestJPanel
      */
-    public SecretaryProcessRequestJPanel() {
+     public SecretaryProcessRequestJPanel(JPanel jPanel, Account account, GovtFundJob govtFundJob, Enterprise enterprise) {
         initComponents();
+
+        this.jPanel = jPanel;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.govtFundJob = govtFundJob;
+        txtAmount.setText(String.valueOf(govtFundJob.getRequestAmount()));
+        txtLocation.setText(govtFundJob.getLocation());
+        txtPopulation.setText(String.valueOf(govtFundJob.getPopulation()));
+
     }
 
     /**
@@ -170,15 +197,90 @@ public class SecretaryProcessRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMessageActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-
+            String message = txtMessage.getText();
+        String sub="Your Fund request is Rejected by Government Secretary";
+         if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        } else {
+        govtFundJob.setMessage(message);
+        
+         int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                govtFundJob.setStatus("Rejected");
+                try{
+                SendEmail.send(govtFundJob.getAdminEmail(),"\nHi "+govtFundJob.getAdminName()+","+"\n\nYour funding request for Location "+ govtFundJob.getLocation()+
+                        " is Rejected by Secretary: "+ account.getEmployee().getEmpName()+"\n\n\n Message: "+message+"\n\n\nThanks\nGovenrment",sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+                JOptionPane.showMessageDialog(null, "Rejected!");
+                txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnSendRequestToTreasurer.setEnabled(false);
+            }
+            txtMessage.setText("");
+         }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnSendRequestToTreasurerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestToTreasurerActionPerformed
         // TODO add your handling code here:
+        
+        String message = txtMessage.getText();
+        String sub="Your Fund request is approved by Government Secretary";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        }
+        else{
+        govtFundJob.setMessage(message);
+        
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+         if (dialogResult == JOptionPane.YES_OPTION) {
+        govtFundJob.setSender(account);
+        govtFundJob.setStatus("Sent to Treasurer");
+        try{
+                SendEmail.send(govtFundJob.getAdminEmail(),"\nHi "+govtFundJob.getAdminName()+","+"\n\nYour funding request for Location "+ govtFundJob.getLocation()+
+                        " is approved by Secretary: "+ account.getEmployee().getEmpName()
+                +"\n\n\nThanks\nGovenrment",sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+
+        Org org = null;
+        for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+            if (organization instanceof FinancialOfficialOrg) {
+                org = organization;
+                break;
+            }
+        }
+        if (org != null) {
+            org.getJobQueue().getJobRequestList().add(govtFundJob);
+            account.getJobQueue().getJobRequestList().add(govtFundJob);
+        }
+        JOptionPane.showMessageDialog(null, "Request to Treasurer Successful!!!");
+        txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnSendRequestToTreasurer.setEnabled(false);
+        }
+
+        txtMessage.setText("");
+        }
     }//GEN-LAST:event_btnSendRequestToTreasurerActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
+         
+        jPanel.remove(this);
+        Component[] componentArray = jPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SecretaryWorkArea swjp = (SecretaryWorkArea) component;
+        swjp.populateTable();
+        CardLayout layout = (CardLayout) jPanel.getLayout();
+        layout.previous(jPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

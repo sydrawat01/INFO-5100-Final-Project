@@ -5,17 +5,60 @@
 
 package UI.AdminRole;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+
+import ChemoCare.Order.ItemList;
+import ChemoCare.Order.Order;
+import ChemoCare.JobQueue.OrderJob;
+import ChemoCare.Map.MapViewer;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import ChemoCare.Map.SendEmail;
+import java.util.List;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author harshita
  */
 public class ViewOrdersJPanel extends javax.swing.JPanel {
-
+     JPanel userProcessContainer;
+    OrderJob orderTreatmentWorkRequest;
+    Order order;
+    String caller;
     /** Creates new form ViewOrdersJPanel */
-    public ViewOrdersJPanel() {
+    public ViewOrdersJPanel(JPanel userProcessContainer, OrderJob patientTreatmentWorkRequest, Order ord,String type) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.orderTreatmentWorkRequest = patientTreatmentWorkRequest;
+        this.order = ord;
+        this.caller = type;
+        
+        populateItemTable(order);
     }
+      public void populateItemTable(Order order) {
+        final List<ItemList> items = order.getItemList();
+        DefaultTableModel model = (DefaultTableModel) tblOrderDetails.getModel();
+        
+        model.setRowCount(0);
 
+        for (ItemList itm: items) {
+            Object[] row = new Object[4];
+            row[0] = itm;
+            row[1] = itm.getPrice();
+            row[2] = itm.getQuantity();
+            row[3] = itm.getTotal();
+
+            model.addRow(row);
+        }
+        txtPrice.setText(String.valueOf(order.getAmount()));
+        
+        lblOrder.setText(order.getItemID());
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -31,6 +74,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrderDetails = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        lblOrder = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,6 +117,9 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Order Details");
 
+        lblOrder.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblOrder.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,9 +133,11 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(167, 167, 167)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnBack))
@@ -103,18 +152,30 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel2)
-                        .addGap(50, 50, 50)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+           userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        
+        
+            ViewAllOrdersJPanel wjp = (ViewAllOrdersJPanel) component;
+            wjp.populateTable();
+       
+        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
@@ -123,6 +184,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblOrder;
     private javax.swing.JTable tblOrderDetails;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables

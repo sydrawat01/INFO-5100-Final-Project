@@ -4,17 +4,50 @@
  */
 package UI.HealthcareAccountant;
 
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Enterprise.InsuranceCompanyEnterprise;
+import ChemoCare.Insurance.Insurance;
+import ChemoCare.InsuranceCustomer.InsuranceCustomer;
+import ChemoCare.Map.SMS;
+import ChemoCare.Map.SendEmail;
+import ChemoCare.NetworkSystem.NetworkSystem;
+import ChemoCare.Org.AccountantOrg;
+import ChemoCare.Org.InsuranceAgentOrg;
+import ChemoCare.Org.Org;
+import ChemoCare.Account.Account;
+import ChemoCare.JobQueue.AccountsBillingJob;
+import ChemoCare.JobQueue.InsuranceJob;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
  */
 public class AccountantProcessRequestJPanel extends javax.swing.JPanel {
-
+   private JPanel userProcessContainer;
+    private Account account;
+    private Enterprise enterprise;
+    private AccountantOrg accountantOrg;
+    private AccountsBillingJob accountBillingJob;
+    private Ecosystem ecosystem;
+    private double payableAmount;
     /**
      * Creates new form AccountantJPanel
      */
-    public AccountantProcessRequestJPanel() {
+    public AccountantProcessRequestJPanel(JPanel userProcessContainer, Account account, AccountsBillingJob request, Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
+        this.accountantOrg = accountantOrg;
+        this.accountBillingJob = request;
+        this.ecosystem = ecosystem;
+        populate();
     }
 
     /**
@@ -245,7 +278,84 @@ public class AccountantProcessRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendRequestForInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestForInsuranceActionPerformed
+    String policyNumber = accountBillingJob.getPatient().getInsuranceCustomer().getInsurancePlanNumber();
+        String ssn = accountBillingJob.getPatient().getSSN();
+        String policyName = accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getPlanName();
+        String insuranceCompany = accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getInsuranceCompany();
+        String email = accountBillingJob.getPatient().getPatientEmail();
+        String phone = accountBillingJob.getPatient().getPhoneNumber();
+        double claimAmount = Double.parseDouble(txtInsuranceClaimAmount.getText());
+        double billAmount = accountBillingJob.getBillingAmt();
+        String sub="Your Medical Bill is Processed";
 
+
+       
+            Insurance insurance = new Insurance(policyName, insuranceCompany, claimAmount);
+            insurance.setReimbursement(accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getReimbursement());
+
+            InsuranceCustomer insuranceCustomer = new InsuranceCustomer(insurance, policyNumber);
+            insuranceCustomer.setCustomerFName(txtFirstName.getText().trim());
+            insuranceCustomer.setCustomerLName((txtLastName.getText().trim()));
+
+            InsuranceJob insuranceWorkRequest = new InsuranceJob();
+            insuranceWorkRequest.setInsuranceCompany(insuranceCompany);
+            insuranceWorkRequest.setPolicyNumber(policyNumber);
+            insuranceWorkRequest.setPolicyName(policyName);
+            insuranceWorkRequest.setSsn(ssn);
+            insuranceWorkRequest.setClaimAmount(claimAmount);
+            insuranceWorkRequest.setBillAmount(billAmount);
+            insuranceWorkRequest.setHealthCenter(enterprise.getOrgName());
+
+            insuranceWorkRequest.setSender(account);
+            insuranceWorkRequest.setStatus("Sent");
+            insuranceWorkRequest.setInsuranceCustomer(insuranceCustomer);
+            insuranceWorkRequest.setCustomerEmail(email);
+            insuranceWorkRequest.setCustomerPhone(phone);
+            
+            Org org = null;
+            InsuranceCompanyEnterprise matchedInsuranceCompany = null;
+
+            List<NetworkSystem> networks = ecosystem.getNetworkSystems();
+            for (NetworkSystem network : networks) {
+                List<Enterprise> enterprises = network.getEnterpriseDirectory().getEnterpriseList();
+                for (Enterprise enterprise : enterprises) {
+                    if (enterprise.getOrgName().equalsIgnoreCase(accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getInsuranceCompany())) {
+                        matchedInsuranceCompany = (InsuranceCompanyEnterprise) enterprise;
+                    }
+                }
+            }
+
+            for (Org organization : matchedInsuranceCompany.getOrgDirectory().getOrganizations()) {
+                if (organization instanceof InsuranceAgentOrg) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null) {
+                org.getJobQueue().getJobRequestList().add(insuranceWorkRequest);
+                account.getJobQueue().getJobRequestList().add(insuranceWorkRequest);
+                accountBillingJob.setStatus("Patient Transaction Completed");
+                accountBillingJob.getPatient().setIsTreatmentDone(true);
+                accountBillingJob.getVisitRequest().setIsComplete(true);
+                try{
+                SendEmail.send(accountBillingJob.getPatient().getPatientEmail(),"\nHi "+accountBillingJob.getPatient().getPatientFName()+","+"\n\nYour Medical bill of amount: "+ accountBillingJob.getBillingAmt()+
+                        " is processed"+"\n\n\nThanks\n"+enterprise.getOrgName(),sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+16176524988","Hi "+accountBillingJob.getPatient().getPatientFName()+","+"\nYour Medical Bill of amount: "+ accountBillingJob.getBillingAmt()+
+                        " is processed"+"\n\nThanks,\n"+enterprise.getOrgName());
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+         JOptionPane.showMessageDialog(null, "Money received from patient: " + payableAmount+". Insurance Claim Request Raised Successfully for amount:" + claimAmount);
+                
+           btnSendRequestForInsurance.setEnabled(false);
+            }
     }//GEN-LAST:event_btnSendRequestForInsuranceActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -253,7 +363,27 @@ public class AccountantProcessRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCollectCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollectCashActionPerformed
-        
+String sub="Your Medical Bill is Processed";
+        accountBillingJob.setStatus("Patient Transaction Completed");
+        accountBillingJob.getPatient().setIsTreatmentDone(true);
+        accountBillingJob.getVisitRequest().setIsComplete(true);
+        try{
+                SendEmail.send(accountBillingJob.getPatient().getPatientEmail(),"\nHi "+accountBillingJob.getPatient().getPatientFName()+","+"\n\nYour Medical bill of amount: "+ accountBillingJob.getBillingAmt()+
+                        " is processed"+"\n\n\nThanks\n"+enterprise.getOrgName(),sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+accountBillingJob.getPatient().getPatientFName()+","+"\nYour Medical Bill of amount: "+ accountBillingJob.getBillingAmt()+
+                        " is processed"+"\n\nThanks,\n"+enterprise.getOrgName());
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+        JOptionPane.showMessageDialog(null, "Amount received from Patient");
+        btnCollectCash.setEnabled(false);        
     }//GEN-LAST:event_btnCollectCashActionPerformed
 
 
@@ -279,4 +409,37 @@ public class AccountantProcessRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPolicyNumber;
     private javax.swing.JTextField txtSSN;
     // End of variables declaration//GEN-END:variables
+ private void populate() {
+        String policyNumber = accountBillingJob.getPatient().getInsuranceCustomer().getInsurancePlanNumber();
+        double coverage = accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getReimbursement();
+        double billAmount = accountBillingJob.getBillingAmt();
+        String ssn = accountBillingJob.getPatient().getSSN();
+        String policyName = accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getPlanName();
+        String insuranceCompany = accountBillingJob.getPatient().getInsuranceCustomer().getInsurance().getInsuranceCompany();
+        double claimAmount = (coverage * billAmount) / 100;
+        payableAmount = billAmount - claimAmount;
+
+        txtPolicyNumber.setText(policyNumber);
+        txtSSN.setText(ssn);
+        txtFirstName.setText(accountBillingJob.getPatient().getPatientFName());
+        txtLastName.setText(accountBillingJob.getPatient().getPatientLName());
+        txtBillAmount.setText(String.valueOf(billAmount));
+        txtInsurancePolicyName.setText(policyName);
+        txtInsuranceClaimAmount.setText(String.valueOf(claimAmount));
+        txtPayableAmount.setText(String.valueOf(payableAmount));
+        
+        if(claimAmount>0)
+        {
+            btnSendRequestForInsurance.setEnabled(true);
+            btnCollectCash.setEnabled(false);
+        }
+        else
+        {
+            btnCollectCash.setEnabled(true);
+            btnSendRequestForInsurance.setEnabled(false);
+        }
+
+    }
+
+
 }

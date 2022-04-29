@@ -4,19 +4,62 @@
  */
 package UI.AdminRole;
 
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.Org.Org;
+import ChemoCare.Org.Org.Type;
+import ChemoCare.Org.OrgDirectory;
+
 /**
  *
  * @author harshita
  */
 public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
+     private OrgDirectory directory;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageOrganizationJPanel() {
+      public ManageOrganizationJPanel(JPanel userProcessContainer, OrgDirectory directory, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.directory = directory;
+        this.enterprise = enterprise;
+
+        populateTable();
+        populateCombo();
     }
 
+      private void populateCombo() {
+        cmbOrganization.removeAllItems();
+//        for (Type type : Organization.Type.values()){
+//            if (!type.getValue().equals(Type.Admin.getValue()))
+//                organizationJComboBox.addItem(type);
+//        }
+        for (Type orgType : enterprise.getAllOrganizationTypes()) {
+            cmbOrganization.addItem(orgType);
+        }
+    }
+          private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblOrganization.getModel();
+
+        model.setRowCount(0);
+
+        for (Org organization : directory.getOrganizations()) {
+            Object[] row = new Object[2];
+            row[0] = organization.getOrgID();
+            row[1] = organization;
+
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,15 +194,46 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
+            Type type = (Type) cmbOrganization.getSelectedItem();
+        //populateTable();
+        ArrayList<String> orgName = new ArrayList<String>();
+        DefaultTableModel model = (DefaultTableModel) tblOrganization.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            orgName.add(model.getValueAt(i, 1).toString());
+        }
+      
+            if(orgName.contains(type.getValue())){
+            JOptionPane.showMessageDialog(null, "Organization already exists!! ");
+            return;
+            }
+            else{
+                directory.createOrganization(type);
+                JOptionPane.showMessageDialog(null, "Organization created");
+            }
+        
+        populateTable();
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+            userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteOrganizationActionPerformed
         // TODO add your handling code here:
+        
+              int selectedRow = tblOrganization.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details", "Warning!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            Org organization = (Org) tblOrganization.getValueAt(selectedRow, 1);
+            enterprise.getOrgDirectory().getOrganizations().remove(organization);
+            populateTable();
+        }
 
     }//GEN-LAST:event_btnDeleteOrganizationActionPerformed
 
