@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author sid
  */
 public class DoctorWorkArea extends javax.swing.JPanel {
-       private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private DoctorOrg doctorOrg;
     private Enterprise enterprise;
     private Account account;
