@@ -4,6 +4,18 @@
  */
 package UI.DoctorRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Ecosystem;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.AccountsBillingJob;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.Org.AccountantOrg;
+import ChemoCare.Org.Org;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
@@ -13,8 +25,21 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestBillingsJPanel
      */
-    public RequestBillingsJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Account userAccount;
+    private Enterprise enterprise;
+    private PatientVisitJob patientTreatmentWorkRequest;
+    private Ecosystem ecoSystem;
+    private double consultationCharges = 50;
+    
+    public RequestBillingsJPanel(JPanel userProcessContainer, Account userAccount, Enterprise enterprise, PatientVisitJob workRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        this.patientTreatmentWorkRequest = workRequest;
+        populateTable();
     }
 
     /**
@@ -245,6 +270,14 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
 
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DoctorWorkArea dwjp = (DoctorWorkArea) component;
+        dwjp.populateRequestTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void txtConsultationChargesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultationChargesActionPerformed
@@ -257,8 +290,85 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
 
     private void btnSendBillingRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendBillingRequestActionPerformed
 
+        String consultationCharge = txtConsultationCharges.getText().trim();
+        String labChargesStr = txtLabCharges.getText();
+        String miscellaneouschargesStr = txtMiscellaneousCharges.getText();
+        String medicationChargesStr = txtMedicationCharges.getText();
+        if (consultationCharge.equals("") || labChargesStr.equals("") || miscellaneouschargesStr.equals("") || medicationChargesStr.equals("")) {
+            JOptionPane.showMessageDialog(null, "All fields are mandatory");
+        } else {
+            
+            try {
+                Double.parseDouble(consultationCharge);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please provide a Numeric value for Consultation Charges");
+                return;
+            }
+            
+            try {
+                Integer.parseInt(labChargesStr);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please type a Numeric value for Lab Charges");
+                return;
+            }
+            try {
+                Integer.parseInt(miscellaneouschargesStr);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please type a Numeric value for Miscellaneous charges");
+                return;
+            }
+            try {
+                Integer.parseInt(medicationChargesStr);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please type a Numeric value for Medication charges");
+                return;
+            }
+            double labCharges = Double.parseDouble(labChargesStr);
+            double miscellaneouscharges = Double.parseDouble(miscellaneouschargesStr);
+            double medicationCharges = Double.parseDouble(medicationChargesStr);
+            double billingAmount = labCharges + consultationCharges + medicationCharges + miscellaneouscharges;
+            //request.setBillAmount(billingAmount);
+
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                patientTreatmentWorkRequest.setStatus("Consultation Completed");
+                patientTreatmentWorkRequest.setBillAmount(billingAmount);
+
+                AccountsBillingJob accountantBillingRequest = new AccountsBillingJob();
+                accountantBillingRequest.setBillingAmt(billingAmount);
+
+                accountantBillingRequest.setSender(userAccount);
+                accountantBillingRequest.setStatus("Sent");
+                accountantBillingRequest.setPatient(patientTreatmentWorkRequest.getPatient());
+                accountantBillingRequest.setVisitRequest(patientTreatmentWorkRequest);
+
+                Org org = null;
+                for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+                    if (organization instanceof AccountantOrg) {
+                        org = organization;
+                        break;
+                    }
+                }
+                if (org != null) {
+                    org.getJobQueue().getJobRequestList().add(accountantBillingRequest);
+                    userAccount.getJobQueue().getJobRequestList().add(accountantBillingRequest);
+                }
+
+                JOptionPane.showMessageDialog(null, "Prescription submitted successfully");
+                btnSendBillingRequest.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_btnSendBillingRequestActionPerformed
 
+    private void populateTable() {
+
+        txtFirstName.setText(patientTreatmentWorkRequest.getPatient().getPatientFName());
+        txtLastName.setText(patientTreatmentWorkRequest.getPatient().getPatientLName());
+        txtPatientId.setText(String.valueOf(patientTreatmentWorkRequest.getPatient().getPatientID()));
+        txtAssignedDoctor.setText(patientTreatmentWorkRequest.getAssignedDoctor().getEmployee().getEmpName());
+        txtConsultationCharges.setText(String.valueOf(consultationCharges));
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
