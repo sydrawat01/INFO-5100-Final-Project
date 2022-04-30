@@ -17,73 +17,85 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="780" pref="780" max="-2" attributes="0"/>
-              <Component id="backJButton" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Component id="lblTitle" min="-2" pref="880" max="-2" attributes="0"/>
-          <Group type="102" attributes="0">
-              <EmptySpace min="340" pref="340" max="-2" attributes="0"/>
-              <Component id="lblSubTitle" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
-              <Component id="lblFirstName" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-              <Component id="txtFirstName" min="-2" pref="123" max="-2" attributes="0"/>
-              <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
-              <Component id="lblLastName" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
-              <Component id="txtLastName" min="-2" pref="131" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPatientId" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                      <Component id="txtPatientId" min="-2" pref="128" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
+                      <Component id="lblFirstName" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                      <Component id="txtFirstName" min="-2" pref="123" max="-2" attributes="0"/>
+                      <EmptySpace min="47" pref="47" max="-2" attributes="0"/>
+                      <Component id="lblLastName" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
+                      <Component id="txtLastName" min="-2" pref="131" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPatientId" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
+                              <Component id="txtPatientId" min="-2" pref="128" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtAge" min="-2" pref="134" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblAge" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="100" pref="100" max="-2" attributes="0"/>
+                              <Component id="txtHomePhone" min="-2" pref="128" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
+                      <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="385" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="personImageLabels" min="-2" pref="130" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="780" pref="780" max="-2" attributes="0"/>
+                      <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblTitle" min="-2" pref="880" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="340" pref="340" max="-2" attributes="0"/>
+                      <Component id="lblSubTitle" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="271" pref="271" max="-2" attributes="0"/>
+                      <Component id="lblPatientMedicalCondition" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Component id="txtAge" min="-2" pref="134" max="-2" attributes="0"/>
+                      <Component id="txtMedicalCondition" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="100" pref="100" max="-2" attributes="0"/>
-                      <Component id="txtHomePhone" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="176" pref="176" max="-2" attributes="0"/>
+                      <Component id="lblPrescription" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="389" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="353" pref="353" max="-2" attributes="0"/>
+                      <Component id="btnViewDiagnoposis" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
-              <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="385" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="271" pref="271" max="-2" attributes="0"/>
-              <Component id="lblPatientMedicalCondition" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-              <Component id="txtMedicalCondition" min="-2" pref="160" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="176" pref="176" max="-2" attributes="0"/>
-              <Component id="lblPrescription" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="389" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="353" pref="353" max="-2" attributes="0"/>
-              <Component id="btnViewDiagnoposis" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,29 +110,34 @@
               <Component id="lblSubTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblFirstName" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFirstName" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblLastName" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtLastName" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblFirstName" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFirstName" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLastName" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLastName" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPatientId" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPatientId" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAge" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAge" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtHomePhone" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="58" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="personImageLabels" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPatientId" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPatientId" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAge" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtHomePhone" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="58" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
@@ -352,6 +369,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewDiagnoposisActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="personImageLabels">
     </Component>
   </SubComponents>
 </Form>
