@@ -42,8 +42,12 @@ public class InsuranceAgentWorkArea extends javax.swing.JPanel {
         btnProcessInsuranceRequest = new javax.swing.JButton();
         btnAddsNewUser = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        btnProcessInsuranceRequest.setBackground(new java.awt.Color(255, 204, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        btnProcessInsuranceRequest.setBackground(new java.awt.Color(64, 123, 255));
+        btnProcessInsuranceRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnProcessInsuranceRequest.setText("Process Insurance Requests");
         btnProcessInsuranceRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +55,8 @@ public class InsuranceAgentWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnAddsNewUser.setBackground(new java.awt.Color(255, 204, 0));
+        btnAddsNewUser.setBackground(new java.awt.Color(64, 123, 255));
+        btnAddsNewUser.setForeground(new java.awt.Color(255, 255, 255));
         btnAddsNewUser.setText("Add New Customer");
         btnAddsNewUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,36 +65,43 @@ public class InsuranceAgentWorkArea extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(64, 123, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Insurance Agent Work Area ");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/Layers.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(btnAddsNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnProcessInsuranceRequest))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(jLabel1)))
+                .addGap(486, 486, 486)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnProcessInsuranceRequest)
+                    .addComponent(btnAddsNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, Short.MAX_VALUE)
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddsNewUser, btnProcessInsuranceRequest});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(145, 145, 145)
                 .addComponent(jLabel1)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProcessInsuranceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddsNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addComponent(btnAddsNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(btnProcessInsuranceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAddsNewUser, btnProcessInsuranceRequest});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessInsuranceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessInsuranceRequestActionPerformed
@@ -111,5 +123,6 @@ public class InsuranceAgentWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnAddsNewUser;
     private javax.swing.JButton btnProcessInsuranceRequest;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
