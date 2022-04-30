@@ -4,6 +4,16 @@
  */
 package UI.DoctorRole;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.PatientVisitJob;
+import ChemoCare.Org.LabAttendantOrg;
+import ChemoCare.Org.Org;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
@@ -13,8 +23,22 @@ public class RequestLabTestsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestsJPanel
      */
-    public RequestLabTestsJPanel() {
+    
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Account userAccount;
+    private PatientVisitJob patientTreatmentWorkRequest;
+
+    public RequestLabTestsJPanel(JPanel userProcessContainer, Account account, Enterprise enterprise, PatientVisitJob patientTreatmentWorkRequest) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.userAccount = account;
+        this.patientTreatmentWorkRequest = patientTreatmentWorkRequest;
+        lblValue.setText(enterprise.getOrgName());
+        btnRequestTest.setEnabled(true);
+        
     }
 
     /**
@@ -133,10 +157,50 @@ public class RequestLabTestsJPanel extends javax.swing.JPanel {
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
 
+        String labType = txtLabType.getText().trim();
+        String message = txtLabMessage.getText().trim();
+
+        if (labType.equals("")) {
+            JOptionPane.showMessageDialog(null, "Lap type is mandatory!");
+            return;
+        }
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory");
+            return;
+        }
+
+        patientTreatmentWorkRequest.setLabTestMessage(message);
+        patientTreatmentWorkRequest.setSender(userAccount);
+        patientTreatmentWorkRequest.setStatus("SentToLab");
+        patientTreatmentWorkRequest.setReceiver(null);
+
+        Org org = null;
+        for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+            if (organization instanceof LabAttendantOrg) {
+                org = organization;
+                break;
+            }
+        }
+        if (org != null) {
+            org.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
+            userAccount.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
+            JOptionPane.showMessageDialog(null, "Lab request sent");
+            txtLabMessage.setText("");
+            txtLabType.setText("");
+            btnRequestTest.setEnabled(false);
+        }
+        
     }//GEN-LAST:event_btnRequestTestActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DoctorWorkArea dwjp = (DoctorWorkArea) component;
+        dwjp.populateRequestTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
