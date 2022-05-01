@@ -97,6 +97,7 @@ public class AllInsuranceRequests extends javax.swing.JPanel {
 
         btnProcessRequests.setBackground(new java.awt.Color(64, 123, 255));
         btnProcessRequests.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnProcessRequests.setForeground(new java.awt.Color(255, 255, 255));
         btnProcessRequests.setText("Process Request");
         btnProcessRequests.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +107,7 @@ public class AllInsuranceRequests extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(64, 123, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +117,7 @@ public class AllInsuranceRequests extends javax.swing.JPanel {
 
         btnAssignToMe.setBackground(new java.awt.Color(64, 123, 255));
         btnAssignToMe.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAssignToMe.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
