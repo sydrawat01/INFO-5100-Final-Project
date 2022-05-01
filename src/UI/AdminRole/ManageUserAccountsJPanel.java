@@ -64,6 +64,13 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             cmbEmployee.addItem(employee);
         }
     }
+          private void populateRoleComboBox(Org organization) {
+        cmbRole.removeAllItems();
+        for (Role role : organization.getSupportedRole()) {
+            cmbRole.addItem(role);
+        }
+    }
+          
         public void popData() {
   
         DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
@@ -307,7 +314,11 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void cmbOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganizationActionPerformed
-        
+        Org organization = (Org) cmbOrganization.getSelectedItem();
+        if (organization != null) {
+            populateEmployeeComboBox(organization);
+            populateRoleComboBox(organization);
+        }
     }//GEN-LAST:event_cmbOrganizationActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -365,9 +376,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             txtPassword.setText("");
             txtrePassword.setText("");
             txtName.setText("");
-            //Added dialog box -- nikita
             JOptionPane.showMessageDialog(null, "Successfully created User Account!!");
-            // Dialog box ends -- nikita
         }        
     }//GEN-LAST:event_btnCreateActionPerformed
     private boolean passwordPatternCorrect() {

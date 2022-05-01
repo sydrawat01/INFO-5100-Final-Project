@@ -272,14 +272,14 @@ public class ManagerWorkArea extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         
-//        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
-//        defaultPieDataset.setValue("Orders still under Progress", inProgress.size());
-//        defaultPieDataset.setValue("Order Completed Successfully", completed.size());
-//        JFreeChart chart = ChartFactory.createPieChart("Order Status Pie Chart", defaultPieDataset, true, true, true);
-//        PiePlot piePlot =(PiePlot) chart.getPlot();
-//        ChartFrame frame = new ChartFrame("Order Status Pie Chart", chart);
-//        frame.setVisible(true);
-//        frame.setSize(500,500);
+        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
+        defaultPieDataset.setValue("Orders still under Progress", inProgress.size());
+        defaultPieDataset.setValue("Order Completed Successfully", completed.size());
+        JFreeChart chart = ChartFactory.createPieChart("Order Status Pie Chart", defaultPieDataset, true, true, true);
+        PiePlot piePlot =(PiePlot) chart.getPlot();
+        ChartFrame frame = new ChartFrame("Order Status Pie Chart", chart);
+        frame.setVisible(true);
+        frame.setSize(500,500);
       
     }//GEN-LAST:event_btnCheckStatsActionPerformed
 

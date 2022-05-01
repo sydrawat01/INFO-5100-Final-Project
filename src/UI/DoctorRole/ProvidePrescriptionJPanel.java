@@ -270,7 +270,19 @@ public class ProvidePrescriptionJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-
+      String prescription = txtPrescription.getText();
+        if (prescription.equals("")) {
+            JOptionPane.showMessageDialog(null, "Prescription is mandatory");
+            return;
+        } else {
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                request.setPrescription(prescription);
+                request.setStatus("Prescription Provided");
+                JOptionPane.showMessageDialog(null, "Prescription submitted successfully");
+                btnSubmit.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnButtonActionPerformed

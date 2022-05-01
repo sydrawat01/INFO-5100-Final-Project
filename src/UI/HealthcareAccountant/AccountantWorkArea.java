@@ -19,6 +19,11 @@ import ChemoCare.Account.Account;
 import ChemoCare.JobQueue.AccountsBillingJob;
 import ChemoCare.JobQueue.PatientVisitJob;
 import ChemoCare.JobQueue.JobRequest;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -191,15 +196,14 @@ public class AccountantWorkArea extends javax.swing.JPanel {
 
     private void btnViewAppointmentStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentStatusActionPerformed
         // TODO add your handling code here:
-        
-//        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
-//        defaultPieDataset.setValue("In Progress", underTreatmentPatients.size());
-//        defaultPieDataset.setValue("Completed Successfully", treatedPatients.size());
-//        JFreeChart chart = ChartFactory.createPieChart("Appointment Status Pie Chart", defaultPieDataset, true, true, true);
-//        PiePlot piePlot =(PiePlot) chart.getPlot();
-//        ChartFrame frame = new ChartFrame("Appointment Status Pie Chart", chart);
-//        frame.setVisible(true);
-//        frame.setSize(500,500);
+        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
+        defaultPieDataset.setValue("In Progress", underTreatmentPatients.size());
+        defaultPieDataset.setValue("Completed Successfully", treatedPatients.size());
+        JFreeChart chart = ChartFactory.createPieChart("Appointment Status Pie Chart", defaultPieDataset, true, true, true);
+        PiePlot piePlot =(PiePlot) chart.getPlot();
+        ChartFrame frame = new ChartFrame("Appointment Status Pie Chart", chart);
+        frame.setVisible(true);
+        frame.setSize(500,500);
     }//GEN-LAST:event_btnViewAppointmentStatusActionPerformed
 
     private void btnCreateAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAppointmentsActionPerformed
@@ -232,69 +236,38 @@ public void populateAllPatientsTable() {
         List<Patient> patients = ((CancerCenterEnterprise) enterprise).getPatientDirectory().getPatientList();
         DefaultTableModel dtm = (DefaultTableModel) tblAllPatients.getModel();
         dtm.setRowCount(0);
-        /*for (Patient patient : patients) {
-            Object[] row = new Object[6];
 
-            row[0] = patient;
-            row[1] = patient.getPatientFirstName() + " " + patient.getPatientLastName();
-            row[2] = patient.getPhoneNumber();
-            row[3] = patient.getAddress();
-            row[4] = patient.isIsTreatmentComplete() ? "Treatment Complete" : "Treatment In Progress";
-            row[5] = patient.getAppointmentDate();
-
-            dtm.addRow(row);
+    for (Org org : enterprise.getOrgDirectory().
+        getOrganizations()) {
+      if (org instanceof DoctorOrg) {
+        for (JobRequest request : org.getJobQueue().
+            getJobRequestList()) {
+          String status = request.getStatus();
+          Object[] row = new Object[7];
+          row[0] = ((PatientVisitJob) request).getPatient().
+              getPatientID();
+          row[1] = ((PatientVisitJob) request).getPatient().
+              getPatientFName();
+          row[2] = ((PatientVisitJob) request).getPatient().
+              getPhoneNumber();
+          row[3] = ((PatientVisitJob) request).getPatient().
+              getAddress();
+          row[5] = ((PatientVisitJob) request).getPatient().
+              getAppointmentDate();
+          row[4] = ((PatientVisitJob) request).getIsComplete() ?
+              "Treatment Complete" : "Treatment In Progress";
+          row[6] = ((PatientVisitJob) request).getBillAmount();
+          dtm.addRow(row);
+          if (((PatientVisitJob) request).getIsComplete()) {
+            treatedPatients.add(((PatientVisitJob) request).getPatient());
+          } else {
+            underTreatmentPatients.add(((PatientVisitJob) request).getPatient());
+          }
         }
-        for (WorkRequest request : accountantOrganization.getWorkQueue().getWorkRequests()) {
-            Object[] row = new Object[7];
-            String status = request.getStatus();
-            row[0] = ((AccountantBillingRequest) request).getPatient().getPatientId();
-            row[1] = ((AccountantBillingRequest) request).getPatient().getPatientFirstName() + " " + ((AccountantBillingRequest) request).getPatient().getPatientLastName();
-            row[2] = ((AccountantBillingRequest) request).getPatient().getPhoneNumber();
-            row[3] = ((AccountantBillingRequest) request).getPatient().getAddress();
-            row[4] = status.equals("Patient Transaction Completed")? "Treatment Complete" : "Treatment In Progress";
-            row[5] = ((AccountantBillingRequest) request).getPatient().getAppointmentDate();
-            row[6] = ((AccountantBillingRequest) request).getBillingAmount();
+      }
 
-            dtm.addRow(row);
-        }*/
-        //for(Network net:ecoSystem.getNetworks()){
-            //for(Enterprise enter: net.getEnterpriseDirectory().getEnterpriseList()){
-                //if ((enter instanceof HealthCenterEnterprise)&&(net.getZip()==enterprise.getZipcode()))
-                //{
-                    for (Org org : enterprise.getOrgDirectory().getOrganizations()) 
-                    {
-                        if (org instanceof DoctorOrg) 
-                        {
-                            for (JobRequest request : org.getJobQueue().getJobRequestList()) 
-                            {
-                                //if(((PatientVisitWorkRequest) request).getPatient().getPatientId()==userAccount.getCus().getPatientId())
-                                //{
-                                    String status = request.getStatus();
-                                    Object[] row = new Object[7];
-                                    row[0] = ((PatientVisitJob) request).getPatient().getPatientID();
-                                    row[1] = ((PatientVisitJob) request).getPatient().getPatientFName();
-                                    row[2] = ((PatientVisitJob) request).getPatient().getPhoneNumber();
-                                    row[3] = ((PatientVisitJob) request).getPatient().getAddress();
-                                    row[5] = ((PatientVisitJob) request).getPatient().getAppointmentDate();
-                                    row[4] = ((PatientVisitJob) request).getIsComplete()? "Treatment Complete" : "Treatment In Progress";
-                                    row[6] = ((PatientVisitJob) request).getBillAmount();
-                                    dtm.addRow(row);
-                                    if(((PatientVisitJob) request).getIsComplete())
-                                    {
-                                      treatedPatients.add(((PatientVisitJob) request).getPatient());
-                                    } else {
-                                        underTreatmentPatients.add(((PatientVisitJob) request).getPatient());
-                                    }
-                                //}
-                            }
-                        }
-                    //}
-                    
-                //}
-            //}
-            
-        }
     }
+  }
 
 
 }

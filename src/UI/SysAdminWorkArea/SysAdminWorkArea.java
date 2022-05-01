@@ -2,13 +2,31 @@ package UI.SysAdminWorkArea;
 
 import ChemoCare.Ecosystem;
 import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.AccountsBillingJob;
+import ChemoCare.JobQueue.GovtFundJob;
+import ChemoCare.JobQueue.InsuranceJob;
+import ChemoCare.JobQueue.JobRequest;
+import ChemoCare.JobQueue.OrderJob;
+import ChemoCare.JobQueue.PatientVisitJob;
 import ChemoCare.NetworkSystem.NetworkSystem;
+import ChemoCare.Org.AccountantOrg;
+import ChemoCare.Org.DoctorOrg;
+import ChemoCare.Org.HealthOfficialOrg;
+import ChemoCare.Org.InsuranceAgentOrg;
+import ChemoCare.Org.ManagerOrg;
 import ChemoCare.Org.Org;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -219,6 +237,118 @@ public class SysAdminWorkArea extends javax.swing.JPanel {
 
     private void btnViewKPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewKPIActionPerformed
         // TODO add your handling code here:
+      int treatmentCount = 0, progressCount = 0, billComplete = 0, billProgress = 0, insuranceComplete = 0,
+          insprogress = 0, fundscomplete = 0, fundsprogress = 0, ordercomplete =
+          0, orderprogress = 0;
+      DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+      for (NetworkSystem net : ecosystem.getNetworkSystems()) {
+        for (Enterprise enter : net.getEnterpriseDirectory().
+            getEnterpriseList()) {
+
+          for (Org org : enter.getOrgDirectory().getOrganizations()) {
+            //Patient visits
+            if (org instanceof DoctorOrg) {
+              for (JobRequest request : org.getJobQueue().getJobRequestList()) {
+                if (((PatientVisitJob) request).getIsComplete()) {
+                  treatmentCount++;
+                } else {
+                  progressCount++;
+                }
+              }
+            }
+            //Billing requests
+            if (org instanceof AccountantOrg) {
+              for (JobRequest request : org.getJobQueue().
+                  getJobRequestList()) {
+                if (((AccountsBillingJob) request).getStatus().
+                    equals("Patient Transaction Completed")) {
+                  billComplete++;
+                } else {
+                  billProgress++;
+                }
+              }
+            }
+            // Insurance claims
+            if (org instanceof InsuranceAgentOrg) {
+              for (JobRequest request : org.getJobQueue().
+                  getJobRequestList()) {
+                if (((InsuranceJob) request).getStatus().
+                    equals("Insurance Claim Approved")) {
+                  insuranceComplete++;
+                } else {
+                  insprogress++;
+                }
+              }
+            }
+            //Funds requests
+            if (org instanceof HealthOfficialOrg) {
+              for (JobRequest request : org.getJobQueue().
+                  getJobRequestList()) {
+                if (((GovtFundJob) request).getStatus().
+                    equals("Accepted")) {
+                  fundscomplete++;
+                } else {
+                  fundsprogress++;
+                }
+              }
+            }
+            //Order requests
+            if (org instanceof ManagerOrg) {
+              for (JobRequest request : org.getJobQueue().
+                  getJobRequestList()) {
+                if (((OrderJob) request).getStatus().
+                    equals("Accepted")) {
+                  ordercomplete++;
+                } else {
+                  orderprogress++;
+                }
+              }
+            }
+          }
+        }
+        dataset.addValue(treatmentCount, net.getName(), "Visit Completed");
+        dataset.addValue(progressCount, net.getName(), "VIsit Not Completed");
+        dataset.addValue(billComplete, net.getName(), "Billing Completed");
+        dataset.addValue(billProgress, net.getName(), "Billing Not Completed");
+        dataset.addValue(insuranceComplete, net.getName(), "Claim Completed");
+        dataset.addValue(insprogress, net.getName(), "Claim Not Completed");
+        dataset.addValue(fundscomplete, net.getName(), "Funds Completed");
+        dataset.addValue(fundsprogress, net.getName(), "Funds Not Completed");
+        dataset.addValue(ordercomplete, net.getName(), "Orders Completed");
+        dataset.addValue(orderprogress, net.getName(), "Orders Not Completed");
+
+        treatmentCount = 0;
+        progressCount = 0;
+        billComplete = 0;
+        billProgress = 0;
+        insuranceComplete = 0;
+        insprogress = 0;
+        fundscomplete = 0;
+        fundsprogress = 0;
+        ordercomplete = 0;
+        orderprogress = 0;
+
+      }
+
+      final JFreeChart chart = ChartFactory.createBarChart(
+          "ECOSYSTEM", // Title
+          "JOB QUEUE", // Domain Axis
+          "Value", // Range Axis
+          dataset, // data
+          PlotOrientation.HORIZONTAL,
+          true, // Legend
+          true, // Tooltips
+          false // URLs
+      );
+      // set the range axis to display integers only...
+      final CategoryPlot plot = chart.getCategoryPlot();
+      final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+      rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+      //plot chart
+      ChartFrame frame = new ChartFrame("ChemoCare KPIs ", chart);
+
+      frame.setVisible(true);
+      frame.setSize(1000, 700);
     }//GEN-LAST:event_btnViewKPIActionPerformed
 
 

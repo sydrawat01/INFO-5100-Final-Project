@@ -41,6 +41,7 @@ public class InsuranceTreasurerWorkArea extends javax.swing.JPanel {
         this.account = account;
         this.insuranceTreasurerOrg = insuranceTreasurerOrg;
         this.enterprise = enterprise;
+        populateTable();
   }
 
   /**
@@ -147,12 +148,60 @@ public class InsuranceTreasurerWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-        
+        int selectedRow = tblFinance.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+            JobRequest request = (InsuranceJob) tblFinance.getValueAt(selectedRow, 0);
+            if (request.getStatus().equals("Sent To Finance Department")) {
+                request.setReceiver(account);
+                request.setStatus("Pending on " + request.getReceiver().getEmployee().getEmpName());
+                populateTable();
+                JOptionPane.showMessageDialog(null, "Success !! Request is assigned to you");
+            } else {
+                JOptionPane.showMessageDialog(null, "Can't assign this work request, as the work request is in " + request.getStatus() + " status", "Warning!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessRequestActionPerformed
         // TODO add your handling code here:
-    
+        int selectedRow = tblFinance.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first from the table to view details");
+            return;
+        } else {
+
+            InsuranceJob insuranceWorkRequest = (InsuranceJob) tblFinance.getValueAt(selectedRow, 0);
+            if (insuranceWorkRequest.getStatus().equalsIgnoreCase("Sent To Finance Department")) {
+                JOptionPane.showMessageDialog(null, "Assign the request first");
+                return;
+            }
+            if (insuranceWorkRequest.getStatus().equalsIgnoreCase("Insurance Claim Approved")) {
+                JOptionPane.showMessageDialog(null, "Request already Completed", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.equals(insuranceWorkRequest.getReceiver())) {
+                JOptionPane.showMessageDialog(null, "Not Authorized", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (!account.getEmployee().equals(insuranceWorkRequest.getReceiver().getEmployee())) {
+                JOptionPane.showMessageDialog(null, "Request assigned to other Officer", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (insuranceWorkRequest.getStatus().equals("Insurance Claim Rejected")) {
+                JOptionPane.showMessageDialog(null, "Cannot process a Rejected Request", "Warning!", JOptionPane.WARNING_MESSAGE);
+                return;
+            } else {
+
+                InsuranceTreasurerProcessRequest panel = new InsuranceTreasurerProcessRequest(userProcessContainer, account, insuranceWorkRequest, enterprise);
+                userProcessContainer.add("OfficerProcessWorkRequestJPanel", panel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+
+            }
+        }
     }//GEN-LAST:event_btnProcessRequestActionPerformed
 
 
@@ -164,4 +213,31 @@ public class InsuranceTreasurerWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblFinance;
     // End of variables declaration//GEN-END:variables
+
+  public void populateTable() {
+    DefaultTableModel model = (DefaultTableModel) tblFinance.getModel();
+    model.setRowCount(0);
+
+    for (JobRequest workRequest : insuranceTreasurerOrg.getJobQueue().
+        getJobRequestList()) {
+      InsuranceJob insuranceJob = ((InsuranceJob) workRequest);
+      Object[] row = new Object[8];
+      row[0] = insuranceJob;
+      row[1] = insuranceJob.getPolicyName();
+      row[2] = insuranceJob.getInsuranceCustomer().
+          getInsurance().
+          getReimbursement();
+      row[3] = insuranceJob.getClaimAmount();
+      row[4] = insuranceJob.getBillAmount();
+      row[5] = insuranceJob.getStatus();
+      row[6] = insuranceJob.getInsuranceCompany();
+      row[7] = insuranceJob.getReceiver() == null ? "" : insuranceJob.
+          getReceiver().
+          getEmployee().
+          getEmpName();
+
+      model.addRow(row);
+    }
+
+  }
 }

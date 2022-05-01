@@ -383,7 +383,14 @@ public class AccountantProcessRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSendRequestForInsuranceActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+      userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ProcessMedicalBillsJPanel pmbjp = (ProcessMedicalBillsJPanel) component;
+        pmbjp.populateTable();
+        pmbjp.populateInsuranceClaimTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCollectCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCollectCashActionPerformed

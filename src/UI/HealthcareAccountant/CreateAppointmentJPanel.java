@@ -781,11 +781,24 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rbtnFemaleActionPerformed
 
     private void rbtnPatientInsuranceYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPatientInsuranceYesActionPerformed
-        
+        lblPolicyNum.setEnabled(true);
+        btnFindInsurance.setEnabled(true);
+        txtPolicyNum.setEnabled(true);
     }//GEN-LAST:event_rbtnPatientInsuranceYesActionPerformed
 
     private void rbtnPatientInsuranceNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPatientInsuranceNoActionPerformed
+        lblPolicyNum.setEnabled(false);
+        btnFindInsurance.setEnabled(false);
+        txtPolicyNum.setEnabled(false);
+        txtInsuranceCompany.setEnabled(false);
+        txtPolicyName.setEnabled(false);
 
+        txtCoverage.setEnabled(false);
+
+        lblCoverage.setEnabled(false);
+        lblInsCompany.setEnabled(false);
+
+        lblPolicyName.setEnabled(false);
     }//GEN-LAST:event_rbtnPatientInsuranceNoActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -956,9 +969,6 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             patient.setInsuranceCustomer(insuranceCustomer);
 
             cancerCenterEnterprise.getPatientDirectory().getPatientList().add(patient);
-            //creating user account
-            //if(cus==null)
-            //{
             if (username == null || username.equals("")) {
             nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(null, "Username cannot be empty");

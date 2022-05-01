@@ -4,6 +4,16 @@
  */
 package UI.InsuranceTreasurer;
 
+import ChemoCare.Account.Account;
+import ChemoCare.Enterprise.Enterprise;
+import ChemoCare.JobQueue.InsuranceJob;
+import ChemoCare.Map.SMS;
+import ChemoCare.Map.SendEmail;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author harshita
@@ -13,8 +23,22 @@ public class InsuranceTreasurerProcessRequest extends javax.swing.JPanel {
     /**
      * Creates new form InsuranceTreasurerProcessRequest
      */
-    public InsuranceTreasurerProcessRequest() {
+  private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Account userAccount;
+    private InsuranceJob insuranceJob;
+    public InsuranceTreasurerProcessRequest(JPanel userProcessContainer, Account userAccount, InsuranceJob insuranceJob, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.userAccount = userAccount;
+        this.insuranceJob = insuranceJob;
+        txtPolicyNumber.setText(insuranceJob.getPolicyNumber());
+        txtSSN.setText(insuranceJob.getSsn());
+        txtPolicyName.setText(insuranceJob.getPolicyName());
+        txtClaimAmount.setText(String.valueOf(insuranceJob.getClaimAmount()));
+        txtBillingAmount.setText(String.valueOf(insuranceJob.getBillAmount()));
+        txtCoverage.setText(String.valueOf(insuranceJob.getInsuranceCustomer().getInsurance().getReimbursement()));
     }
 
     /**
@@ -208,16 +232,67 @@ public class InsuranceTreasurerProcessRequest extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDisburseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisburseActionPerformed
-
+      btnDisburse.setEnabled(true);
+        String sub="Your Insurance claim is disbursed";
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            insuranceJob.setStatus("Insurance Claim Approved");
+            try{
+                SendEmail.send(insuranceJob.getCustomerEmail(),"\nHi "+insuranceJob.getInsuranceCustomer().getCustomerFName()+","+"\n\nYour Insurance claim of amount: "+ insuranceJob.getClaimAmount()+
+                        " is disbursed"+"\n\n\nThanks\n"+insuranceJob.getInsuranceCompany(),sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+insuranceJob.getInsuranceCustomer().getCustomerFName()+","+"\n\nYour Insurance claim of amount: "+ insuranceJob.getClaimAmount()+
+                        " is disbursed"+"\n\nThanks,\n"+insuranceJob.getInsuranceCompany());
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+            JOptionPane.showMessageDialog(null, "Claim Approved Successfully!!!");
+            btnDisburse.setEnabled(false);
+            btnReject.setEnabled(false);
+        }
     }//GEN-LAST:event_btnDisburseActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-
+      String sub="Your Insurance claim is rejected";
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            insuranceJob.setStatus("Insurance Claim Rejected");
+            try{
+                SendEmail.send(insuranceJob.getCustomerEmail(),"\nHi "+insuranceJob.getInsuranceCustomer().getCustomerFName()+","+"\n\nYour Insurance claim of amount: "+ insuranceJob.getClaimAmount()+
+                        " is rejected"+"\n\n\nThanks\n"+insuranceJob.getInsuranceCompany(),sub);
+            }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+insuranceJob.getInsuranceCustomer().getCustomerFName()+","+"\n\nYour Insurance claim of amount: "+ insuranceJob.getClaimAmount()+
+                        " is rejected"+"\n\nThanks,\n"+insuranceJob.getInsuranceCompany());
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+            btnReject.setEnabled(false);
+            btnDisburse.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Claim Rejected");
+        }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        InsuranceTreasurerWorkArea iwjp = (InsuranceTreasurerWorkArea) component;
+        iwjp.populateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
 
 

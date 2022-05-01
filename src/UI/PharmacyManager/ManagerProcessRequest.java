@@ -277,16 +277,77 @@ public class ManagerProcessRequest extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSendToTransportActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+      jPanel.remove(this);
+        Component[] componentArray = jPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ManagerWorkArea dwjp = (ManagerWorkArea) component;
+        dwjp.populateTable();
+        CardLayout layout = (CardLayout) jPanel.getLayout();
+        layout.previous(jPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-    
+      String message = txtMessage.getText();
+        String sub = "Your Order is Rejected";
+        String odrderDtl = "Order Details\n*************************************************\n";
+        if (message.equals("")) {
+            JOptionPane.showMessageDialog(null, "Message is mandatory!");
+            return;
+        } else {
+        orderItemRequest.setMessage(message);
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to proceed?");
+            
+            
+            if (dialogResult == JOptionPane.YES_OPTION) {
+        orderItemRequest.setStatus("Rejected");
+        try{
+                    
+                    List<ItemList> itm = orderItemRequest.getOrder().getItemList();
+                    for(ItemList i:itm)
+                    {
+                        odrderDtl=odrderDtl+"Item: "+i.getItem()+" , Quantity: "+i.getQuantity()+", Item Price: $"+i.getTotal()+"\n";
+                    }
+                    odrderDtl = odrderDtl+"*************************************************\n";
+                    odrderDtl=odrderDtl+"\n\nTotal Price: $"+orderItemRequest.getOrder().getAmount();
+                SendEmail.send(orderItemRequest.getHospitalAdmin().getEmployee().getEmpEmail(),"\nHi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\n\nYour Order# "+ orderItemRequest.getOrder().getItemID()+
+                        " is Rejected by: "+orderItemRequest.getReceiver().getEmployee().getEmpName()+"\nMessage: "+message
+                +"\n\n\n\n"+odrderDtl+"\n\nThanks,\n",sub);
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Email Could not be sent due to technical issues");
+                    System.out.println(ex.getMessage());
+                }
+        //Send SMS
+                try{
+                    SMS.SendSMS("+14793190560","Hi "+orderItemRequest.getHospitalAdmin().getEmployee().getEmpName()+","+"\nYour order# : "+orderItemRequest.getOrder().getItemID()+" is rejected\nMessage: "+message+
+                        "\n\nThanks");
+                }catch (Exception e){
+                     System.out.println(e.getMessage());
+                }
+         //Send SMS end
+         txtMessage.setText("");
+            btnReject.setEnabled(false);
+            btnSendToTransport.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Rejected");
+        }
+         txtMessage.setText("");   
+        }
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnViewOnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOnMapActionPerformed
         // TODO add your handling code here:
-      
+      if (txtLocation.getText().trim().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Enter address first");  
+        }else{
+        SwingUtilities.invokeLater(new Runnable() {
+ 
+            @Override
+            public void run() {
+                MapViewer browser = new MapViewer();
+                browser.setVisible(true);
+                browser.loadURL("https://www.google.com/maps/search/?api=1&query="+txtLocation.getText().trim());
+            }
+        });
+        }
     }//GEN-LAST:event_btnViewOnMapActionPerformed
 
 
