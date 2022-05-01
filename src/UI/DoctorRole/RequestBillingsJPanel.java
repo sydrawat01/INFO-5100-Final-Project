@@ -72,10 +72,11 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
         lblAssignedDoctor = new javax.swing.JLabel();
         txtAssignedDoctor = new javax.swing.JTextField();
         lblPatientId = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         txtPatientId.setEditable(false);
 
-        backBtn.setBackground(new java.awt.Color(250, 218, 209));
+        backBtn.setBackground(new java.awt.Color(64, 123, 255));
         backBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         backBtn.setText("<<Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -84,12 +85,12 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblBillintInformationTitle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblBillintInformationTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblBillintInformationTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblBillintInformationTitle.setForeground(new java.awt.Color(64, 123, 255));
         lblBillintInformationTitle.setText("BILLING INFORMATION");
 
         lblConsulationCharges.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblConsulationCharges.setForeground(new java.awt.Color(255, 255, 255));
+        lblConsulationCharges.setForeground(new java.awt.Color(64, 123, 255));
         lblConsulationCharges.setText("Consultaion Charges (USD) :");
 
         txtConsultationCharges.addActionListener(new java.awt.event.ActionListener() {
@@ -99,15 +100,15 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
         });
 
         lblMedicationCharges.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblMedicationCharges.setForeground(new java.awt.Color(255, 255, 255));
+        lblMedicationCharges.setForeground(new java.awt.Color(64, 123, 255));
         lblMedicationCharges.setText("Medication Charges (USD):");
 
         lblLabTest.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblLabTest.setForeground(new java.awt.Color(255, 255, 255));
+        lblLabTest.setForeground(new java.awt.Color(64, 123, 255));
         lblLabTest.setText("Lab Test Charges (USD) :");
 
         lblBillingRequest.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblBillingRequest.setForeground(new java.awt.Color(255, 255, 255));
+        lblBillingRequest.setForeground(new java.awt.Color(64, 123, 255));
         lblBillingRequest.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBillingRequest.setText("Billing Request");
 
@@ -117,21 +118,21 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblSubTitle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSubTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblSubTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSubTitle.setForeground(new java.awt.Color(64, 123, 255));
         lblSubTitle.setText("PATIENT INFORMATION");
 
         lblMiscellaneousCharges.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblMiscellaneousCharges.setForeground(new java.awt.Color(255, 255, 255));
+        lblMiscellaneousCharges.setForeground(new java.awt.Color(64, 123, 255));
         lblMiscellaneousCharges.setText("Miscellaneous Charges (USD):");
 
         txtFirstName.setEditable(false);
 
         lblFirstName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblFirstName.setForeground(new java.awt.Color(255, 255, 255));
+        lblFirstName.setForeground(new java.awt.Color(64, 123, 255));
         lblFirstName.setText("First Name :");
 
-        btnSendBillingRequest.setBackground(new java.awt.Color(250, 218, 209));
+        btnSendBillingRequest.setBackground(new java.awt.Color(64, 123, 255));
         btnSendBillingRequest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSendBillingRequest.setText("Send Billing Request");
         btnSendBillingRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -141,130 +142,159 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
         });
 
         lblLastName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblLastName.setForeground(new java.awt.Color(255, 255, 255));
+        lblLastName.setForeground(new java.awt.Color(64, 123, 255));
         lblLastName.setText("Last Name :");
 
         txtLastName.setEditable(false);
 
         lblAssignedDoctor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblAssignedDoctor.setForeground(new java.awt.Color(255, 255, 255));
+        lblAssignedDoctor.setForeground(new java.awt.Color(64, 123, 255));
         lblAssignedDoctor.setText("Assigned Doctor :");
 
         txtAssignedDoctor.setEditable(false);
 
         lblPatientId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPatientId.setForeground(new java.awt.Color(255, 255, 255));
+        lblPatientId.setForeground(new java.awt.Color(64, 123, 255));
         lblPatientId.setText("Patient Id:");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/image 34.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(488, 488, 488)
-                .addComponent(backBtn))
-            .addComponent(lblBillingRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(lblSubTitle))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(lblFirstName)
-                .addGap(6, 6, 6)
-                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(lblLastName)
-                .addGap(6, 6, 6)
-                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(lblAssignedDoctor)
-                .addGap(6, 6, 6)
-                .addComponent(txtAssignedDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(lblPatientId)
-                .addGap(6, 6, 6)
-                .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(273, 273, 273)
-                .addComponent(lblBillintInformationTitle))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(lblConsulationCharges)
-                .addGap(10, 10, 10)
-                .addComponent(txtConsultationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(lblLabTest)
-                .addGap(10, 10, 10)
-                .addComponent(txtLabCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(lblMedicationCharges)
-                .addGap(10, 10, 10)
-                .addComponent(txtMedicationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(lblMiscellaneousCharges)
-                .addGap(10, 10, 10)
-                .addComponent(txtMiscellaneousCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(277, 277, 277)
-                .addComponent(btnSendBillingRequest))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(lblSubTitle))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(btnSendBillingRequest))
+                                    .addComponent(lblBillintInformationTitle)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(lblLabTest)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(txtLabCharges))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblMedicationCharges)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(txtMedicationCharges))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(lblMiscellaneousCharges)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(txtMiscellaneousCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addComponent(lblConsulationCharges)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(txtConsultationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblAssignedDoctor)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtAssignedDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblLastName)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPatientId)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblBillingRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(142, 142, 142)))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(15, 15, 15)
                 .addComponent(backBtn)
-                .addGap(26, 26, 26)
-                .addComponent(lblBillingRequest)
-                .addGap(30, 30, 30)
-                .addComponent(lblSubTitle)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBillingRequest)
+                        .addGap(59, 59, 59)
+                        .addComponent(lblSubTitle)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblLastName))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAssignedDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblFirstName)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAssignedDoctor)
-                            .addComponent(lblPatientId))))
-                .addGap(18, 18, 18)
-                .addComponent(lblBillintInformationTitle)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblConsulationCharges)
-                    .addComponent(txtConsultationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblLabTest))
-                    .addComponent(txtLabCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblMedicationCharges))
-                    .addComponent(txtMedicationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblMiscellaneousCharges))
-                    .addComponent(txtMiscellaneousCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(btnSendBillingRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblLastName)))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAssignedDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblAssignedDoctor)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblPatientId)))
+                        .addGap(43, 43, 43)
+                        .addComponent(lblBillintInformationTitle)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblConsulationCharges)
+                            .addComponent(txtConsultationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblLabTest))
+                            .addComponent(txtLabCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblMedicationCharges))
+                            .addComponent(txtMedicationCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblMiscellaneousCharges))
+                            .addComponent(txtMiscellaneousCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addComponent(btnSendBillingRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -373,6 +403,7 @@ public class RequestBillingsJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JButton btnSendBillingRequest;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblAssignedDoctor;
     private javax.swing.JLabel lblBillingRequest;
     private javax.swing.JLabel lblBillintInformationTitle;

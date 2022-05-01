@@ -86,8 +86,11 @@ public void populateRequestTable() {
         btnComplete = new javax.swing.JButton();
         btnViewPatient = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        workRequestJTable.setBackground(new java.awt.Color(231, 194, 183));
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        workRequestJTable.setBackground(new java.awt.Color(209, 223, 241));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -115,8 +118,9 @@ public void populateRequestTable() {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        btnRequestTest.setBackground(new java.awt.Color(250, 218, 209));
+        btnRequestTest.setBackground(new java.awt.Color(64, 123, 255));
         btnRequestTest.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRequestTest.setForeground(new java.awt.Color(255, 255, 255));
         btnRequestTest.setText("Request Lab Test");
         btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,20 +129,21 @@ public void populateRequestTable() {
         });
 
         lblEnterprise.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblEnterprise.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnterprise.setForeground(new java.awt.Color(64, 123, 255));
         lblEnterprise.setText("EnterPrise :");
 
         lblValue.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblValue.setForeground(new java.awt.Color(255, 255, 255));
+        lblValue.setForeground(new java.awt.Color(64, 123, 255));
         lblValue.setText("<value>");
 
-        blSubTitle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        blSubTitle.setForeground(new java.awt.Color(255, 255, 255));
+        blSubTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        blSubTitle.setForeground(new java.awt.Color(64, 123, 255));
         blSubTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         blSubTitle.setText("Medical Test Work Queue");
 
-        btnAssignToMe.setBackground(new java.awt.Color(250, 218, 209));
+        btnAssignToMe.setBackground(new java.awt.Color(64, 123, 255));
         btnAssignToMe.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAssignToMe.setForeground(new java.awt.Color(255, 255, 255));
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,8 +151,9 @@ public void populateRequestTable() {
             }
         });
 
-        btnProvidePrescription.setBackground(new java.awt.Color(250, 218, 209));
+        btnProvidePrescription.setBackground(new java.awt.Color(64, 123, 255));
         btnProvidePrescription.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnProvidePrescription.setForeground(new java.awt.Color(255, 255, 255));
         btnProvidePrescription.setText("Provide Prescription");
         btnProvidePrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,8 +161,9 @@ public void populateRequestTable() {
             }
         });
 
-        btnComplete.setBackground(new java.awt.Color(250, 218, 209));
+        btnComplete.setBackground(new java.awt.Color(64, 123, 255));
         btnComplete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(255, 255, 255));
         btnComplete.setText("Complete Treatment");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,8 +171,9 @@ public void populateRequestTable() {
             }
         });
 
-        btnViewPatient.setBackground(new java.awt.Color(250, 218, 209));
+        btnViewPatient.setBackground(new java.awt.Color(64, 123, 255));
         btnViewPatient.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewPatient.setForeground(new java.awt.Color(255, 255, 255));
         btnViewPatient.setText("View Patient");
         btnViewPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,63 +182,75 @@ public void populateRequestTable() {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setForeground(new java.awt.Color(64, 123, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Doctor Work Area");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Assets/Layers.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnViewPatient)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAssignToMe)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRequestTest)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProvidePrescription)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(235, 235, 235))
+            .addComponent(blSubTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(109, 109, 109)
                 .addComponent(lblEnterprise)
                 .addGap(6, 6, 6)
-                .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(blSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(btnViewPatient)
-                .addGap(29, 29, 29)
-                .addComponent(btnAssignToMe)
-                .addGap(31, 31, 31)
-                .addComponent(btnRequestTest)
-                .addGap(30, 30, 30)
-                .addComponent(btnProvidePrescription)
-                .addGap(18, 18, 18)
-                .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAssignToMe, btnComplete, btnProvidePrescription, btnRequestTest, btnViewPatient});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(99, 99, 99)
                 .addComponent(lblTitle)
-                .addGap(15, 15, 15)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addComponent(blSubTitle)
                 .addGap(18, 18, 18)
+                .addComponent(blSubTitle)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnViewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAssignToMe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRequestTest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProvidePrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAssignToMe, btnComplete, btnProvidePrescription, btnRequestTest, btnViewPatient});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
@@ -383,6 +403,7 @@ public void populateRequestTable() {
     private javax.swing.JButton btnProvidePrescription;
     private javax.swing.JButton btnRequestTest;
     private javax.swing.JButton btnViewPatient;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEnterprise;
     private javax.swing.JLabel lblTitle;
