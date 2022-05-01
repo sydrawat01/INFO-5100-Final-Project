@@ -150,15 +150,16 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         personImageLabels = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(190, 194, 224));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel1.setBackground(new java.awt.Color(64, 123, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(64, 123, 255));
         jLabel1.setText("CREATE APPOINTMENT");
 
-        btnBack.setBackground(new java.awt.Color(250, 218, 209));
+        btnBack.setBackground(new java.awt.Color(64, 123, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,13 +167,14 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel2.setBackground(new java.awt.Color(64, 123, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Already registered? Provide SSN: ");
+        jLabel2.setForeground(new java.awt.Color(64, 123, 255));
+        jLabel2.setText("Already registered? Provide SSN : ");
 
-        btnFindPatients.setBackground(new java.awt.Color(250, 218, 209));
+        btnFindPatients.setBackground(new java.awt.Color(64, 123, 255));
         btnFindPatients.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnFindPatients.setForeground(new java.awt.Color(255, 255, 255));
         btnFindPatients.setText("Find Patient");
         btnFindPatients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,34 +182,34 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel3.setBackground(new java.awt.Color(64, 123, 255));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Date:");
+        jLabel3.setForeground(new java.awt.Color(64, 123, 255));
+        jLabel3.setText("Date :");
 
-        jLabel6.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(64, 123, 255));
         jLabel6.setText("PATIENT INFORMATION");
 
-        jLabel7.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel7.setBackground(new java.awt.Color(64, 123, 255));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(64, 123, 255));
         jLabel7.setText("First Name :");
 
-        jLabel8.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel8.setBackground(new java.awt.Color(64, 123, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(64, 123, 255));
         jLabel8.setText("Address:");
 
-        jLabel10.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel10.setBackground(new java.awt.Color(64, 123, 255));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(64, 123, 255));
         jLabel10.setText("Last Name :");
 
-        jLabel17.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel17.setBackground(new java.awt.Color(64, 123, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(64, 123, 255));
         jLabel17.setText("SSN :");
 
         txtHomePhone.addActionListener(new java.awt.event.ActionListener() {
@@ -216,10 +218,10 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel18.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel18.setBackground(new java.awt.Color(64, 123, 255));
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Phone Number:");
+        jLabel18.setForeground(new java.awt.Color(64, 123, 255));
+        jLabel18.setText("Phone Number :");
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,19 +229,19 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel24.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel24.setBackground(new java.awt.Color(64, 123, 255));
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setForeground(new java.awt.Color(64, 123, 255));
         jLabel24.setText("Age :");
 
-        jLabel25.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel25.setBackground(new java.awt.Color(64, 123, 255));
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setForeground(new java.awt.Color(64, 123, 255));
         jLabel25.setText("Sex :");
 
         rbtnMale.setBackground(new java.awt.Color(255, 102, 204));
         buttonGroup1.add(rbtnMale);
-        rbtnMale.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnMale.setForeground(new java.awt.Color(64, 123, 255));
         rbtnMale.setText("M");
         rbtnMale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +251,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
 
         rbtnFemale.setBackground(new java.awt.Color(255, 102, 204));
         buttonGroup1.add(rbtnFemale);
-        rbtnFemale.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnFemale.setForeground(new java.awt.Color(64, 123, 255));
         rbtnFemale.setText("F");
         rbtnFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,13 +259,13 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel9.setBackground(new java.awt.Color(64, 123, 255));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(64, 123, 255));
         jLabel9.setText("INSURANCE INFORMATION");
 
         rbtnPatientInsuranceYes.setBackground(new java.awt.Color(255, 102, 204));
-        rbtnPatientInsuranceYes.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnPatientInsuranceYes.setForeground(new java.awt.Color(64, 123, 255));
         rbtnPatientInsuranceYes.setText("Yes");
         rbtnPatientInsuranceYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,7 +274,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         });
 
         rbtnPatientInsuranceNo.setBackground(new java.awt.Color(255, 102, 204));
-        rbtnPatientInsuranceNo.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnPatientInsuranceNo.setForeground(new java.awt.Color(64, 123, 255));
         rbtnPatientInsuranceNo.setText("No");
         rbtnPatientInsuranceNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,23 +282,24 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblHavePolicy.setBackground(new java.awt.Color(255, 102, 204));
+        lblHavePolicy.setBackground(new java.awt.Color(64, 123, 255));
         lblHavePolicy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblHavePolicy.setForeground(new java.awt.Color(255, 255, 255));
+        lblHavePolicy.setForeground(new java.awt.Color(64, 123, 255));
         lblHavePolicy.setText("Is this patient covered by Insurance");
 
-        lblPolicyName.setBackground(new java.awt.Color(255, 102, 204));
+        lblPolicyName.setBackground(new java.awt.Color(64, 123, 255));
         lblPolicyName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPolicyName.setForeground(new java.awt.Color(255, 255, 255));
+        lblPolicyName.setForeground(new java.awt.Color(64, 123, 255));
         lblPolicyName.setText("Policy Name :");
 
-        lblInsCompany.setBackground(new java.awt.Color(255, 102, 204));
+        lblInsCompany.setBackground(new java.awt.Color(64, 123, 255));
         lblInsCompany.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblInsCompany.setForeground(new java.awt.Color(255, 255, 255));
+        lblInsCompany.setForeground(new java.awt.Color(64, 123, 255));
         lblInsCompany.setText("Insurance Company :");
 
-        btnCreate.setBackground(new java.awt.Color(250, 218, 209));
+        btnCreate.setBackground(new java.awt.Color(64, 123, 255));
         btnCreate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,9 +307,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel34.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel34.setBackground(new java.awt.Color(64, 123, 255));
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setForeground(new java.awt.Color(64, 123, 255));
         jLabel34.setText("Reason for Visit:");
 
         jScrollPane1.setBackground(new java.awt.Color(255, 102, 204));
@@ -315,9 +318,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         txtAddress.setRows(5);
         jScrollPane1.setViewportView(txtAddress);
 
-        lblPolicyNum.setBackground(new java.awt.Color(255, 102, 204));
+        lblPolicyNum.setBackground(new java.awt.Color(64, 123, 255));
         lblPolicyNum.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblPolicyNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblPolicyNum.setForeground(new java.awt.Color(64, 123, 255));
         lblPolicyNum.setText("Provide Insurance Policy Number:");
 
         txtPolicyNum.setEnabled(false);
@@ -331,25 +334,26 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblCoverage.setBackground(new java.awt.Color(255, 102, 204));
+        lblCoverage.setBackground(new java.awt.Color(64, 123, 255));
         lblCoverage.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCoverage.setForeground(new java.awt.Color(255, 255, 255));
+        lblCoverage.setForeground(new java.awt.Color(64, 123, 255));
         lblCoverage.setText("Patient Insurance Coverage % :");
 
         rbtnOther.setBackground(new java.awt.Color(255, 102, 204));
         buttonGroup1.add(rbtnOther);
-        rbtnOther.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnOther.setForeground(new java.awt.Color(64, 123, 255));
         rbtnOther.setText("Other");
 
-        jLabel4.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel4.setBackground(new java.awt.Color(64, 123, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(64, 123, 255));
         jLabel4.setText("Patient ID / Visit ID :");
 
         txtPatientIdentifier.setEditable(false);
 
-        btnResetPolicyNum.setBackground(new java.awt.Color(250, 218, 209));
+        btnResetPolicyNum.setBackground(new java.awt.Color(64, 123, 255));
         btnResetPolicyNum.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnResetPolicyNum.setForeground(new java.awt.Color(255, 255, 255));
         btnResetPolicyNum.setText("Reset Policy Number");
         btnResetPolicyNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,8 +361,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnViewOnMap.setBackground(new java.awt.Color(250, 218, 209));
+        btnViewOnMap.setBackground(new java.awt.Color(64, 123, 255));
         btnViewOnMap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewOnMap.setForeground(new java.awt.Color(255, 255, 255));
         btnViewOnMap.setText("View On Map");
         btnViewOnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,14 +371,14 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel5.setBackground(new java.awt.Color(64, 123, 255));
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Email:");
+        jLabel5.setForeground(new java.awt.Color(64, 123, 255));
+        jLabel5.setText("Email :");
 
-        jLabel12.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel12.setBackground(new java.awt.Color(64, 123, 255));
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(64, 123, 255));
         jLabel12.setText("Username:");
 
         nameJTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -382,18 +387,19 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel13.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel13.setBackground(new java.awt.Color(64, 123, 255));
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setForeground(new java.awt.Color(64, 123, 255));
         jLabel13.setText("Password:");
 
-        jLabel11.setBackground(new java.awt.Color(255, 102, 204));
+        jLabel11.setBackground(new java.awt.Color(64, 123, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(64, 123, 255));
         jLabel11.setText("re-Enter Password:");
 
-        btnUpdate.setBackground(new java.awt.Color(250, 218, 209));
+        btnUpdate.setBackground(new java.awt.Color(64, 123, 255));
         btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,8 +407,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnTakePicture.setBackground(new java.awt.Color(250, 218, 209));
+        btnTakePicture.setBackground(new java.awt.Color(64, 123, 255));
         btnTakePicture.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTakePicture.setForeground(new java.awt.Color(255, 255, 255));
         btnTakePicture.setText("Take Picture");
         btnTakePicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,8 +419,9 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
 
         personImageLabels.setBackground(new java.awt.Color(255, 102, 204));
 
-        btnSave.setBackground(new java.awt.Color(250, 218, 209));
+        btnSave.setBackground(new java.awt.Color(64, 123, 255));
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,307 +434,289 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(107, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(171, 171, 171)
-                        .addComponent(btnBack))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jLabel7))
-                                    .addComponent(jLabel18)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addComponent(jLabel8)))
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jLabel10)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(83, 83, 83)
-                                        .addComponent(jLabel25)
-                                        .addGap(6, 6, 6)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(64, 64, 64)
-                                                .addComponent(rbtnOther))
+                                                .addComponent(jLabel2)
+                                                .addGap(9, 9, 9)
+                                                .addComponent(txtPatientSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnFindPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(31, 31, 31)
-                                                .addComponent(rbtnMale))
-                                            .addComponent(rbtnFemale)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtHomePhone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel17)
-                                        .addGap(9, 9, 9)
-                                        .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jLabel5)
-                                        .addGap(3, 3, 3)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(77, 77, 77)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(lblHavePolicy)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                                        .addComponent(jLabel3)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel9)
-                                                        .addGap(62, 62, 62)))
-                                                .addComponent(rbtnPatientInsuranceYes))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnViewOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(jLabel4)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtPatientIdentifier, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(47, 47, 47))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(185, 185, 185)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(39, 39, 39)))
+                                .addGap(102, 102, 102))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPolicyNum)
+                                        .addGap(2, 2, 2)
+                                        .addComponent(txtPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnFindInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rbtnPatientInsuranceNo))))
+                                        .addComponent(btnResetPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(261, 261, 261)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel25)
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(64, 64, 64)
+                                                        .addComponent(rbtnOther))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(31, 31, 31)
+                                                        .addComponent(rbtnMale))
+                                                    .addComponent(rbtnFemale)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel17)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addGap(11, 11, 11)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btnViewOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(23, 23, 23)
+                                                    .addComponent(jLabel7))
+                                                .addComponent(jLabel18))
+                                            .addGap(2, 2, 2)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(txtHomePhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel10)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(lblCoverage)
+                                            .addGap(5, 5, 5)
+                                            .addComponent(txtCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(13, 13, 13)
+                                            .addComponent(jLabel34)
+                                            .addGap(10, 10, 10)
+                                            .addComponent(txtReasonForVisit))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(70, 70, 70)
+                                            .addComponent(lblInsCompany)
+                                            .addGap(11, 11, 11)
+                                            .addComponent(txtInsuranceCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(33, 33, 33)
+                                            .addComponent(lblPolicyName)
+                                            .addGap(8, 8, 8)
+                                            .addComponent(txtPolicyName, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(207, 207, 207)
+                                .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(9, 9, 9)
-                                        .addComponent(txtPatientSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnFindPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(56, 56, 56)
-                                        .addComponent(jLabel3)
-                                        .addGap(11, 11, 11)
-                                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(66, 66, 66)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(75, 75, 75)
-                                        .addComponent(jLabel4)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(txtPatientIdentifier, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(137, 137, 137)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(241, 241, 241))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(179, 179, 179)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblHavePolicy)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(rbtnPatientInsuranceYes)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(rbtnPatientInsuranceNo))
+                                            .addComponent(jLabel9)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(154, 154, 154)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel24)
+                                            .addComponent(jLabel13))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(passwordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel11))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(136, 136, 136)
+                                                .addComponent(jLabel12)))
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rePasswordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(202, 202, 202)
+                                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(105, 105, 105)
+                                        .addComponent(btnUpdate)))
+                                .addGap(1, 1, 1)))
+                        .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(personImageLabels, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPolicyNum)
-                                .addGap(2, 2, 2)
-                                .addComponent(txtPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnFindInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
-                                .addComponent(btnResetPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(lblInsCompany)
-                                .addGap(11, 11, 11)
-                                .addComponent(txtInsuranceCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(lblPolicyName)
-                                .addGap(8, 8, 8)
-                                .addComponent(txtPolicyName, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblCoverage)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel34)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtReasonForVisit, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(89, 89, 89))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(personImageLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnTakePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(39, 39, 39)
-                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(103, 103, 103)
-                                    .addComponent(jLabel24)
-                                    .addGap(5, 5, 5)
-                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(25, 25, 25)
-                                    .addComponent(jLabel12)
-                                    .addGap(6, 6, 6)
-                                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(20, 20, 20)
-                                    .addComponent(jLabel13)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(passwordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(17, 17, 17)
-                                    .addComponent(jLabel11)
-                                    .addGap(15, 15, 15)
-                                    .addComponent(rePasswordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(380, 380, 380)
-                                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(57, 57, 57)
-                                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(0, 48, Short.MAX_VALUE)))))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTakePicture, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)))
+                        .addGap(227, 227, 227))
+                    .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSave, btnTakePicture});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnUpdate});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(txtPatientSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnFindPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel4))
-                    .addComponent(txtPatientIdentifier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel7)
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel18)
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(txtPatientSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnFindPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPatientIdentifier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel6)
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(jLabel10))
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel18))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel25))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbtnOther)
-                                    .addComponent(rbtnMale)
-                                    .addComponent(rbtnFemale))))
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(txtHomePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel17))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel5))
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(btnViewOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtHomePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(3, 3, 3)
+                                            .addComponent(jLabel25))
+                                        .addComponent(rbtnOther)
+                                        .addComponent(rbtnMale)
+                                        .addComponent(rbtnFemale))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(btnTakePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(personImageLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnViewOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnPatientInsuranceYes)
                     .addComponent(rbtnPatientInsuranceNo)
                     .addComponent(lblHavePolicy))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPolicyNum)
                             .addComponent(txtPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnFindInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnResetPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFindInsurance, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnResetPolicyNum, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblInsCompany)
                     .addComponent(txtInsuranceCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPolicyName)
                     .addComponent(txtPolicyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCoverage)
                     .addComponent(txtCoverage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34)
                     .addComponent(txtReasonForVisit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 110, Short.MAX_VALUE)
-                    .addComponent(personImageLabels, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnTakePicture, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(185, 185, 185)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(jLabel24))
-                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(jLabel12))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
                             .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(jLabel13))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(passwordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(jLabel11))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(rePasswordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(34, 34, 34)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(rePasswordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCreate, btnUpdate});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -769,6 +759,245 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
+         btnUpdate.setEnabled(false);
+        if (txtFirstName.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide first name");
+            return;
+        }
+        if (txtLastName.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide last name");
+            return;
+        }
+        if (buttonGroup2.isSelected(null)) {
+            JOptionPane.showMessageDialog(null, "Please select gender");
+            return;
+        }
+        if (txtHomePhone.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide phone");
+            return;
+        }
+        if (txtSSN.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide SSN");
+            return;
+        }
+        if (txtAge.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide age");
+            return;
+        }
+        if (txtAddress.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide address");
+            return;
+        }
+        if (emailTextField.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide email id");
+            return;
+        }
+
+        if (buttonGroup1.isSelected(null)) {
+            JOptionPane.showMessageDialog(null, "Please choose if Patient covered by Insurance");
+            return;
+        }
+
+        if (txtReasonForVisit.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please provide Reason for visit");
+            return;
+
+        } else {
+
+            String registrationDate = txtDate.getText().trim();
+            String userName = nameJTextField.getText();
+            String password = String.valueOf(passwordJTextField.getPassword());
+            String rePassword = String.valueOf(rePasswordJTextField.getPassword());
+            String firstName = txtFirstName.getText().trim();
+            String lastName = txtLastName.getText().trim();
+            String gender = "Male";
+            if (rbtnFemale.isSelected()) {
+                gender = "Female";
+            } else if (rbtnOther.isSelected()) {
+                gender = "Other";
+            }
+
+            String phoneNo = txtHomePhone.getText().trim();
+
+            if (!phonePatternCorrect()) {
+                JOptionPane.showMessageDialog(null, "/* Following are valid phone number examples */             \n"
+                        + "              \"1234567890\", \"123-456-7890\", \"(123)4567890\", \"(123)456-7890\",\n"
+                        + "              /* Following are invalid phone numbers */ \n"
+                        + "              \"(1234567890)\",\"123)4567890\", \"12345678901\", \"(1)234567890\",");
+                txtHomePhone.setBorder(BorderFactory.createLineBorder(Color.RED));
+
+                return;
+            }
+
+            if (phonePatternCorrect()) {
+                txtHomePhone.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+            }
+            
+            if (!emailPatternCheck()) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid email Id");
+                txtEmail.setBorder(BorderFactory.createLineBorder(Color.RED));
+
+                return;
+            }
+            
+            String email = txtEmail.getText().trim();
+
+            if (emailPatternCheck()) {
+                txtEmail.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+            }
+
+            String ssn = txtSSN.getText().trim();
+
+            if (!ssnPatternCheck()) {
+                JOptionPane.showMessageDialog(null, "/* United States Social Security numbers are nine-digit numbers in the format AAA-GG-SSSS with following rules. */             \n"
+                        + "              \"The first three digits called the area number. The area number cannot be 000, 666, or between 900 and 999\",\n"
+                        + "                \" Digits four and five are called the group number and range from 01 to 99\",\n"
+                        + "              \"The last four digits are serial numbers from 0001 to 9999.\"");
+                txtSSN.setBorder(BorderFactory.createLineBorder(Color.RED));
+
+                return;
+            }
+
+            if (ssnPatternCheck()) {
+                txtSSN.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+            }
+
+            String age = txtAge.getText().trim();
+
+            try {
+                Integer.parseInt(age);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please provide integer values in Age textfield");
+                return;
+            }
+
+            String address = txtAddress.getText().trim();
+            boolean hasInsurance = false;
+
+            String policyNumber = txtPolicyNum.getText().trim();
+            if (rbtnPatientInsuranceYes.isSelected()) {
+                if (policyNumber.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Provide policy number");
+                    return;
+                }
+
+                if (txtPolicyName.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "No Policy found, please provide correct policy number");
+                    return;
+                }
+            }
+            String insuranceCompany = String.valueOf(txtInsuranceCompany.getText());
+            String policyName = String.valueOf(txtPolicyName.getText());
+            String coverString = txtCoverage.getText().trim();
+            double coverage = coverString.equals("") ? 0 : Double.parseDouble(txtCoverage.getText().trim());
+
+            String reasonForVisit = txtReasonForVisit.getText().trim();
+
+            if (hasInsurance) {
+                if (txtPolicyNum.getText().equals("")) {
+                    return;
+                }
+            }
+
+            Insurance insurance = new Insurance(policyName, insuranceCompany, coverage);
+            InsuranceCustomer insuranceCustomer = new InsuranceCustomer(insurance, policyNumber);
+            PatientVisitWorkRequest patientTreatmentWorkRequest;
+            HealthCenterEnterprise healthCenterEnterprise = (HealthCenterEnterprise) enterprise;
+            if(cus==null)
+            {
+            Patient patient = new Patient();
+            
+            patient.setAppointmentDate(txtDate.getText());
+            patient.setPatientID(txtPatientIdentifier.getText().trim());
+            patient.setPatientFName(firstName);
+            patient.setPatientLName(lastName);
+            patient.setGender(gender);
+
+            patient.setPhoneNumber(phoneNo);
+            patient.setAge(age);
+            patient.setSSN(ssn);
+            patient.setAddress(address);
+            patient.setPatientEmail(email);
+
+            patient.setInsuranceCustomer(insuranceCustomer);
+
+            healthCenterEnterprise.getPatientDirectory().getPatients().add(patient);
+            //creating user account
+            //if(cus==null)
+            //{
+            if (userName == null || userName.equals("")) {
+            nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(null, "Username cannot be empty");
+            return;
+        }
+
+        if (password == null || password.equals("")) {
+            nameJTextField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(null, "Password cannot be empty");
+            return;
+        }
+
+        if (!passwordPatternCorrect()) {
+            JOptionPane.showMessageDialog(null, "Password should be at least 6 Characters "
+                    + "digits and a combination of number , uppercase letter, "
+                    + "lowercase letter and Special characters are not allowed other than $, +, _");
+            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+            return;
+        }
+        
+        if (!password.equals(rePassword)) {
+            JOptionPane.showMessageDialog(null, "Passwords don't match");
+            passwordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+            rePasswordJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+            return;
+        } else {
+            
+            List<Account> userAccountList = ecosystem.getUserAccountDirectory().getUserAccountList();
+            for (Account userAccount : userAccountList) {
+                if (userAccount.getUsername().equals(userName)) {
+                    JOptionPane.showMessageDialog(null, "username already taken!!");
+                    nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    return;
+                }
+            }
+        }
+            Account userAccount = ecosystem.getAccountDirectory().createAccount(userName, password, patient, new Patient());
+            patient.setUserAccount(userAccount);
+            patientTreatmentWorkRequest = new PatientVisitJob(registrationDate, reasonForVisit, patient);
+        }   //create user ends 
+            else{
+                patientTreatmentWorkRequest = new PatientVisitJob(registrationDate, reasonForVisit, cus);
+            }
+            patientTreatmentWorkRequest.setStatus("Waiting for Doctor");            
+            //   patientTreatmentWorkRequest.setSender(userAccount);
+
+            Org org = null;
+            for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
+                if (organization instanceof DoctorOrg) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null) {
+                org.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
+                Account.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
+                refresh();
+                JOptionPane.showMessageDialog(null, "Patient Registered Successfully");
+                passwordJTextField.setText("");
+                rePasswordJTextField.setText("");
+                nameJTextField.setText("");
+
+                personImageLabels.setIcon(null);
+
+                btnTakePicture.setEnabled(false);
+                btnSave.setEnabled(false);
+            }
+
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnFindInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindInsuranceActionPerformed
