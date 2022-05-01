@@ -33,18 +33,22 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
     private JPanel container;
     private Enterprise enterprise;
     private Ecosystem ecosystem;
-    
-        public ManageUserAccountsJPanel(JPanel container, Enterprise enterprise, Ecosystem ecosystem) {
+
+    /**
+     * Creates new form ManageUserAccountsJPanel
+     */
+    public ManageUserAccountsJPanel(JPanel container, Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
+           initComponents();
         this.enterprise = enterprise;
         this.container = container;
         this.ecosystem = ecosystem;
 
         popOrganizationComboBox();
         popData();
-    }
-
-       public void popOrganizationComboBox() {
+    
+ }
+     public void popOrganizationComboBox() {
         cmbOrganization.removeAllItems();
 
         for (Org organization : enterprise.getOrgDirectory().getOrganizations()) {
@@ -53,9 +57,15 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             }
         }
     }
-       
-        public void popData() {
+          public void populateEmployeeComboBox(Org organization) {
+        cmbEmployee.removeAllItems();
 
+        for (Employee employee : organization.getEmployeeDirectory().getEmpList()) {
+            cmbEmployee.addItem(employee);
+        }
+    }
+        public void popData() {
+  
         DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
 
         model.setRowCount(0);
@@ -69,12 +79,7 @@ public class ManageUserAccountsJPanel extends javax.swing.JPanel {
             }
         }
     }
-    /**
-     * Creates new form ManageUserAccountsJPanel
-     */
-    public ManageUserAccountsJPanel() {
-        initComponents();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

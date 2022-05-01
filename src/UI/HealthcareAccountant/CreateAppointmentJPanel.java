@@ -730,6 +730,37 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnFindPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindPatientsActionPerformed
+        btnUpdate.setEnabled(true);
+        btnTakePicture.setEnabled(true);
+        btnSave.setEnabled(true);
+        boolean isPatientFound = false;
+        String ssn = txtPatientSSN.getText().trim();
+        List<NetworkSystem> networks = ecosystem.getNetworkSystems();
+        List<CancerCenterEnterprise> healthCenterEnterprises = new ArrayList<>();
+
+        for (NetworkSystem network : networks) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise instanceof CancerCenterEnterprise) {
+                    healthCenterEnterprises.add((CancerCenterEnterprise) enterprise);
+                }
+            }
+        }
+
+        for (CancerCenterEnterprise healthCenterEnterprise : healthCenterEnterprises) {
+            List<Patient> patients = healthCenterEnterprise.getPatientDirectory().getPatientList();
+            for (Patient patient : patients) {
+                if (patient.getSSN().equals(ssn)) {
+                    cus = patient;
+                    autopopulateFields(patient);
+                    isPatientFound = true;
+                }
+
+            }
+        }
+
+        if (!isPatientFound) {
+            JOptionPane.showMessageDialog(null, "No patient Found");
+        }
 
     }//GEN-LAST:event_btnFindPatientsActionPerformed
 
@@ -768,7 +799,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please provide last name");
             return;
         }
-        if (buttonGroup2.isSelected(null)) {
+        if (buttonGroup1.isSelected(null)) {
             JOptionPane.showMessageDialog(null, "Please select gender");
             return;
         }
@@ -788,7 +819,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please provide address");
             return;
         }
-        if (emailTextField.getText().trim().isEmpty()) {
+        if (txtEmail.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please provide email id");
             return;
         }
@@ -805,7 +836,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
         } else {
 
             String registrationDate = txtDate.getText().trim();
-            String userName = nameJTextField.getText();
+            String username = nameJTextField.getText();
             String password = String.valueOf(passwordJTextField.getPassword());
             String rePassword = String.valueOf(rePasswordJTextField.getPassword());
             String firstName = txtFirstName.getText().trim();
@@ -904,8 +935,8 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
 
             Insurance insurance = new Insurance(policyName, insuranceCompany, coverage);
             InsuranceCustomer insuranceCustomer = new InsuranceCustomer(insurance, policyNumber);
-            PatientVisitWorkRequest patientTreatmentWorkRequest;
-            HealthCenterEnterprise healthCenterEnterprise = (HealthCenterEnterprise) enterprise;
+            PatientVisitJob patientTreatmentWorkRequest;
+            CancerCenterEnterprise cancerCenterEnterprise = (CancerCenterEnterprise) enterprise;
             if(cus==null)
             {
             Patient patient = new Patient();
@@ -924,11 +955,11 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
 
             patient.setInsuranceCustomer(insuranceCustomer);
 
-            healthCenterEnterprise.getPatientDirectory().getPatients().add(patient);
+            cancerCenterEnterprise.getPatientDirectory().getPatientList().add(patient);
             //creating user account
             //if(cus==null)
             //{
-            if (userName == null || userName.equals("")) {
+            if (username == null || username.equals("")) {
             nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(null, "Username cannot be empty");
             return;
@@ -958,14 +989,14 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             
             List<Account> userAccountList = ecosystem.getUserAccountDirectory().getUserAccountList();
             for (Account userAccount : userAccountList) {
-                if (userAccount.getUsername().equals(userName)) {
+                if (userAccount.getUsername().equals(username)) {
                     JOptionPane.showMessageDialog(null, "username already taken!!");
                     nameJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
                     return;
                 }
             }
         }
-            Account userAccount = ecosystem.getAccountDirectory().createAccount(userName, password, patient, new Patient());
+            Account userAccount = ecosystem.getUserAccountDirectory().createUserAccount(username,password, patient, new PatientRole());
             patient.setUserAccount(userAccount);
             patientTreatmentWorkRequest = new PatientVisitJob(registrationDate, reasonForVisit, patient);
         }   //create user ends 
@@ -984,7 +1015,7 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
             }
             if (org != null) {
                 org.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
-                Account.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
+                account.getJobQueue().getJobRequestList().add(patientTreatmentWorkRequest);
                 refresh();
                 JOptionPane.showMessageDialog(null, "Patient Registered Successfully");
                 passwordJTextField.setText("");
@@ -1001,11 +1032,54 @@ public class CreateAppointmentJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnFindInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindInsuranceActionPerformed
-        
+      String insurancePolicyNumber = txtPolicyNum.getText().trim();
+        String ssn = txtSSN.getText().trim();
+        List<InsuranceCompanyEnterprise> insuranceEnterprises = new ArrayList<>();
+        InsuranceCustomer matchedCustomer = null;
+
+        List<NetworkSystem> networks = ecosystem.getNetworkSystems();
+        for (NetworkSystem network : networks) {
+            for (Enterprise enterp : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterp instanceof InsuranceCompanyEnterprise) {
+                    insuranceEnterprises.add((InsuranceCompanyEnterprise) enterp);
+                }
+            }
+        }
+
+        for (InsuranceCompanyEnterprise insuranceCompanyEnterprise : insuranceEnterprises) {
+            List<InsuranceCustomer> insuranceCustomers = insuranceCompanyEnterprise.getInsuranceCustomerDirectory().getInsuranceCustomerList();
+            for (InsuranceCustomer insuranceCustomer : insuranceCustomers) {
+                if (insurancePolicyNumber.equals(insuranceCustomer.getInsurancePlanNumber()) && ssn.equals(insuranceCustomer.getSSN())) {
+                    matchedCustomer = insuranceCustomer;
+
+                }
+            }
+        }
+
+        if (matchedCustomer != null) {
+            txtInsuranceCompany.setText(matchedCustomer.getInsurance().getInsuranceCompany());
+            txtPolicyName.setText(matchedCustomer.getInsurance().getPlanName());
+            //  txtPolicyNo.setText(matchedCustomer.getInsurancePolicyNumber());
+            txtCoverage.setText(String.valueOf(matchedCustomer.getInsurance().getReimbursement()));
+            txtPolicyNum.setEnabled(false);
+            txtSSN.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Policy number does not match with provided SSN");
+            txtInsuranceCompany.setText("");
+            txtPolicyName.setText("");
+            txtCoverage.setText("");
+            txtPolicyNum.setText("");
+            return;
+        }        
     }//GEN-LAST:event_btnFindInsuranceActionPerformed
 
     private void btnResetPolicyNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPolicyNumActionPerformed
-        
+    txtPolicyNum.setEnabled(true);
+        txtSSN.setEnabled(true);
+        txtPolicyNum.setText("");
+        txtPolicyName.setText("");
+        txtInsuranceCompany.setText("");
+        txtCoverage.setText("");        
     }//GEN-LAST:event_btnResetPolicyNumActionPerformed
 
     private void btnViewOnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOnMapActionPerformed

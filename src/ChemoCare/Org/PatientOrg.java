@@ -5,7 +5,7 @@
 package ChemoCare.Org;
 
 import ChemoCare.Role.GovtHealthOfficial;
-import ChemoCare.Role.Patient;
+import ChemoCare.Role.PatientRole;
 import ChemoCare.Role.Role;
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class PatientOrg extends Org{
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new Patient());
+        roles.add(new PatientRole());
         return roles;
     }
     
