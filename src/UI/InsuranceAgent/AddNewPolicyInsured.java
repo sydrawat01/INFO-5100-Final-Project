@@ -95,6 +95,7 @@ public class AddNewPolicyInsured extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(64, 123, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +125,7 @@ public class AddNewPolicyInsured extends javax.swing.JPanel {
 
         btnViewOnMap.setBackground(new java.awt.Color(64, 123, 255));
         btnViewOnMap.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnViewOnMap.setForeground(new java.awt.Color(255, 255, 255));
         btnViewOnMap.setText("View On Map");
         btnViewOnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +195,7 @@ public class AddNewPolicyInsured extends javax.swing.JPanel {
 
         btnAddCustomer.setBackground(new java.awt.Color(64, 123, 255));
         btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAddCustomer.setForeground(new java.awt.Color(255, 255, 255));
         btnAddCustomer.setText("Add Customer");
         btnAddCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,9 +292,9 @@ public class AddNewPolicyInsured extends javax.swing.JPanel {
                         .addGap(30, 30, 30)
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPolicyNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPolicyNumbers, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
